@@ -1,0 +1,12 @@
+.wrap {
+  width: 1000px;
+  background-color: lightblue;
+  margin: 0 auto;
+  padding: 50px 0;
+  overflow: hidden;
+}
+.wrap .logo {
+  float: left;
+  padding: 90px 0;
+}
+/*# sourceMappingURL=./nav.css.map */

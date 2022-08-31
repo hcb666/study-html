@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 400px;
+            background-color: lightblue;
+            display: flex;
+        }
+        .box .left {
+            width: 200px;
+            height: 100px;
+            background-color: lightcoral;
+            /* flex-shrink: 2; */
+            /* flex-basis: 50px; */
+        }
+        .box .right {
+            width: 400px;
+            height: 200px;
+            background-color: aqua;
+            /* flex-shrink: 5; */
+            /* flex-basis: 2px;初始长度 */
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+</body>
+</html>
