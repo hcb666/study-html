@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../my-minireset.css">
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+    />
+    <style>
+        * {
+            font-family: "Poppins";
+        }
+        .wrap {
+            width: 1000px;
+            margin: 0 auto;
+        }
+        .clear::after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+        .fl {
+            float: left;
+        }
+        .fr {
+            float: right;
+
+        }
+        nav.tonav {
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <nav class="topnav">
+        <div class="wrap clear">
+            <h1 class="logo">Dress<span>-Up</span></h1>
+            <div class="right clear">
+                <ul class="menu clear ">
+                    <li><a href="">HOME</a></li>
+                    <li><a href="">about</a></li>
+                    <li><a href="">services</a></li>
+                    <li><a href="">contact</a></li>
+                </ul>
+                <div class="search-area">
+                    <i class="fa fa-search"></i>
+                </div>
+                <div class="mode">
+                    <i class="fa fa-moon-o"></i>
+                </div>
+            </div>
+        </div>
+    </nav>
+</body>
+</html>

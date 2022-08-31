@@ -1,0 +1,74 @@
+.news {
+  padding: 50px;
+}
+.news .wrapper {
+  width: 1000px;
+  margin: 0 auto;
+}
+.news .wrapper header {
+  padding: 0 15px;
+  overflow: hidden;
+}
+.news .wrapper header .title {
+  float: left;
+}
+.news .wrapper header .title p {
+  font-size: 14px;
+}
+.news .wrapper header .title h3 {
+  font-size: 24px;
+  font-weight: 700;
+}
+.news .wrapper header button {
+  float: right;
+  text-transform: uppercase;
+  background: transparent;
+  border: 1px solid lightgray;
+  padding: 8px;
+  font-weight: bold;
+}
+.news .wrapper ul.list {
+  overflow: hidden;
+}
+.news .wrapper ul.list li {
+  overflow: hidden;
+  width: 33.333%;
+  float: left;
+  padding: 15px;
+  box-sizing: border-box;
+}
+.news .wrapper ul.list li .card:hover {
+  box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.3);
+}
+.news .wrapper ul.list li .card:hover a {
+  text-decoration: underline;
+}
+.news .wrapper ul.list li .card {
+  padding: 15px;
+  box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.1);
+  border: 1px solid white;
+}
+.news .wrapper ul.list li .card a {
+  text-decoration: none;
+  font-weight: bold;
+  color: black;
+}
+.news .wrapper ul.list li .card p {
+  margin: 10px 0;
+}
+.news .wrapper ul.list li .card .author {
+  line-height: 30px;
+}
+.news .wrapper ul.list li .card .author .avatar {
+  border-radius: 50%;
+  vertical-align: middle;
+}
+.news .wrapper ul.list li .card .author .name {
+  vertical-align: middle;
+  color: #a0a0a0;
+}
+.news .wrapper ul.list li .card .author .time {
+  vertical-align: middle;
+  color: #a0a0a0;
+}
+/*# sourceMappingURL=./news.css.map */
