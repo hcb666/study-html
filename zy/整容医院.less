@@ -1,0 +1,192 @@
+.clear::after {
+    display: block;
+    content: "";
+    clear: both;
+}
+
+
+.active {
+    border-bottom: 2px solid #13a2b7;
+}
+
+header {
+    .header-top {
+        background-color: #0c5d69;
+        padding: 15px;
+
+        .container {
+            .row {
+                .header__top__left {
+                    display: flex;
+
+                    li {
+                        margin: 0 10px;
+                        color: white;
+                    }
+                }
+
+                .header__top__right {
+                    float: right;
+
+                    a {
+                        margin: 0 10px;
+                        color: white;
+                    }
+                }
+            }
+        }
+    }
+
+    .container {
+        .row {
+            .header__logo {
+                padding: 42px 0;
+
+                img {}
+            }
+
+            .header__menu__option {
+                padding: 30px 0;
+                text-align: right;
+
+                .header__menu {
+                    display: inline-block;
+                    text-transform: uppercase;
+
+                    ul {
+                        display: flex;
+                        box-sizing: border-box;
+
+                        li {
+                            margin: 0 15px;
+                            position: relative;
+                            line-height: 30px;
+
+                            &:nth-child(4) {
+                                &:hover {
+                                    border-bottom: 2px solid #13a2b7;
+
+                                    .dropdown {
+                                        display: block;
+                                        margin-top: 20px;
+                                    }
+
+                                }
+
+                                .dropdown {
+                                    width: 150px;
+                                    display: none;
+                                    position: absolute;
+                                    top: 15px;
+                                    flex-direction: column;
+                                    background-color: black;
+                                    margin-top: 40px;
+                                    text-align: left;
+
+                                    li {
+                                        color: white;
+                                    }
+                                }
+
+                            }
+                        }
+                    }
+                }
+
+                .header__btn {
+                    display: inline-block;
+                    font-size: 15px;
+                    font-weight: 500;
+                    padding: 12px 30px 10px;
+                    text-transform: uppercase;
+                    color: #111111;
+                    text-transform: uppercase;
+                    letter-spacing: 2px;
+                    border: 2px solid #13a2b7;
+                    border-radius: 5px;
+                }
+            }
+        }
+
+        .canvas__open {
+            display: none;
+        }
+
+    }
+    .mask {
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0);
+        pointer-events: none;
+        .aside {
+            width: 300px;
+            height: 100vh;
+            background-color: white;
+            position: absolute;
+            top: 0;
+            left: -300px;
+            transition: all .5s;
+        }
+    }
+    .mask.open {
+        pointer-events: auto;
+        background-color: rgba(0, 0, 0, 0.328);
+    }
+    .mask.open .aside {
+        left: 0;
+    }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+    .header__menu {
+        margin-right: 25px;
+    }
+
+    .header__menu ul li {
+        margin-right: 25px;
+    }
+
+    .header__top__left li {
+        margin-right: 10px;
+    }
+}
+
+
+@media only screen and (max-width: 991px) {
+    header .container .canvas__open {
+        display: block;
+        font-size: 22px;
+        color: #222;
+        height: 35px;
+        width: 35px;
+        line-height: 35px;
+        text-align: center;
+        border: 1px solid #323232;
+        border-radius: 2px;
+        cursor: pointer;
+        position: absolute;
+        right: 15px;
+        top: 35px;
+    }
+
+    .header-top{
+        display: none;
+    }
+
+    .header__menu__option {
+        display: none;
+    }
+
+    .header__right {
+        display: none;
+    }
+
+    .header .container {
+        position: relative;
+    }
+
+    .header__btn {
+        display: none;
+    }
+}

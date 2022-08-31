@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: rgba(0, 0, 0, 0.521);
+        }
+
+        img {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        // var list = document.querySelector("ul")
+        // // 设置图片节点
+        //     var node = document.createElement("li")
+        //     list.appendChild(node)
+        //     node.style.top = Math.random() * innerHeight - offsetHeight
+        //     node.style.left = Math.random() * innerWidth - offsetWidth
+        //     var offsetHeight = Math.random() * 100
+        //     var offsetWidth = Math.random() * 100
+        setInterval(function () {
+            var imgNode = document.createElement("img")
+
+            imgNode.src = "./playing.png"
+
+            var w = Math.floor(Math.random() * 10 * 10)
+            imgNode.width = w
+
+
+            imgNode.style.left = (window.innerWidth - (Math.floor(Math.random() * 10 * 100))) + "px"
+            imgNode.style.top = (window.innerHeight - (Math.floor(Math.random() * 10 * 100))) + "px"
+
+            document.body.appendChild(imgNode)
+        }, 1000)
+
+        window.addEventListener("click", function (e) {
+            e.target.remove()
+
+        })
+    </script>
+</body>
+
+</html>

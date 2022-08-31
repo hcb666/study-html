@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas" width="500" height="500"></canvas>
+    <!-- <script>
+        var canvas = document.getElementById("canvas")
+
+        //获取绘制环境上下文
+        var context = canvas.getContext('2d');
+
+        //设置fillStyle属性可以是CSS颜色，渐变，或图案。fillStyle 默认设置是#000000（黑色
+        // fillRect(x,y,width,height) 方法定义了矩形当前的填充方式。
+
+
+        // for (var i = 0; i < 50; i++) {
+        //     context.fillRect(10*i,10*i,10,10);
+        // }
+        // 绘制矩形
+        // context.context.fillStyle='black';
+        // context.fillRect(100,300,50,50);
+        // fillRect(x,y,w,h)
+        // context.strokeStyle='green';
+        // context.lineWidth=10;
+
+        context.strokeRect(100, 100, 50, 50);
+
+        context.moveTo(100, 100);
+        context.lineTo(200, 200);
+        context.lineTo(200, 100);
+        // context.fill();
+
+        //moveTo(x,y) 定义线条开始坐标
+        // lineTo(x,y) 定义线条结束坐标
+
+        // 闭合路径
+        context.stroke();
+
+        // 开始新路径
+        context.beginPath();
+
+        // context.arc(100, 100, 100,( Math.PI / 180) * 90, (Math.PI / 180) * 180);
+        // context.arc(x, y, 半径,起始弧度,结束弧度, 是否逆时针);
+        context.arc(100, 100, 1000, (Math.PI / 180) * 90, (Math.PI / 180) * 180);
+
+        context.stroke();
+
+        //font - 定义字体
+        // fillText(text,x,y) - 在 canvas 上绘制实心的文本
+        // strokeText(text,x,y) - 在 canvas 上绘制空心的文本
+        context.font='30px sans-serif';
+        context.fillText("hahahah", 200, 300);
+        
+        context.strokeText("hello world", 0,200)
+
+
+        context.save();   //	保存当前环境的状态
+        context.beginPath();
+        context.arc(150,150,50,0,Math.PI * 2)
+        context.closePath();
+        context.strokeStyle = "red"
+        // context.stroke(); 绘制已定义的路径。
+        context.clip(); //	从原始画布剪切任意形状和尺寸的区域。
+        context.fillStyle='yellow';
+        context.fillRect(150,150,300,300);
+        
+        context.fillStyle='green';
+        context.fillRect(0,0,150,150);
+        context.restore(); //	返回之前保存过的路径状态和属性。
+        
+        
+    </script> -->
+
+    <img id="scream" src="img_the_scream.jpg" alt="">
+    <canvas id="canvas2" width="110" height="138"></canvas>
+    <script>
+        var img = document.getElementById("scream")
+        var canvas2 = document.getElementById("canvas2")
+
+        var context = canvas2.getContext('2d');
+
+        // context.fillStyle='yellow';
+        // context.rect(0, 0, 10, 10);
+        // context.fill();
+
+        // context.beginPath();
+
+        // context.arc(20, 50, 20, 0, Math.PI * 2);
+        // context.fillStyle='lightblue';
+        // context.fill();
+
+        // img.onload = function () {
+        //     //  drawImage() 方法在画布上绘制图像、画布或视频。
+        //     // drawImage() 方法也能够绘制图像的某些部分，以及/或者增加或减少图像的尺寸。
+        //     context.drawImage(img, 0, 0, 220, 220, 0, 0, 50, 50);
+        //     //    定位图片 context.drawImage(img,x,y);
+        //     // 定位图片并规定宽高	context.drawImage(img,x,y,width,height);
+        //     // 剪切图片context.drawImage(img,sx,sy,swidth,sheight,x,y,width,height);
+        //     // img规定使用的图像，画布或视频 sx开始剪切x坐标 sy开始剪切y坐标 swidth 被剪切图像宽度 x放置的x坐标 width使用图片的宽度
+        //     var fullQuality = canvas2.toDataURL("image/jpeg", 0.5);
+        //     console.log(fullQuality);
+
+        //     var img2 = new Image()
+        //     img.src = fullQuality
+
+        //     document.body.appendChild(img2)
+        // }
+    </script>
+
+    <video src="https://www.runoob.com/try/demo_source/mov_bbb.mp4" loop autoplay muted controls></video>
+    <button>截屏</button>
+    <script>
+        var video = document.querySelector("video")
+        document.querySelector("button").onclick = function () {
+            context.drawImage(video, 0, 0, 320, 176,0,0,160,88);
+            
+        }
+    </script>    
+</body>
+
+</html>

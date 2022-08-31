@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .stage {
+            width: 500px;
+            height: 500px;
+            background-color: lightblue;
+            position: relative;
+        }
+
+        .stage i {
+            display: block;
+            position: absolute;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="stage"></div>
+    <script>
+        var stage = document.querySelector(".stage")
+
+        function Run(color, size, x, y, xspeed, yspeed) {
+            this.color = color
+            this.size = size
+            this.x = x
+            this.y = y
+            this.xspeed = speed
+            this.yspeed = yspeed
+        }
+
+        Run.prototype.two = function () {
+            this.node.style.top = this.y + "px"
+            this.node.style.left = this.x + "px"
+        }
+        Run.prototype.one = function () {
+            this.node = document.createElement("i")
+            this.node.style.width = this.size + "px"
+            this.node.style.height = this.size + "px"
+            this.node.style.backgroundColor = this.color
+            stage.appendChild(node)
+            this.update(); //调用
+        }
+        Run.prototype.three = function () {
+            var rightPz = this.x + this.size > 500
+            var leftPz = this.x < 0
+
+            var topPz = this.y < 0
+            var bottonPz = this.y + this.size > 500
+            if (leftPz || rightPz) {
+                this.xspeed *= -1
+                // this.xspeed = -this.xspeed
+            }
+            if (topPz || bottonPz) {
+                this.yspeed *= -1
+                // this.yspeed = -this.yspeed
+            }
+            //碰到边缘减尺寸
+            if (leftPz || rightPz || topPz || bottonPz) {
+                this.size -= 1
+                if (this.size <= 0) { //为0时删除
+                    stage.removeChild(this.node)
+                    dots.splice(dots.indexOf(this), 1)
+                } else {
+                    this.node.style.width = this.size + "px"
+                    this.node.style.height = this.size + "px"
+                }
+            }
+        }
+        Run.prototype.move = function () {
+            this.three()
+            this.x += this.xspeed
+            this.y += this.yspeed
+            this.update()
+        }
+
+        var dots = [
+            new Run("red",20,200,0,3,1)
+        ]
+        dots.forEach(function (dot) {
+            dot.draw()
+        })
+        setInterval(function () {
+            dots.forEach(function (dot) {
+                dot.move()
+            })
+        }, 30)
+    </script>
+</body>
+
+</html>

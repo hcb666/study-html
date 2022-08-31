@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .box {
+        width: 500px;
+        height: 500px;
+        position: relative;
+        background-color: aqua;
+    }
+
+    .green {
+        width: 20px;
+        height: 10px;
+        background-color: green;
+        position: absolute;
+        top: 40px;
+        left: 30px;
+    }
+
+    .red {
+        position: absolute;
+        top: 10px;
+        left: 0;
+        width: 50px;
+        height: 20px;
+        background-color: red;
+    }
+
+    .box .big {
+        width: 100px;
+        height: 50px;
+        background-color: red;
+        position: absolute;
+    }
+
+    .box .car {
+        position: absolute;
+        top: 60px;
+        width: 60px;
+        height: 30px;
+        background-color: green;
+    }
+
+    .box .small {
+        width: 30px;
+        position: absolute;
+        top: 100px;
+        height: 10px;
+        background-color: yellow;
+    }
+    .box .big1 {
+        top: 0px;
+        left: 0px;
+        width: 100px;
+        height: 50px;
+        background-color: red;
+        position: absolute;
+    }
+
+    .box .car2 {
+        position: absolute;
+        top: 0px;
+        left: 150px;
+        width: 60px;
+        height: 30px;
+        background-color: green;
+    }
+
+    .box .small3 {
+        width: 30px;
+        position: absolute;
+        top: 0px;
+        left: 300px;
+        height: 10px;
+        background-color: yellow;
+    }
+</style>
+
+<body>
+    <div class="box">
+        <div class="green"></div>
+        <div class="red"></div>
+    </div>
+    <script>
+        function move() {
+            this.left += this.speed
+            this.node.style.left = this.left + "px"
+            return this;
+        }
+        var red = {
+            node: document.querySelector(".red"),
+            left: 0,
+            top: 0,
+            speed: 1,
+            move: move
+        }
+        var green = {
+            node: document.querySelector(".green"),
+            left: 30,
+            top: 30,
+            speed: 2,
+            move: move
+        }
+        setInterval(function () {
+            green.move()
+            red.move()
+        }, 10)
+    </script>
+    <hr>
+    <div class="box">
+        <div class="big"></div>
+        <div class="car"></div>
+        <div class="small"></div>
+    </div>
+    <script>
+        var box = document.querySelector(".box");
+        var bw = box.offsetWidth;
+        console.log(bw);
+        var bigCar = document.querySelector(".big");
+        var car = document.querySelector(".car");
+        var smallCar = document.querySelector(".small");
+        function Car(node, left, speed) {
+            this.node = node;
+            this.left = left;
+            this.speed = speed;
+        }
+        Car.prototype.move = function () {
+            this.left += this.speed;
+            this.node.style.left = this.left + "px"
+            if (this.left >= bw - this.node.offsetWidth) {
+                this.speed = -this.speed
+            }
+            if (this.left == 0) {
+                this.speed = -this.speed
+            }
+        }
+        var a = new Car(bigCar, 0, 1)
+        var b = new Car(car, 0, 2)
+        var c = new Car(smallCar, 0, 3)
+        setInterval(function () {
+            a.move()
+            b.move()
+            c.move();
+        }, 10)
+    </script>
+    <hr>
+    <div class="box">
+        <div class="big1"></div>
+        <div class="car2"></div>
+        <div class="small3"></div>
+    </div>
+    <script>
+        var box = document.querySelector(".box");
+        var bw = box.offsetWidth;
+        console.log(bw);
+        var big1 = document.querySelector(".big1");
+        var car2 = document.querySelector(".car2");
+        var small3 = document.querySelector(".small3");
+        function Car(node, top, speed) {
+            this.node = node;
+            this.top = top;
+            this.speed = speed;
+        }
+        Car.prototype.move = function () {
+            this.top += this.speed;
+            // this.speed = -this.speed*Math.tan(60*Math.PI/180);
+            this.node.style.top = this.top + "px"
+            if (this.top >= bw - this.node.offsetHeight) {
+                this.speed = -this.speed
+            }
+            if (this.top == 0) {
+                this.speed = -this.speed;
+            }
+        }
+        var e = new Car(big1, 0, 1)
+        var f = new Car(car2,0, 2)
+        var g = new Car(small3, 0, 3)
+        setInterval(function () {
+            e.move()
+            f.move()
+            g.move();
+        }, 10)
+    </script>
+</body>
+
+</html>

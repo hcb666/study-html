@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .swiper {
+            width: 300px;
+            background-color: red;
+            /* height: 200px; */
+            position: relative;
+            overflow: hidden;
+        }
+
+        .swiper .list {
+            width: 100%;
+            transition: all .3s;
+            display: flex;
+
+        }
+
+        .swiper .list img {
+            width: 100%;
+            display: block;
+        }
+
+        .swiper .list img:first-child {
+            position: relative;
+        }
+
+        .swiper ul.dots {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            width: 100%;
+            z-index: 10;
+
+        }
+
+        .swiper ul.dots li {
+            width: 20px;
+            height: 20px;
+            background-color: black;
+            margin: 0 10px;
+            border-radius: 50%;
+        }
+
+        .swiper .control {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="swiper" class="swiper">
+        <div class="list">
+            <img src="./imgs/1.jpg" alt="">
+            <img src="./imgs/2.jpg" alt="">
+            <img src="./imgs/3.jpg" alt="">
+            <img src="./imgs/4.jpg" alt="">
+        </div>
+        <ul class="dots">
+            <!-- <li title="0"></li>
+            <li title="1"></li>
+            <li title="2"></li>
+            <li title="3"></li> -->
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <div class="control">
+            <button>prev</button>
+            <button>next</button>
+        </div>
+    </div>
+    <script>
+        var swiperEl = document.getElementById("swiper");
+        var listEl = document.getElementsByClassName("list")[0];
+        var imgs = swiperEl.getElementsByClassName("list")[0].getElementsByTagName("img");
+        var dots = swiperEl.getElementsByClassName("dots")[0].getElementsByTagName("li");
+        var prevBtn = swiperEl.getElementsByClassName("control")[0].getElementsByTagName("button")[0];
+        var nextBtn = swiperEl.getElementsByClassName("control")[0].getElementsByTagName("button")[1];
+        var c = 0;
+
+        // function showImg(index) {
+        //     listEl.style.marginLeft = -index * 300 + "px";
+        //     c = index;
+        // }
+
+        // //类数组转数组
+        // Array.prototype.slice.call(dots);
+
+        // Array.prototype.slice.call(dots).forEach(function (dot, i) {
+        //     // console.log(dot, i);
+        //     dot.onclick = function () {
+        //         // console.log(i);
+        //         showImg(i);
+        //     }
+        // });
+
+        // nextBtn.onclick = function () {
+        //     var index = c >= imgs.length - 1 ? 0 : ++c;
+        //     showImg(index)
+        // }
+        // prevBtn.onclick = function () {
+        //     var index = c <= 0 ? imgs.length - 1 : --c;
+        //     showImg(index)
+        // }
+        function showImg(index) {
+            listEl.style.marginLeft = -index * 300 + "px";
+            c = index;
+        }
+
+        //类数组转数组
+        Array.prototype.slice.call(dots);
+
+        Array.prototype.slice.call(dots).forEach(function (dot, i) {
+            console.log((dot, i));
+            dot.onclick = function () {
+                console.log(i);
+                showImg(i)
+            }
+        })
+        nextBtn.onclick = function () {
+         var index = c >= imgs.length - 1 ? 0 : ++c;
+         showImg(index);
+        }
+        prevBtn.onclick = function () {
+         var index = c <= 0  ? imgs.length - 1 : --c;
+         showImg(index);
+        }
+    </script>
+</body>
+
+</html>

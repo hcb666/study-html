@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: lightblue;
+            padding: 20px;
+
+            border-top: 10px dashed red;
+            border-right: 20px dashed red;
+            border-bottom: 10px dashed red;
+            border-left: 15px dashed red;
+            margin: 50px auto;
+        }
+        .big {
+            width: 200px;
+             /* width: 100%; */
+            height: 200px;
+            background-color: lightblue;
+            position: relative;
+        }
+
+        .small {
+            width: 100px;
+            height: 100px;
+            background-color: lightcoral;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="big">
+        <div class="jy">
+            <div class="small">
+
+            </div>
+        </div>
+    </div>
+    <div class="box"></div>
+    <SCript>
+        var boxEl = document.getElementsByClassName("box")[0];
+
+        console.log(boxEl.clientTop); //10 上边框大小
+        console.log(boxEl.clientLeft); //15 左边框大小
+
+        console.log(boxEl.clientWidth); //140 +padding
+        console.log(boxEl.offsetWidth); //175 +padding +border 盒子的大小包括padding和边框
+    
+        console.log(boxEl.offsetLeft); //距离浏览器最左边的距离
+        console.log(boxEl.offsetParent); //这个元素距离父元素的距离
+    </SCript>
+</body>
+</html>

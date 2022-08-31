@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // for (var i = 0; i <= 9; i++) {
+        //     for (let j = 1; j <= i; j++) {
+        //         console.log(j + "*" + i + "=" + i * j);
+        //     }
+        //     console.log("\n");
+        // }
+        //     var x = 10;
+        //     console.log('he\nll\to wor\nld' + x);
+        //     // \n 换行 \t 制表符
+    </script>
+    <script>
+        // for (var i = 0; i < 3; i++) {
+        //     for (var j = 0; j < 4; j++) {
+        //         console.log(i,j);
+
+        //     }
+        // }
+        //循环嵌套 外侧循环每经历一次迭代 内层循环会走整个循环
+        // console.log('开始');
+        // for (var i = 0; i < 3; i++) {
+
+        //     console.log(i);
+        // }
+        // console.log('结束');
+    </script>
+    <script>
+        // for (var i = 0; i <= 9; i++) {
+        //     var str = "";
+        //     for (var j = 1; j <= i; j++) {
+        //         if (j > i) {
+        //             break;
+        //         }
+        //         // console.log(+ i + "*" + j + "=" + i*j);
+        //         //不能在内层循环里面打印
+        //     }
+
+        //     str = str + j + "*" + i + "=" + j*i + "\t";
+        //     // console.log("\n");
+        //     console.log(str);
+        // }
+    </script>
+    <script>
+        // for (let i = 0; i <= 9; i++) {
+        //     var str = "";
+        //     for (let j = 1; j <= i; j++) {
+        //         str = str + j + "*" + i + "=" + i*j + "\t"; 
+
+        //     }
+        //     console.log(str);
+
+        // }
+        // for (var i = 9; i >= 1; i--) {
+        //     var str = "";
+        //     for (var j = 1; j <= i; j++) {
+        //         str = str + j + "*" + i + "=" + i*j + "\t"; 
+        //     }
+        //     document.write(str);
+        //     document.write("<br />")
+
+        // }
+        // for (var i = 0; i <= 9; i++) {
+        //     var str = "";
+        //     for (var j = 1; j <= i; j++) {
+        //         str = str + i + "*" + j + "=" + i*j + "\t";
+
+        //     }
+        //     document.write(str);
+        //     document.write("<br />")
+
+        // }
+        // document.write("==========================================================","<br />");
+        // for (var i = 1; i <= 9; i++) {
+        //     var str = "";
+        //     for (var j = 9; j >= i; j--) {
+        //         str = str + i + "*" + j + "=" + i*j + "\t";
+        //     }
+        //     document.write(str);
+        //     document.write("<br />");
+        // }
+        // 求出下面数组所有项之和
+        // var nums =[1,8,33,5,2]
+        // 求出100以内所有3的倍数的整数之和
+        // for (var i = 0; i < 100; i++) {
+        //     var str = "";
+        //     for (var j = 0 ; j < i; j++) {
+        //         if (i % j === 0) {
+        //             str = str + j +i;
+        //         }
+
+        //     }
+        //     console.log(str);
+        // }
+        // var nums = [1,8,33,5,2];
+        // var a = 0;
+        // for (var i = 0; i < nums.length; i++) {
+        //     a += nums[i];
+        // }
+        // console.log(a);
+
+        var j = 0;
+        for (var i = 3; i < 100; i++) {
+            if (i % 3 === 0) {
+                j += i;
+            }
+        }
+        console.log(j);
+
+        for (var i = 9; i >= 1; i--) {
+            var str = "";
+            for (var j = 1; j <= i; j++) {
+                str = str + j + "*" + i + "=" + i * j + "\t";
+            }
+            document.write(str);
+            document.write("<br />");
+        }
+
+        var nums = [1, 8, 33, 5, 2];
+        var a = 0;
+        for (var i = 0; i < nums.length; i++) {
+            a += nums[i];
+        }
+        console.log(a);
+
+        var j = 0;
+        for (var i = 0; i < 100; i++) {
+            if (i % 3 === 0) {
+                j += i; 
+            }
+            
+        }
+        console.log(j);
+
+        nums = [34,53,5,353,525,52,56,22,224];
+        var c = 0;
+        for (var i = 0; i < nums.length; i++) {
+            c += nums[i];
+            
+        }
+        console.log(c);
+    </script>
+
+</body>
+
+</html>

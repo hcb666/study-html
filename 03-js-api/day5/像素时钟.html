@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .num {
+            display: flex;
+            flex-wrap: wrap;
+            width: 300px;
+        }
+        .num i {
+            width: 30%;
+            height: 90px;
+            outline: 1px solid black;
+            background-color: black;
+            transition: all .5s;
+            opacity: 0;
+            transform: scale(0.5);
+        }
+        .num i.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+    </style>
+</head>
+<body>
+    <div class="num"></div>
+    <script>
+        var nums = [
+            [
+                [1,1,1],
+                [1,0,1],
+                [1,0,1],
+                [1,0,1],
+                [1,1,1],
+            ],
+            [
+                [0,0,1],
+                [0,0,1],
+                [0,0,1],
+                [0,0,1],
+                [0,0,1],
+            ],
+            [
+                [1,1,1],
+                [0,0,1],
+                [1,1,1],
+                [1,0,0],
+                [1,1,1],
+            ],
+            [
+                [1,1,1],
+                [0,0,1],
+                [1,1,1],
+                [0,0,1],
+                [1,1,1],
+            ],
+            [
+                [1,0,1],
+                [1,0,1],
+                [1,1,1],
+                [0,0,1],
+                [0,0,1],
+            ],
+            [
+                [1,1,1],
+                [1,0,0],
+                [1,1,1],
+                [0,0,1],
+                [1,1,1],
+            ],
+            [
+                [1,1,1],
+                [1,0,0],
+                [1,1,1],
+                [1,0,1],
+                [1,1,1],
+            ],
+            [
+                [1,1,1],
+                [0,0,1],
+                [0,0,1],
+                [0,0,1],
+                [0,0,1],
+            ],
+            [
+                [1,1,1],
+                [1,0,1],
+                [1,1,1],
+                [1,0,1],
+                [1,1,1],
+            ],
+            [
+                [1,1,1],
+                [1,0,1],
+                [1,1,1],
+                [0,0,1],
+                [1,1,1],
+            ],
+            
+        ];
+        //初始化
+        nums[0].forEach(function (row, rowi) {
+            row.forEach(function (item, coli) {
+                var node = document.createElement("i");
+                if (item) {
+                    node.classList.add("active");
+                }
+                document.querySelector("num").appendChild(node);
+            })
+        })
+
+        function showNum(n) {
+            var iDoms = document.querySelector("num").querySelectorAll("i");
+            nums[n].forEach(function (row, rowi) {
+                row.forEach(function (item, coli) {
+                    if (item) {
+                        iDoms[rowi * 3 + coli].classList.add("active");
+                    } else {
+                        iDoms[rowi * 3 + coli].classList.remove("active")
+                    }
+                })
+            })
+        }
+    </script>
+</body>
+</html>

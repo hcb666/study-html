@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: lightblue;
+            /* transition: all .3s; */
+            animation-name: myfirst;
+            animation-duration: 5s;
+            /*时间 */
+            animation-iteration-count: infinite;
+            /*播放次数*/
+            animation-timing-function: linear;
+            /*速度*/
+            animation-direction: normal;
+            /*是否逆向 */
+            position: absolute;
+            /* animation-fill-mode: forward; 动画不播放时 */
+            top: 0;
+            left: 0;
+        }
+
+        /* 
+        @keyframes myfirst {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg)
+            }
+        } */
+
+        @keyframes myfirst {
+            0% {
+                background: red;
+                left: 0px;
+                top: 0px;
+                transform: rotate(0deg);
+            }
+
+            25% {
+                background: yellow;
+                left: 50%;
+                top: 0px;
+                transform: rotate(360deg);
+            }
+
+            50% {
+                background: blue;
+                left: 50%;
+                top: 50%;
+                transform: rotate(720deg);
+            }
+
+            75% {
+                background: green;
+                left: 0px;
+                top: 50%;
+                transform: rotate(1080deg);
+            }
+
+            100% {
+                background: red;
+                left: 0px;
+                top: 0px;
+                transform: rotate(1540deg);
+            }
+        }
+
+        /* @-webkit-keyframes myfirst
+            {
+            0% {
+                background: red;
+                left: 0px;
+                top: 0px;
+            }
+
+            25% {
+                background: yellow;
+                left: 200px;
+                top: 0px;
+            }
+
+            50% {
+                background: blue;
+                left: 200px;
+                top: 200px;
+            }
+
+            75% {
+                background: green;
+                left: 0px;
+                top: 200px;
+            }
+
+            100% {
+                background: red;
+                left: 0px;
+                top: 0px;
+            }
+        } */
+    </style>
+</head>
+
+<body>
+
+    <div class="box"></div>
+
+</body>
+
+</html>

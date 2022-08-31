@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: lightcoral;
+        }
+
+        .box1 {
+            width: 100px;
+            height: 100px;
+            background-color: lightblue;
+        }
+
+        .aaa {
+            border: 5px solid black;
+        }
+
+        .aa {
+            width: 150px;
+            height: 150px;
+            background-color: blueviolet;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+
+    </div>
+    <div class="box1 aaa"></div>
+    <button class="btn" >666</button>
+    <script>
+        var box1El = document.querySelector(".box1");
+        var btn = document.getElementsByName("btn")
+        // var boxDom = document.getElementsByClassName("box")
+
+        function btn_toggle() {
+            var sh = document.getElementById('btn').classList.contains('aaa');
+            if (sh) {
+                document.getElementById('btn').classList.remove('aaa');
+                document.getElementById('btn').classList.add('aa');
+            } else {
+                document.getElementById('btn').classList.remove('aaa');
+                document.getElementById('btn').classList.add('aa');
+            }
+        }
+        function addClass(obj, cls) {
+  // 先获取类名
+  var obj_class = obj.className;
+  blank = (obj_class != '') ? ' ' : '';
+  add = obj_class + blank + cls;
+  obj.className = add;
+}
+
+function removeClass(obj, cls) {
+  let obj_class = ' ' + obj.className + ' ';
+  obj_class = obj_class.replace(/(\s+)/gi, ' ');
+  let removed = obj_class.replace(' ' + cls + ' ', ' ');
+  removed = removed.replace(/(^\s+)|(\s+$)/g, '');
+  obj.className = removed;
+}
+
+function toggleClass(obj, cls) {
+  if (hasClass(obj, cls)) {
+    removeClass(obj, cls)
+  } else {
+    addClass(obj, cls)
+  }
+}
+    </script>
+</body>
+
+</html>

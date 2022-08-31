@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 1.
+        var a, b, c;
+    for (a = 1; a < 33; a++) {
+      for (b = 1; b < 33; b++) {
+        if (a * a + b * b > 1000) break;
+        for (c = 1; c < 33; c++) {
+          var sum = a * a + b * b + c * c;
+          if (sum > 1000) {
+            break;
+          }
+          if (sum === 1000) {
+            console.log("三个数为:" + a + " " + b + " " + c)
+          }
+        }
+      }
+    }
+        // 2.
+        // var a= []
+        // function getUniqueNum(start,end,n) {
+        //      for (let i = 0; i <= n; i++) {
+        //          a[i] = Math.floor(Math.random() * 10)
+        //      }
+        //      if (a[i] == end) {
+        //          var b = a.push();
+        //      }
+        // }
+        // getUniqueNum();
+        // 3.
+        function age(n) {
+            if (n === 1) {
+                return 10
+            }
+            return age(n - 1) + 2
+        }
+        console.log(age(5));
+    </script>
+</body>
+
+</html>

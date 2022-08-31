@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+canvas{
+    border: 1px solid black;
+}
+    </style>
+</head>
+<body>
+    <canvas id="canvas" width="300" height="300"></canvas>
+    <script>
+        var canvas = document.getElementById("canvas")
+
+        var context = canvas.getContext('2d');
+
+        function Dot(x,y,r,sx,sy) {
+            this.x = x
+            this.y= y
+            this.r = r
+            this.sx = sx
+            this.sy = sy
+            this.color = "#" + String( Math.random()).slice(-6)
+            this.blood = 0
+        }
+        Dot.prototype.draw = function () {
+            context.beginPath();
+            context.arc(this.x, this.y, this.r, 0, Math.PI *2);
+            context.fillStyle=this.color;
+            context.fill();
+        }
+        Dot.prototype.move = function () {
+            if (this.x >= 300 - this.r || this.x <= this.r) {
+                this.sx *= -1
+                this.blood++
+            }
+            if (this.y>=300 -this.r || this.y <= this.r) {
+                this.sy*=-1
+                this.blood++
+            }
+
+            this.x += this.sx
+            this.y += this.sy
+        }
+        Dot.prototype.checkBoom = function () {
+            if (this.blood >=3) {
+                var that = this
+                for (var i = 0; i < 3; i++) {
+                    dots.push(new Dot(this.x,this.y,3,Math.random()*4 - 2,Math.random() * 4 -2))
+                }
+                dots = dots.filter(function (dot) {
+                    return dot !== that
+                })
+            }
+        }
+
+        var dots = [new Dot(100,100,10,2,1)]
+        setInterval(() => {
+            context.clearRect(0, 0, 300, 300);
+            // 清除画布
+
+            dots.forEach(function (dot) {
+                dot.move()
+                dot.checkBoom()
+                dot.draw()
+
+            })
+            console.log(dots.length);
+        }, 30)
+    </script>
+</body>
+</html>

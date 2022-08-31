@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .active {
+            color: lightblue;
+        }
+    </style>
+</head>
+<body>
+    <ul class="list">
+        <li>item 1</li>
+        <li>item 2</li>
+        <li>item 3</li>
+    </ul>
+    <ul class="tabs">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+    <script src="../jquery.js"></script>
+    <script>
+        // $(".tabs li").css("display", "none")
+
+        // $(".tabs li").hide()
+        // $(".tabs li").eq(0).show()
+
+        $(".tabs li").hide().eq(0).show()
+
+        $(".list li").click(function () {
+
+            $(this).addClass("active").siblings().removeClass("active")
+            $(".tabs li").hide().eq($(this).index()).show()
+        })
+    </script>
+
+    <button>ooooo</button>
+    <div class="box">11111</div>
+    <script>
+        $("button").click(function () {
+            // $(".box").toggleClass("active")
+            $(".box").toggle()
+        })
+    </script>
+</body>
+</html>

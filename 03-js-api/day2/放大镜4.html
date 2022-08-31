@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .magnifier .thumb {
+            width: 300px;
+            height: 300px;
+            position: relative;
+        }
+
+        .magnifier .thumb img {
+            width: 100%;
+            display: block;
+        }
+
+        .magnifier .thumb .mask {
+            width: 100px;
+            height: 100px;
+            background-color: rgba(0, 0, 255, 0.5);
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .magnifier .zoom {
+            width: 600px;
+            height: 600px;
+            background-color: lightblue;
+            background-image: url("./1\ copy.jpg");
+        }
+    </style>
+</head>
+
+<body>
+    <div class="magnifier">
+        <div class="thumb">
+            <img src="./1 copy.jpg" alt="">
+            <div class="mask">
+
+            </div>
+        </div>
+        <div class="zoom"></div>
+    </div>
+    <script>
+        var level = 3;
+        var thumbEl = document.querySelector(".magnifier .thumb");;
+        var maskEl = document.querySelector(".magnifier .thumb .mask");
+        var zoomEl = document.querySelector(".magnifier .zoom");
+
+        thumbEl.style["background-size"]  = level * 100 + "%"
+
+        var zoomWidth = zoomEl.offsetWidth
+        var zoomHeight = zoomEl.offsetHeight
+
+       var thumbWidth = thumbEl.offsetWidth;
+        var thumbHeight = thumbEl.offsetHeight;
+
+        var maskWidth = thumbWidth / level;
+        var maskHeight = thumbHeight / level
+
+
+        maskEl.style.width = maskWidth + "px";
+        maskEl.style.height = maskHeight + "px";
+
+        var offsetLeft = thumbEl.offsetLeft;
+        var offsetTop = thumbEl.offsetTop
+
+        thumbEl.onmousemove = function () {
+            console.log(event.pageX - offsetLeft, event.pageY - offsetTop
+            );
+
+            var mx = event.pageX - offsetLeft
+            var my = event.pageY - offsetTop
+
+            var maskX = mx - maskWidth / 2
+            var maskY = my - maskHeight /2
+
+            if (maskX < 0) {
+                maskX = 0;
+            }
+            if (maskX > thumbWidth - maskWidth) {
+                maskX = thumbWidth - maskWidth;
+            }
+            if (maskY < 0) {
+                maskY = 0;
+            }
+            if (maskY > thumbHeight  - maskHeight) {
+                maskY = thumbHeight - maskHeight
+            }
+
+            maskEl.style.left = maskX + "px"
+            maskEl.style.top = maskY + "px"
+
+            zoomEl.style["background-position"] = -(zoomWidth / maskWidth) * maskX + "px " + 
+            -(zoomHeight / maskHeight) * maskY + "px"
+        }
+    </script>
+</body>
+
+</html>

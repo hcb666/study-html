@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="display"></div>
+    <script>
+        function timeCounter() {
+            var currentDate = new Date();
+            var targetDate = new Date(0);
+            var seconds = (targetDate.getTime() - currentDate.getTime()) / 1000;
+
+            seconds = parseInt(seconds); //秒数取整
+
+            var day = parseInt(seconds / 86400);
+            seconds %= 86400;
+            var hour = parseInt(seconds / 3600);
+            seconds %= 3600;
+            var minute = parseInt(seconds / 60);
+
+            var second = seconds %= 60;
+
+            var display = document.getElementById('display');
+            display.innerHTML = "距离" + targetDate.getFullYear() +
+                "年还有" + day + "天" + hour + "小时" + minute + "分钟" + second + "秒";
+
+        }
+        setInterval('timeCounter()', 1000);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        //先设置两个时间，把这两个时间相减得到的数根据天时分秒进行倒数
+    </script>
+</body>
+
+</html>

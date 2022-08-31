@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <a href="https://www.baidu.com" method="get">baidu</a>
+
+    <form action="https://www.baidu.com">
+        <input type="text" class="username"> <span class="message"></span>
+        <br>
+        <input type="submit" value="提交" name="sub">
+
+    </form>
+    <script>
+        //默认行为就是HTML标签自带的行为，比如a标签的跳转和表单提交时会自动刷新等
+        var objA = document.querySelector("a")
+        objA.onclick = function (e) {
+            e.preventDefault()
+            alert("123")
+            //阻止默认行为
+        }
+
+
+        var submit = document.querySelector("input[name=sub")
+        var username = document.querySelector(".username")
+        var message = document.querySelector(".message")
+        submit.addEventListener('click', function (e) {
+            if (username.value !== "admin") {
+                message.innerHTML = "false"
+                //阻止默认行为
+                e.preventDefault()
+            }
+        })
+    </script>
+</body>
+
+</html>

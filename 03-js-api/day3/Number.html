@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var PI = 3.141592653589793;
+
+        console.log(Number.MAX_VALUE);//1.7976931348623157e+308 可表示最大的数
+        console.log(Number.MIN_VALUE);//5e-324 可表示最小的数
+        console.log(Number.NEGATIVE_INFINITY);//-Infinity 负无穷大，溢出时返回改值
+        console.log(Number.POSITIVE_INFINITY);//Infinity 正无穷大，溢出时返回该值
+        console.log(NaN);//NaN 非数字值
+
+        console.log(Number.isFinite(PI));//true 检测指定参数是否为无穷大
+        console.log(isFinite(PI));//true 
+
+        //如果number是NaN(非数字)， 或者是正、负无穷大的数，则返回false
+        console.log(Number.isInteger(PI));//false 检测指定参数是否为整数
+        console.log(Number.isNaN(PI));//false检测指定参数是否为NaN
+        console.log(isNaN(PI));//false
+        //静态方法
+        //安全整数范围为-（2^53-1）到2^53-1之间的整数，包含-(2^53-1)和2^53-1
+        console.log(1+2);//3
+        console.log(0.1+0.2);//0.30000000000000004
+
+        console.log(PI.toExponential());//3.141592653589793e+0 把对象的值转换为指数计数法
+        console.log(PI.toFixed(3)); //3.142 把数字转换为字符串，保留指定小数点后面几位 会四舍五入
+        console.log(PI.toPrecision(4));//3.142 把数字格式化为指定长度 会四舍五入
+        //实例方法
+        //0.1+0.2 === 0.3  false
+        //2.0999999999999996.toFixed(5) == 2.1
+        //(0.1+0.2-0.3) < Number.EPSILONEPSILON
+
+        console.log(parseInt(3.14));//3 截掉小数点后面的数 不会四舍五入
+        console.log(parseInt(3.55)); //3
+        console.log(parseInt("a10")); //NaN
+        console.log(parseInt("10a")); //10
+        console.log(parseInt("10px")); //10
+        console.log(parseFloat(3.14)); //3.14
+        console.log(parseFloat("3.14")); //3.14
+        console.log(parseFloat("3.14.11a")); //3.14
+        console.log(parseFloat("3a.14.11a")); //3
+
+        console.log(encodeURI("http://127.0.0.1:5500/03-js-api/day3/Number.html?name=张三"));
+        console.log(decodeURI("http://127.0.0.1:5500/03-js-api/day3/Number.html?name=%E5%BC%A0%E4%B8%89"));
+
+        console.log(encodeURIComponent("http://127.0.0.1:5500/03-js-api/day3/Number.html?name=张三"));
+        console.log(decodeURIComponent("http%3A%2F%2F127.0.0.1%3A5500%2F03-js-api%2Fday3%2FNumber.html%3Fname%3D%E5%BC%A0%E4%B8%89"));
+    
+    
+    
+    
+    // 不能用的
+    eval("var a = 10");
+    </script>
+</body>
+</html>

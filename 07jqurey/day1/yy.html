@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .swiper {
+            width: 300px;
+            /* background-color: red; */
+            height: 196px;
+            overflow: hidden;
+            position: relative;
+        }
+
+
+        .swiper .list img {
+            width: 100%;
+            display: block;
+        }
+        .swiper ul.dots {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            width: 100%;
+            z-index: 999;
+        }
+        li {
+            width: 20px;
+            height: 20px;
+            background-color: black;
+            margin: 0 10px;
+            border-radius: 50%;
+        }
+        .active {
+            background-color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="swiper">
+        <div class="list">
+            <img src="./imgs/1.jpg" alt="">
+            <img src="./imgs/2.jpg" alt="">
+            <img src="./imgs/3.jpg" alt="">
+            <img src="./imgs/4.jpg" alt="">
+        </div>
+        <ul class="dots">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <script src="../jquery.js"></script>
+    <script>
+        $(".swiper ul.dots li").eq(0).addClass("active")
+        $(".swiper ul.dots li").click(function () {
+            $(this).addClass("active").siblings().removeClass("active")
+            $(".swiper .list img").eq($(this).index()).show().siblings().hide()
+        })
+        // .eq($(this).index()).show()
+    </script>
+</body>
+
+</html>

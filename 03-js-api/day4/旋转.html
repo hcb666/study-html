@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .stage {
+            width: 500px;
+            height: 500px;
+            border: 1px solid black;
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .stage .yua {
+            width: 50px;
+            height: 50px;
+            background-color: black;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            border-radius: 50%;
+        }
+
+        .stage .tail {
+            /* display: flex; */
+            position: relative;
+        }
+
+        .stage .tail i {
+            display: block;
+            transform-origin: center 250px;
+        }
+
+        .stage .tail i.b {
+            width: 8px;
+            height: 40px;
+            background-color: black;
+            position: absolute;
+            top: 0;
+            left: 50%;
+
+            margin-left: -4px;
+            /* transform: rotate(45deg); */
+        }
+
+        .stage .tail i.s {
+            width: 4px;
+            height: 20px;
+            background-color: black;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            margin-left: -2px;
+            /* transform: rotate(45deg); */
+        }
+
+        .stage .needle {
+            position: relative;
+        }
+
+        .stage .needle .h {
+            width: 16px;
+            height: 80px;
+            background-color: black;
+            position: absolute;
+            top: 250px;
+            left: calc(50% - 8px);
+            transform-origin: center top;
+        }
+
+        .stage .needle .m {
+            width: 14px;
+            height: 120px;
+            background-color: black;
+            position: absolute;
+            top: 250px;
+            left: calc(50% - 7px);
+            transform-origin: center top;
+        }
+
+        .stage .needle .ss {
+            width: 10px;
+            height: 150px;
+            background-color: black;
+            position: absolute;
+            top: 250px;
+            left: calc(50% - 5px);
+            transform-origin: center top;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="stage">
+        <div class="yua"></div>
+        <div class="tail">
+            <i class="b"></i>
+            <i class="s"></i>
+        </div>
+        <div class="needle">
+            <span class="h"></span>
+            <span class="m"></span>
+            <span class="ss"></span>
+        </div>
+    </div>
+    <script>
+        var firstSpanDom = document.getElementsByTagName("div")[0];
+        // debugger
+        for (let i = 0; i < 12 * 5; i++) {
+            var node = document.createElement("i")
+            if (i % 5 === 0) {
+                node.className = "b"
+            } else {
+                node.className = "s"
+            }
+            node.style.transform = "rotate(" + i * (360 / (12 * 5)) + "deg)";
+            document.querySelector(".tail").appendChild(node);
+        }
+
+        // setInterval(function () {
+        //     var now = new Date();
+        var h = String(now.getHours());
+        var m = String(now.getMinutes());
+        var ss = String(now.getSeconds());
+
+        
+        // }, 1000)
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var arr = [1,2,3,4,5]
+        var arr2 = arr
+        arr[0] = "老王" 
+        console.log(arr);
+        console.log(arr2);
+        arr2[1] = "老大"
+        console.log(arr);
+        console.log(arr2);
+
+        var obj3 = {
+            name: "大",
+            age:45,
+            arr:[6,7,8,9,10]
+        }
+        var obj4 = {}
+        for(var i in obj3) {
+            console.log(i);
+            console.log(obj3[i]);
+            obj4[i] = obj3[i]
+        }
+        console.log(obj3);
+        console.log(obj4);
+
+
+        obj3.name = "老六"
+        obj3.arr[1] = "999999"
+        obj3.age = 35
+        console.log(obj3);
+        console.log(obj4);
+    </script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 有如下数组
+    var citys = [{
+        id: 1,
+        nm: "北京",
+        py: "beijing"
+      },
+      {
+        id: 45,
+        nm: "重庆",
+        py: "chongqing"
+      },
+      {
+        id: 59,
+        nm: "成都",
+        py: "chengdu"
+      },
+      {
+        id: 70,
+        nm: "长沙",
+        py: "changsha"
+      },
+      {
+        id: 84,
+        nm: "保定",
+        py: "baoding"
+      },
+      {
+        id: 88,
+        nm: "蚌埠",
+        py: "bengbu"
+      },
+      {
+        id: 89,
+        nm: "常州",
+        py: "changzhou"
+      },
+      {
+        id: 150,
+        nm: "阿拉善盟",
+        py: "alashanmeng"
+      },
+      {
+        id: 151,
+        nm: "鞍山",
+        py: "anshan"
+      },
+      {
+        id: 197,
+        nm: "安庆",
+        py: "anqing"
+      },
+      {
+        id: 238,
+        nm: "安阳",
+        py: "anyang"
+      },
+      {
+        id: 700,
+        nm: "承德县",
+        py: "chengdexian"
+      },
+    ];
+
+    // var x = {}
+
+    // citys.forEach(function (item) {
+    //   var key = item.py
+    //  var args = Array.prototype.slice.call(key);
+    // })
+    var resault = data_letter_sort(citys, 'py');
+
+    console.log(resault);
+
+    function data_letter_sort(data, field) {
+      var citys = new Array();
+      for (var i = 0; i < data.length; i++) {
+        // 首字母转为大写英文
+        letter = (data[i][field]).substr(0, 1).toUpperCase();
+        // 创建字母分组
+        if (!(letter in citys)) {
+          citys[letter] = new Array();
+        }
+        // 字母分组添加数据
+        citys[letter].push(data[i]);
+      }
+      // 转换格式进行排序
+      var resault = new Array();
+      for (var key in citys) {
+        resault.push({
+          letter: key,
+          citys: citys[key]
+        });
+      }
+      resault.sort(function (x, y) {
+        return x.letter.charCodeAt(0) - y.letter.charCodeAt(0);
+      });
+      // 转换数据格式
+      var json = {}
+      for (var i = 0; i < resault.length; i++) {
+        json[resault[i].letter] = resault[i].citys;
+      }
+
+      return json;
+    }
+  </script>
+
+  <script>
+
+  </script>
+</body>
+
+</html>

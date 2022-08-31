@@ -1,0 +1,83 @@
+* {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.clear::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.header__top__left {
+    float: left;
+}
+.offer .row {
+    text-align: center;
+}
+
+.services {
+    background-image: url('./services-bg.jpg');
+    background-position: center;
+    background-size: cover;
+    padding: 50px;
+}
+
+.services .row .left h2 {
+    margin-top: 0;
+    color: white;
+}
+
+.services .row .right {
+    text-align: right;
+}
+
+.services .row .right button {
+    background-color: transparent;
+}
+
+.services .row .col-xs-12 {
+    margin: 15px 0;
+}
+
+.services .row .media {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+}
+
+.doctor-one img {
+    border-radius: 50%;
+}
+
+.team {
+    text-align: center;
+    padding: 50px;
+}
+.gallery .gallery-left li {
+    width: 200px;
+    height: 200px;
+    /* display: flex; */
+}
+.new {
+    padding: 50px;
+}
+.new .container .news .wrapper button {
+    float: right;
+}
+.new .container .news .list li .card {
+    width: 370px;
+    border: 1px solid white;
+    box-shadow: 0px 0px 15px 0px rgb(95, 95, 95, 0.15);
+    /* box-shadow  x y偏移 模糊  尺寸 颜色  内外阴影 */
+    border-radius: 3px;
+    padding: 10px;
+    margin: 5px;
+    box-sizing: border-box;
+}
+.footer .container .row .aesthetic .icons .list ul{
+    display: flex;
+}
+.footer .container .coontainer-one .contact ul li {
+    margin-top: 17px;
+}

@@ -1,0 +1,311 @@
+.box {
+    width: 1000px;
+    height: 100vh;
+    margin: 100px auto;
+    overflow: hidden;
+
+}
+
+.box div {
+    width: 100px;
+    height: 50px;
+    border: 1px solid black;
+    float: left;
+    margin: 10px;
+}
+
+.big:hover {
+    animation-name: fd;
+    animation-duration: 0.3s;
+    animation-fill-mode: both;
+}
+
+@keyframes fd {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.2);
+    }
+}
+
+.small:hover {
+    animation-name: sx;
+    animation-duration: 0.3s;
+    animation-fill-mode: both;
+}
+
+@keyframes sx {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(0.8);
+    }
+}
+
+.beat:hover {
+    animation-name: bt;
+    animation-duration: 0.8s;
+    /* animation-fill-mode: both; */
+    animation-iteration-count: infinite;
+}
+
+@keyframes bt {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.3);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.pulse:hover {
+    animation-name: pe;
+    animation-duration: 0.8s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes pe {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(0.7);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.push:hover {
+    animation-name: ph;
+    animation-duration: 0.5s;
+
+}
+
+@keyframes ph {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(0.7);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.pop:hover {
+    animation-name: pp;
+    animation-duration: 0.5s;
+}
+
+@keyframes pp {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.3);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.bounce-in:hover {
+    animation-name: ben;
+    animation-duration: 0.5s;
+    animation-fill-mode: both;
+}
+
+@keyframes ben {
+    0% {
+        transform: scale(1);
+    }
+
+    33% {
+        transform: scale(1.2);
+    }
+
+    66% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(1.1);
+    }
+}
+
+@keyframes beo {
+    0% {
+        transform: scale(1);
+    }
+
+    33% {
+        transform: scale(0.8);
+    }
+
+    66% {
+        transform: scale(0.9);
+    }
+
+    100% {
+        transform: scale(0.8);
+    }
+}
+
+.bounce-out:hover {
+    animation-name: beo;
+    animation-duration: 0.5s;
+    animation-fill-mode: both;
+}
+
+@keyframes roe {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(15deg);
+    }
+}
+
+.rotate:hover {
+    animation-name: roe;
+    animation-duration: 0.5s;
+    animation-fill-mode: both;
+}
+
+@keyframes gre {
+    from {
+        transform: rotate(0deg) scale(1);
+    }
+
+    to {
+        transform: rotate(15deg) scale(1.3);
+    }
+}
+
+.grow-rotate:hover {
+    animation-name: gre;
+    animation-duration: 0.5s;
+    animation-fill-mode: both;
+}
+
+.float:hover {
+    animation-name: flo;
+    animation-duration: 0.5s;
+    animation-fill-mode: both;
+}
+
+@keyframes flo {
+    from {
+        margin-top: 0;
+    }
+
+    to {
+        margin-top: -10px
+    }
+}
+
+.sink:hover {
+    animation-name: sin;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+
+@keyframes sin {
+    from {
+        margin-top: 0;
+    }
+
+    to {
+        margin-top: 20px
+    }
+}
+
+.bob:hover {
+    animation-name: bob;
+    animation-duration: 0.8s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes bob {
+    0% {
+        margin-top: -10px;
+    }
+
+    33% {
+        margin-top: -10px;
+    }
+
+    66% {
+        margin-top: -5px
+    }
+
+    100% {
+        margin-top: -10px;
+    }
+}
+.hang:hover {
+    animation-name: hang;
+    animation-duration: 0.8s;
+    animation-iteration-count: infinite;
+}
+@keyframes hang {
+    0% {
+        margin-top: 20px;
+    }
+
+    33% {
+        margin-top: 20px;
+    }
+
+    66% {
+        margin-top: 10px
+    }
+
+    100% {
+        margin-top: 20px;
+    }
+}
+.skew:hover {
+    animation-name: skew;
+    animation-duration: 0.8s;
+    animation-fill-mode: both;
+}
+@keyframes skew {
+    from {
+        transform: skewX(0);
+    }
+    to {
+        transform: skewX(-15deg);
+    }
+}
+.skewb:hover {
+    animation-name: skewb;
+    animation-duration: 0.8s;
+    animation-fill-mode: both;
+}
+@keyframes skewb {
+    from {
+        transform: skewX(0);
+    }
+    to {
+        transform: skewX(15deg);
+    }
+}

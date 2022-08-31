@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        .bigbox {
+            width: 500px;
+            height: 500px;
+            background-color: lightgray;
+            /* position: relative; */
+            /* float: left; */
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: lightcoral;
+            /* position: absolute; */
+            /* 绝对定位 脱离文档流，不占用原来位置  丢失原来的宽度*/
+            /* top: 0; */
+            /* left: 0; */
+            /* right: 0; */
+            /* bottom: 0; */
+            /* 绝对定位 定位和尺寸百分比的基准元素 是最近定位的父元素 */
+
+            position: relative;
+            /* 相对定位  不脱离文档流，占用原来位置*/
+            /* top: 0; */
+            /* bottom: 250px; */
+            /* left: 0; */
+            /* right: 250px; */
+            /* 相对定位 基准元素位置 这个元素本来应该所处的位置  */
+            /* position: fixed; */
+            /* 固定定位(漂浮) 脱离文档流，不占用原来位置  丢失原来的宽度 基准元素是html */
+            bottom: 0;
+            left: 0;
+
+        }
+
+        .towbox {
+            width: 200px;
+            height: 200px;
+            background-color: lightpink;
+            /* position: absolute; */
+            /* top: 200px; */
+            /* left: -50px; */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bigbox">
+        <div class="box"></div>
+        <div style="background: lightcyan;">gagygyagydgagdugy</div>
+    </div>
+    <div class="towbox"></div>
+</body>
+
+</html>

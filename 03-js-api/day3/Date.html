@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var now = new Date();
+        //获取当前事件对象
+        var d = new Date(0);
+        //Unix 时间戳 (Unix Time Stamp)
+        //1970年1月1日 00：00：00 UTC (the Unix epoch) 以来的毫秒数
+
+        var d = new Date(2022,06,28)
+
+        //判断两个事件的大小 或 时间之差
+        console.log(d < now);//true
+        console.log(d.getTime() < now.getTime()); //true
+        console.log(now.getTime() - d.getTime());//63158500
+
+        //获取时间对象的年月日等
+        console.log(now.getFullYear());//2022  从Date对象以四位数字返回年份
+        console.log(now.getMonth()); // 从Date对象返回月份（0~11
+        console.log(now.getDate()); // 从Date对象返回一个月中的某一天（1~31）
+        console.log(now.getHours());// 返回Date对象的小时（0~23）
+        console.log(now.getMinutes()); // 返回Date对象的分钟（0~59）
+        console.log(now.getSeconds()); // 返回Date对象的秒钟
+        console.log(now.getMilliseconds()); //返回Date对象的毫秒
+        console.log(now.getTime()); //返回1970年1月1日至今的毫秒数 获取当前时间戳
+        console.log(now.getTimezoneOffset()); //-480 返回会本地时间与格林威治标准时间(GMT)的分钟差
+        console.log(now.getUTCHours());//根据世界时返回Date对象的小时
+        var d = new Date();
+        // d.setDate(18);
+        // d.setHours(0);
+
+        // /取一天之后的现在
+        // d.setDate(29);
+        //根据当前时间设置日期之类
+        d.setDate(28 + 5);
+
+        // 时间对象转化为字符串
+        console.log(d.toDateString());//Tue Aug 02 2022 将Date对象的日期部分转换为字符串
+        console.log(d.toLocaleDateString());//2022/8/2 根据本地时间格式，把Date对象的日期部分转换为字符串
+        console.log(d.toTimeString()); //20:01:53 GMT+0800 (中国标准时间) 把Date对象转换为字符串
+        console.log(d.toLocaleTimeString());//20:03:15 根据本地时间格式，把Date对象的时间部分转换为字符串
+        console.log(d.toString());//Tue Aug 02 2022 20:05:27 GMT+0800 (中国标准时间)把Date对象转换为字符串
+
+        // var d = Date.UTC(2022, 06, 28)
+
+        var n = Date.now();
+    //获取当前时间戳
+    </script>
+    <div class="test"><i>test</i></div>
+    <script>
+        var testDOM = document.querySelector(".test");
+        console.log(testDOM.innerText);
+        console.log(testDOM.innerHTML);
+
+        // testDOM.innerText = "hello world";
+        // testDOM.innerText = "<mark>黄色标记</mark>"
+        testDOM.innerHTML = "<mark>黄色标记</mark>"
+    </script>
+</body>
+</html>

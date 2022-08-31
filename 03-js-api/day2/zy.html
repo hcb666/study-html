@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- 查找每个元素出现的次数
+    var names = ['Alice', 'Bob', 'Tiff', 'Bruce', 'Alice'];
+var countedNames = names.reduce(function(allNames, name) {
+		if(name in allNames) {
+			allNames[name]++;
+		} else {
+			allNames[name] = 1;
+		}
+		return allNames;
+	}, {});
+console.log(countedNames)  // { 'Alice': 2, 'Bob': 1, 'Tiff': 1, 'Bruce': 1 } -->
+    <!-- 
+查找出现次数最多的一个，出现了几次-
+var names = ['Alice', 'Bob', 'Tiff', 'Bruce', 'Alice'];
+function getArrMaxRepetData(arr) {
+	const obj = {}
+	const newObj = {
+		max: 0,
+		key: 0
+	}
+	for(let i = 0; i < arr.length; i++) {
+		obj[arr[i]] ? obj[arr[i]]++ : obj[arr[i]] = 1
+	}
+	for(const i in obj) {
+		if(obj[i] > newObj.max) {
+			newObj.max = obj[i]
+			newObj.key = i
+		}
+	}
+	return newObj
+}
+console.log(getArrMaxRepetData(names))  // {key: "Alice"max: 2} -->
+
+    <script>
+        // 需求 从一串字符串中  "fdfsdjksduiwsgubsjkadweuiyejdsfjdsghjtywqmzxhb"
+        // 1统计出现的最多的字母是哪个   2出现了多少次
+        // 统计出现次数最多的前三个 *
+        var r = "fdfsdjksduiwsgubsjkadweuiyejdsfjdsghjtywqmzxhb"
+        var a = r.split("");
+        var o = {};
+        var c = a.sort(function (b, y) {
+            // for (var i = 0; i < a.length; i++) {
+            //     var x = a[i];
+            //     if (o[x]) {
+            //         o[x]++;
+            //     } else{
+            //         o[x] = 1;
+            //     }
+            // }
+            // console.log(o);
+        });
+    </script>
+    <!--  <script>
+        // 需求 从一串字符串中  "fdfsdjksduiwsgubsjkadweuiyejdsfjdsghjtywqmzxhb"
+        // 1统计出现的最多的字母是哪个   2出现了多少次
+        // 统计出现次数最多的前三个 *
+
+        var str = "fdffdfsdjksduiwsgubsjkadweuiyejdsfjdsghjtywqmz. xhbdc"
+        var strArr = str.split("")
+        var obj = {}
+        // debugger
+        for (var i = 0; i < strArr.length; i++) {
+            var key = strArr[i]
+            if (obj[key]) { //获得每一个属性
+                obj[key]++
+            } else {
+                obj[key] = 1;
+            }
+
+        }
+        console.log(obj);
+
+        var max = 0
+        var ch = ''
+        for (var j in obj) {
+            if (obj[j] > max) {
+                max = obj[j]
+                ch = j
+            }
+        }
+        console.log(ch + ' 出现的最多,' + '出现了 ' + max + ' 次');
+        console.log('----------------------------');
+        // 前三个开头
+        var arr1 = []
+        var obj2 = {}
+        for (var i = 0; i < str.length / 3; i++) {
+            // 截取前三项
+            if (i === 0) {
+                arr1[i] = str.slice([i], [i + 3])
+            } else if (i > 0) {
+                arr1[i] = str.slice([i * 3], [i * 3 + 3])
+            }
+            // 统计个数
+            var key = arr1[i]
+            if (obj2[key]) {
+                obj2[key]++
+            } else {
+                obj2[key] = 1
+            }
+        }
+        console.log(arr1);
+        console.log(obj2);
+
+        var max2 = 0
+        var ch2 = ''
+        for (var j in obj2) {
+            if (obj2[j] > max2) {
+                max2 = obj2[j]
+                ch2 = j
+            }
+        }
+        console.log(ch2 + ' 出现的最多,' + '出现了 ' + max2 + ' 次');
+    </script> -->
+    <script>
+        // var person = {
+        //     name: "nick",
+        //     age: 17,
+        //     job: "无业游民",
+        // }
+        // console.log(person);
+
+        // for (key in person) {
+        //     console.log(key, person[key]);
+        // }
+        //sasjdhaaauhfaufaauafuabjab
+
+        var str = "sasjdhaaauhfaufaauafuabjab";
+        // 拆分字母
+        var arr = str.split("");
+
+        // arr = arr.sort();
+        //     var tmp = {};
+        // arr.forEach(function () {
+        //     if (tmp[e]) {
+                
+        //         tmp[e]++;
+        //     } else {
+        //         //如果不存在
+        //         tmp[e] = 1;
+        //         console.log(tmp[e]);
+        //     }
+        // })
+
+        // var count = 0;
+        // var letter;
+        // for (key in tmp) {
+        //     if (tmp[key] > count) {
+        //         count = tmp[key];
+        //         letter = key;
+        //     }
+        // }
+        var tmp = [];
+        arr.forEach(function (e) {
+            // console.log(e);
+            var res = tmp.find(function (ele) {
+                return ele.letter === e;
+
+            });
+            if (res) {
+                res.count++;
+            } else {
+                tmp.push({
+                    letter: e,
+                    count: 1,
+                });
+            }
+        });
+        tmp.sort(function (a,b) {
+            return a.count - b.count;
+        });
+        console.log(tmp[tmp.length - 1]);
+    </script>
+</body>
+
+</html>

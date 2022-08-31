@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        #box{
+            width: 800px;
+            height: 600px;
+            background-image: url("./imgs/pipe4.png");
+            background-color: #000;
+            overflow: hidden;
+            position: relative;
+            transition: 0.1s all;
+        }
+        #birds{
+            width: 52px;
+            height: 45px;
+            overflow: hidden;
+            top: 200px;
+            position: absolute;
+            background: url("./imgs/pipe1.png") ;
+        }
+        #box img{
+            width: 52px;
+            height: 420px;
+            position: absolute;
+            transition: 0.1s all;
+
+        }
+        #title{
+            display: none;
+            width: 400px;
+            height: 300px;
+            position: absolute;
+            left: 180px;
+            top: 150px;
+            background: #fff;
+            border: 5px solid #555;  
+        }
+        #title div{
+            font-size: 50px;
+            margin-top: 100px;
+            margin-left: 80px;
+        }
+        #integral{
+            position: absolute;
+            right: 30px;
+            top: 10px;
+            font-size: 20px
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <div id="box">
+        <div id="birds">
+        </div>
+            <img style="top: -100px;left :200px;" src="./imgs/pipe3.png" width="52px" height="320px" alt="">
+            <img style="top: 420px;left :200px;" src="./imgs/pipe2.png" alt="">
+            <img style="top: -150px;left :400px;"  src="./imgs/pipe3.png" alt="">
+            <img style="top: 370px;left :400px;" src="./imgs/pipe2.png" alt="">
+            <img style="top: -200px;left :600px;" src="./imgs/pipe3.png" alt="">
+            <img style="top: 320px;left :600px;" src="./imgs/pipe2.png" alt="">
+            <img style="top: -160px;left :800px;" src="./imgs/pipe3.png" alt="">
+            <img style="top: 360px;left :800px;" src="./imgs/pipe2.png" alt="">    
+            <div id="integral">
+                    <span>积分</span>
+                    <span id="num">0</span>
+            </div>
+    </div>
+    
+    <div id="title"> 
+        <div>游戏结束</div> </div>
+    <script>
+        let box = document.getElementById("box")
+        let birds = document.getElementById("birds")
+        let barrier = box.getElementsByTagName("img")
+        let integralCom = document.getElementById("num")
+        //地图属性
+        let integralNum = 0;
+        let num = -4,Speed = 20
+        //小鸟属性
+        let bird = 200, birdSpeed = 10, power = 0, birdX = 0, birdBckgroundSpeed = 52;
+        //管道属性
+        let barrierSpeed = 10
+        //设置暂停属性 
+        let isStop = false
+        function stop(){
+            // 当游戏暂停 所有属性清空
+                Speed = 0
+                birdSpeed = 0
+                power = 0
+                birdBckgroundSpeed = 0
+                barrierSpeed = 0
+                let title = document.getElementById("title")
+                title.style.display = "block"
+        }
+        setInterval(() => {
+            //当达到底部 或者超越顶部 就停止游戏
+            if(birds.offsetTop >= 560 || birds.offsetTop <= 3 || isStop){
+                stop()
+            }
+            for(let i = 0; i < barrier.length; i++){
+                //当前位置 = 原来位置 - 移动速度
+                let left =  barrier[i].offsetLeft - barrierSpeed
+                if(left >= -52){
+                    if(barrier[i].style.transition == ""){
+                        barrier[i].style.transition = "0.1s all"
+                    }
+                    //修改Left 实现移动
+                    barrier[i].style.left = left + "px"
+                }
+                else{
+                    barrier[i].style.transition = ""
+                    //柱子到达左边 返回重新分配高度
+                    barrier[i].style.left = 800 + "px"
+                    //积分加1
+                    integralNum +=1
+                    integralCom.innerText = integralNum/2
+                    if(i%2 == 0){
+                        //上侧柱子的高度分配
+                        let random = Math.random()*130 + 170
+                        let top = random - barrier[i].offsetHeight 
+                        barrier[i].style.top = top + "px"
+                    }
+                    else{
+                        //下侧柱子的高度分配
+                        let random = Math.random()*70 + 50
+                        barrier[i].style.top = (barrier[i-1].offsetHeight + barrier[i-1].offsetTop +random) + "px"
+                    }
+                }
+                // 判断小鸟是否和柱子碰撞
+                if(i%2 == 0){
+                    // 判断小鸟是否和上侧柱子碰撞
+                    if( birds.offsetTop < barrier[i].offsetHeight + barrier[i].offsetTop - 11 && 
+                    ((birds.offsetLeft + birds.offsetWidth - 8 < barrier[i].offsetLeft + barrier[i].offsetWidth &&
+                        birds.offsetLeft + birds.offsetWidth + 8 > barrier[i].offsetLeft)||(
+                        birds.offsetLeft - 8 < barrier[i].offsetLeft + barrier[i].offsetWidth &&
+                        birds.offsetLeft + 8 > barrier[i].offsetLeft))
+                        
+                    )
+                    {
+                        isStop = true
+                        stop()
+                    }
+                }
+                else{
+                    // 判断小鸟是否和上侧柱子碰撞
+                    if( birds.offsetTop + birds.offsetHeight - 11 > barrier[i].offsetTop && 
+                    ((birds.offsetLeft + birds.offsetWidth - 8 < barrier[i].offsetLeft + barrier[i].offsetWidth &&
+                        birds.offsetLeft + birds.offsetWidth + 8 > barrier[i].offsetLeft)||(
+                        birds.offsetLeft - 8  < barrier[i].offsetLeft + barrier[i].offsetWidth &&
+                        birds.offsetLeft + 8 > barrier[i].offsetLeft))
+                        
+                    )
+                    {
+                        isStop = true
+                        stop()
+                    }
+                }
+            }
+            //对小鸟的上飞速度进行逐减  模拟重力
+            if( power > 0){
+                power = power - 10
+            }
+            if(birdX == -156){
+                birdX = 0
+            }
+            //对小鸟的图片进行替换 实现 小鸟振翅飞行
+            birds.style.backgroundPositionX = birdX + "px"
+            birdX -= birdBckgroundSpeed 
+            num -= Speed
+            bird = bird + birdSpeed - power
+            //对背景图片进行移动 使得小鸟感觉是在向前飞 
+            box.style.backgroundPositionX =  num + "px"
+            birds.style.top = bird + "px"
+        },100)
+        //键盘的空格点击事件
+        document.onkeydown = function(ev) {
+            if( ev.keyCode == 32 && birds.offsetTop < 560 && birds.offsetTop > 3){
+                power = 30
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .stage {
+            width: 600px;
+            height: 600px;
+            background-color: lightblue;
+            position: relative;
+
+        }
+
+        .stage .red {
+            width: 20px;
+            height: 10px;
+            background-color: red;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .stage .green {
+            width: 30px;
+            height: 5px;
+            background-color: greenyellow;
+            position: absolute;
+            top: 40px;
+            left: 0px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="stage">
+        <div class="red"></div>
+        <div class="green"></div>
+    </div>
+    <script>
+        var redc = document.querySelector(".stage .red")
+        var redcLeft = 0;
+        var greenc = document.querySelector(".green")
+        var greencLeft = 0
+        setInterval(function () {
+            redcLeft++
+            redc.style.left = redcLeft + "px"
+
+            greencLeft+=2
+            var a = greencLeft + "px"
+            greenc.style.left = a
+
+        }, 1)
+
+    </script>
+</body>
+
+</html>

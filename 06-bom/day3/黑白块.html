@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+        }
+        .stage .main {
+            width: 375px;
+            max-width: 400px;
+            height: 100vh;
+            background-color: black;
+            position: relative;
+        }
+        .stage .main i {
+            width: 90px;
+            height: 90px;
+            background-color: white;
+            position: absolute;
+            top: 0; 
+            left: 0;
+        }
+        .played {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="stage">
+        <div class="main"></div>
+    </div>
+    <script>
+        var stage = document.querySelector(".stage .main")
+
+        var speed = 0.03
+        var dots=[]
+
+        function Dot(y) {
+            this.y = y
+            this.x = Math.floor(Math.random() * 4)
+
+            this.node = document.createElement("i")
+
+            stage.appendChild(this.node)
+
+            var _this = this
+            this.node.onclick = function () {
+                // _this.node.classList.add("played")
+                _this.played = true
+                event.stopPropagation()
+            }
+        }
+
+        Dot.prototype.move = function () {
+            this.y += speed
+        }
+        
+        Dot.prototype.run = function () {
+            this.node.style.left = this.x * 90 + "px"
+            this.node.style.top = this.y * 90 + "px"
+        }
+
+        function init() {
+            for (var i = 0; i >= 0; i--) {
+                var d = new Dot(-1)
+            }
+        }
+        init()
+
+        var id = setInterval(function () {
+            dots.forEach(function (dot) {
+                dot.move()
+                dot.run()
+            })
+
+            var firstUnPlayed = dots.filter(function (dot) {
+                return !dot.played
+            })[0]
+            if (firstUnPlayed && (firstUnPlayed.y + 1) * 90 >= 640) {
+                
+            }
+
+            var firstPlayed = dots.filter(function (dot) {
+                return dot.played
+            })[0]
+            if (firstPlayed) {
+                stage.removeChild(firstPlayed.node)
+                dots.splice(dots.indexOf(firstPlayed), 1)
+            }
+        },30)
+    </script>
+</body>
+</html>

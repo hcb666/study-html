@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 1.x:兼容ie6 -->
+    <!-- 2.x兼容ie789 -->
+    <!-- 3.x使用es6语法 -->
+    <ul>
+        <li>item 1</li>
+        <li>item 2</li>
+        <li>item 3</li>
+    </ul>
+    <div class="box">666</div>
+    <script src="../jquery.js"></script>
+    <script>
+        // 原生js
+        // document.querySelector(".box").style.color = "red"
+        // document.querySelector(".box").style.width = "100px"
+        // document.querySelector(".box").style.height = "100px"
+        // document.querySelector(".box").style.background = "lightblue"
+
+        // 选择器$("") 选中的是jquery对象 不是DOM对象
+        // $(".box").css("color","red")
+        // $(".box1").css("color","red")
+        //区别1：即使没有选中元素 也不会报错 不会阻止后续代码运行
+
+        // $(".box").css({
+        //     color: "red",
+        //     width: "100",
+        //     height: "100px",
+        //     background: "lightblue",
+        // })
+
+            // $(".box").style.color = "red";
+            // document.querySelector(".box").css("color", "red")
+            // jq对象和js对象不一样，不能滥用方法，会报错
+
+        //dom转jq
+        $(document.querySelector(".box")).css("color","red")
+        // jq转dom
+        $(".box")[0].style.width = "100px"
+    </script>
+    <script>
+        $("ul li").css("color","red")
+        // 区别2：不需遍历
+
+        // 原生dom对象转换为jq对象
+    </script>
+</body>
+</html>

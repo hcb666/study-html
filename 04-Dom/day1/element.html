@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>1</li>
+        <li class="test">2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+    <script>
+        //判断两个数组是否一样
+        var list = document.querySelector("ul")
+        var node = document.createElement("li")
+        node.innerText = "xxx"
+
+        // list.appendChild(node)// 在list后面添加一个子元素
+
+        list.insertBefore(node, document.querySelector("ul li.test")) //子元素添加在.test的前面
+
+        console.log(
+            document.querySelector("ul li:nth-child(1").isEqualNode(document.querySelector("ul li:nth-child(5"))
+        ); //false 检查两个元素是否相等
+        console.log(
+            document.querySelector("ul li:nth-child(4").isSameNode(document.querySelector("ul li:nth-child(5)"))
+        ); //false 检查元素是否为同一个
+
+        // isEqualNode  相同 isSameNode 同一个
+        // [1,2,3] == [1,2,3]
+
+        console.log(document.querySelector("ul li.test").nextSibling); //#test 可返回某个元素之后紧跟的节点
+        console.log(document.querySelector("ul li.test").nextElementSibling);//<li>3</li> 返回指定元素的下一个兄弟节点
+        console.log(document.querySelector("ul li.test").nodeName); // LI 返回大写的元素标记名
+        console.log(document.querySelector("ul li.test").nodeType); //返回元素的节点类型
+
+        console.log(document.querySelector("ul li.test").childNodes);  //NodeList [text] 返回元素的一个子节点的数组
+        console.log(document.querySelector("ul li.test").childNodes[0].nodeType);//3
+        // console.log(document.querySelector("ul li.test").childNodes[1].nodeType);//
+        // console.log(document.querySelector("ul li.test").childNodes[3].nodeType);//
+        // console.log(document.querySelector("ul li.test").childNodes[3].nodeValue);//返回元素的节点值
+
+        //如果节点是一个元素节点， nodeType属性返回 1
+        //如果节点是属性节点， nodeType属性返回2
+        //如果节点是一个文本节点 ,nodeType属性返回3
+        //如果节点是一个注释节点, nodeType属性返回8
+
+        console.log(document.querySelector("ul li.test").ownerDocument);//返回元素的根元素（文档对象）
+        console.log(document.querySelector("ul li.test").parentNode);//返回元素的父节点
+        console.log(document.querySelector("ul li.test").previousSibling);//返回，讴歌元素紧接之前的元素
+        console.log(document.querySelector("ul li.test").previousElementSibling);//返回指定元素的前一个兄弟元素（相同节点树层中的前一个元素节点）
+
+        // console.log(document.querySelector("ul li.test").removeAttribute("class"));//删除class类名
+
+        // list.replaceChild(node, document.querySelector("ul li.test"))
+    </script>
+    <style>
+        .big {
+            width: 100px;
+            height: 100px;
+            background-color: lightblue;
+            overflow: auto;
+        }
+        .small {
+            width: 300px;
+            height: 300px;
+            background-color: rgba(0,0 ,0 ,0.3 );
+        }
+    </style>
+    <div class="big">
+        <div class="small">
+            u结果回复欸给啊u额过后阿赫澳尔活佛i啊哈佛安徽覅哈佛i啊还哦分爱还有覅行业覅ifh爱海行业iahi爱人ia覅和爱好覅覅 iahi氨挥发ii日期日期和i奇瑞奇瑞i啊日啊然后irha；日后爱上爱上护肤还让哈爱人爱让i哦日
+            u结果回复欸给啊u额过后阿赫澳尔活佛i啊哈佛安徽覅哈佛i啊还哦分爱还有覅行业覅ifh爱海行业iahi爱人ia覅和爱好覅覅 iahi氨挥发ii日期日期和i奇瑞奇瑞i啊日啊然后irha；日后爱上爱上护肤还让哈爱人爱让i哦日俄ier欸额
+        </div>
+    </div>
+    <script>
+        var big = document.querySelector(".big")
+        var small = document.querySelector(".small")
+
+        // console.log(big.scrollHeight); //300 返回整个元素的高度（包括带滚动条 的隐蔽的地方）
+        // console.log(small.scrollHeight);//300 
+        console.log(big.scrollWidth); //300 返回元素的整个宽度（包括带 滚动条的地方）
+        console.log(small.scrollWidth); //300
+    </script>
+
+    <input type="text" name="" id="" />
+    <script>
+        document.querySelector("input").oninput = function () {
+            console.log((event, document.querySelector("input").value, this.value, event.target.value));
+        }
+    </script>
+    <script>
+        var arr = [11,22,33]
+        var obj = {
+            name: "nick",
+            age:17,
+        }
+        console.log("=====================================================================");
+        console.log(123);
+        console.info(123);
+        console.warn(123);//报错
+        console.table(arr)//以表格输出
+        console.log(arr);
+
+        console.table(obj)
+    </script>
+</body>
+</html>

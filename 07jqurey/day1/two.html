@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .fangda .thumb {
+            width: 200px;
+            position: relative;
+        }
+
+        .fangda .thumb img {
+            width: 100%;
+            display: block;
+        }
+
+        .fangda .thumb .mask {
+            width: 100px;
+            height: 100px;
+            background-color: rgba(0, 0, 0, 0.5);
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 999;
+            pointer-events: none;
+            /* 鼠标穿透 */
+        }
+
+        .fangda .zoom {
+            width: 300px;
+        height: 300px;
+        background-color: lightblue;
+
+        background-image: url("./imgs/1\ copy.jpg");
+        }
+    </style>
+</head>
+
+<body>
+    <div class="fangda">
+        <div class="thumb">
+            <img src="./imgs/1 copy.jpg" alt="">
+            <div class="mask"></div>
+        </div>
+        <div class="zoom">
+        </div>
+    </div>
+    <script src="../jquery.js"></script>
+    <script>
+        $(".thumb").mousemove(function () {
+            var ax = event.pageX
+            var ay = event.pageY
+            var mx = ax / 2
+            var my = ay / 2
+            $(".mask").css({
+                top: my,
+                left: mx,
+            })
+            $(".zoom").css({
+                backgroundPosition:("ax ay"),
+            })
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .magnifier .thumb {
+            width: 300px;
+            height: 300px;
+            position: relative;
+        }
+
+        .magnifier .thumb img {
+            width: 100%;
+            display: block;
+        }
+
+        .magnifier .thumb .mask {
+            width: 100px;
+            height: 100px;
+            background-color: rgba(0, 0, 255, 0.5);
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+       .magnifier .zoom {
+            background-image: url("./1\ copy.jpg");
+            width: 600PX;
+            height: 600PX;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="magnifier">
+        <div class="thumb">
+            <img src="./1 copy.jpg" alt="">
+            <div class="mask"></div>
+        </div>
+        <div class="zoom">
+
+        </div>
+    </div>
+
+    <script>
+        var level = 3;
+        var thumbEl = document.querySelector(".magnifier .thumb");
+        var maskEl = document.querySelector(".magnifier .thumb .mask");
+        var zoomEl = document.querySelector(".magnifier .zoom");
+
+        //根据放大级别设置背景图大小
+        zoomEl.style["background-size"] = level * 100 + "px";
+
+        //获取背景图宽高
+        var zoomWidth = zoomEl.offsetWidth
+        var zoomHeight = zoomEl.offsetHeight
+
+        //获取缩略图宽高
+        var thumbWidth = thumbEl.offsetWidth
+        var thumbHeight = thumbEl.offsetHeight
+
+        //计算mask宽高
+        var maskWidth = thumbWidth / level
+        var maskHeight = thumbHeight / level
+
+        //设置nask的宽高
+        maskEl.style.width = maskWidth + "px"
+        maskEl.style.height = maskHeight + "px"
+        //获取左偏移
+        var offsetLeft = thumbEl.offsetLeft
+        var offsetTop = thumbEl.offsetTop
+        thumbEl.onmousemove = function () {
+            //获取鼠标移动位置
+            console.log(event.pageX - offsetLeft, event.pageY - offsetTop);
+
+            //鼠标坐标
+            var mx = event.pageX - offsetLeft
+            var my = event.pageY - offsetTop
+
+            //遮罩层左上角的坐标
+            var maskX = mx - maskWidth /2
+            var maskY = my - maskHeight /2
+
+            //限定遮罩层的范围
+            if (maskX < 0) {
+                maskX = 0
+            }
+            if (maskX > thumbWidth - maskWidth) {
+                maskX = thumbWidth - maskWidth
+            }
+            if (maskY < 0) {
+                maskX = 0
+            }
+            if (maskY > thumbHeight - maskHeight) {
+                maskY = thumbHeight - maskHeight
+            }
+            //遮罩层跟着鼠标走
+            maskEl.style.left = maskX + "px"
+            maskEl.style.top =  maskY + "px"
+            //图片跟随遮罩层
+            zoomEl.style["background-position"] = (zoomWidth/maskWidth) * maskX + "px " + (zoomHeight/maskHeight) * maskY + "px"
+        }
+    </script>
+</body>
+
+</html>

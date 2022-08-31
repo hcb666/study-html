@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .sta {
+            width: 500px;
+            height: 500px;
+            background-color: lightblue;
+            position: relative;
+        }
+
+        .sta .blue {
+            width: 20px;
+            height: 20px;
+            background-color: blue;
+            position: absolute;
+            top: 25px;
+            left: 0;
+        }
+
+        .sta .red {
+            width: 20px;
+            height: 20px;
+            background-color: red;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+        }
+        .sta .black {
+            width: 30px;
+            height: 30px;
+            background-color: black;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="sta">
+        <div class="blue"></div>
+        <div class="red"></div>
+        <div class="black"></div>
+    </div>
+    <script>
+        var sta = document.querySelector(".sta")
+        var red = document.querySelector(".red")
+        var blue = document.querySelector(".blue")
+        var black = document.querySelector(".black")
+
+        function Go(node, top,left, speed) {
+            this.node = node
+            this.top = top
+            this.speed = speed
+            this.left = left
+        }
+        Go.prototype.run = function () {
+            this.top += this.speed
+            this.node.style.top = this.top + "px"
+
+            if (this.top >= sta.offsetHeight - this.node.offsetHeight) {
+                this.speed = -this.speed
+            }
+            if (this.top === 0) {
+                this.speed = -this.speed
+            }
+        }
+        Go.prototype.runtwo = function () {
+            this.left += this.speed
+            this.node.style.left = this.left + "px"
+
+            if (this.left >= sta.offsetWidth - this.node.offsetWidth) {
+                this.speed = -this.speed
+            }
+            if (this.left === 0) {
+                this.speed = -this.speed
+            }
+        }
+        var a = new Go(red,0,0,1)
+        var b = new Go(blue,0,0,5)
+        var c = new Go(black,0,0,1)
+
+        setInterval(function () {
+            a.runtwo()
+            b.runtwo()
+            c.run()
+        },16)
+    </script>
+    <!-- 作用域，递归，闭包，for循环， -->
+</body>
+
+</html>

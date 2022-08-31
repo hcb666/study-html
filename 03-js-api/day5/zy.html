@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .show {
+            width: 100px;
+            height: 100px;
+            background-color: lightseagreen;
+        }
+    </style>
+</head>
+
+<body>
+        <div class="test"></div>
+        <button>add</button>
+        <button>rem</button>
+        <div class="show"></div>
+        <button>24</button>
+</body>
+<script>
+    var add = document.querySelectorAll('button')[0]
+    var res = document.querySelectorAll('button')[1]
+    var test = document.querySelector('.test')
+
+    function addClass(el) {
+        el.onclick = function () {
+            test.classList.add(show)
+            test.className = show
+        }
+    }
+
+    function removeClass(el, str) {
+        el.onclick = function () {
+            test.classList.remove(s)
+            test.className = ''
+        }
+    }
+    addClass(add, 'ss')
+    removeClass(res, 'ss')
+
+    var showBtn = document.querySelectorAll('button')[2]
+    var showDom = document.querySelector('.show')
+
+    function showHidden(el, str) {
+        el.onclick = function () {
+            if (showDom.classList.contains(str) === true) {
+                showDom.classList.remove('show')
+            } else {
+
+                showDom.classList.add('show')
+            }
+        }
+    }
+    showHidden(showBtn, 'show')
+</script>
+
+
+</body>
+
+</html>

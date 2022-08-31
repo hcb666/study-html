@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <button title="123">666</button>
+    <div class="box active xxx yyy" id="test" title="xxx">
+        <i>box</i>
+        <!-- <em>xxx</em> -->
+      </div>
+    <script>
+        // attributes//也可以更改
+        var boxDom = document.querySelector("#test");
+        console.log(boxDom.attributes); //NamedNodeMap 返回一个元素的属性数组
+        console.log(boxDom.attributes.length, boxDom.attributes.title.value);//3 'xxx'
+        boxDom.attributes.title.value= "yyyy";
+
+        console.log(boxDom.childNodes); //节点  返回元素的一个节点的数组
+        //包括换行符（text）
+        console.log(boxDom.firstChild); //节点 返回元素的第一个子节点#text
+        console.log(boxDom.lastChild); //节点#text 返回最后一个子节点
+
+        console.log(boxDom.children); //元素HTMLCollection(1) 返回元素的子元素集合
+        console.log(boxDom.firstElementChild); //元素 返回元素的第一个子元素
+        console.log(boxDom.lastElementChild); //元素 返回指定元素的最后一个子元素
+
+        console.log(boxDom.className); //设置或返回元素的class属性
+        //boxDom.className = "box active"
+
+        console.log(boxDom.classList); //返回元素的类名，作为DOMTokenList对象
+        boxDom.classList.add("hahaha")//添加类名，同样的类名只能有一个
+        boxDom.classList.add("hahaha")
+        boxDom.classList.remove("active")//删除类名
+
+        console.log(boxDom.classList.contains("active")); //false
+
+        var btn = document.querySelector("button")
+
+        var btn1 = btn.cloneNode(true) //克隆某个元素
+        document.getElementById("text").appendChild(btn1);
+
+        console.log(document.getElementById("test").compareDocumentPosition(btn1));
+
+        console.log(btn.contentEditable); //是否是可编辑区域 div p
+
+        window.onload = function () {
+            document.querySelector("input").focus();
+        }
+
+        console.log(boxDom.getAttribute("title")); //返回指定元素的属性值
+        console.log(boxDom.getAttributeNode("title")); //返回指定属性节点
+
+    </script>
+</body>
+</html>

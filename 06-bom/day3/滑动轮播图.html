@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .swiper {
+            width: 300px;
+            margin: 0 auto;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .swiper .list {
+            width: 100%;
+            display: flex;
+            transition: all .3s;
+        }
+
+        .swiper .list img {
+            width: 100%;
+            display: block;
+        }
+
+        .swiper ul.dots {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: flex;
+            position: absolute;
+            bottom: 10px;
+            justify-content: center;
+            width: 100%;
+            z-index: 9;
+            /* align-items: center; */
+        }
+
+        .swiper ul.dots li {
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border-radius: 50%;
+            margin: 0 10px;
+        }
+
+        .swiper .control {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="swiper">
+        <div class="list">
+            <img src="./imgs/1.jpg" alt="">
+            <img src="./imgs/2.jpg" alt="">
+            <img src="./imgs/3.jpg" alt="">
+            <img src="./imgs/4.jpg" alt="">
+        </div>
+        <ul class="dots">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <div class="control">
+            <button>prev</button>
+            <button>next</button>
+        </div>
+    </div>
+    <script>
+        var swiper = document.querySelector(".swiper")
+        var list = document.getElementsByClassName("list")[0]
+        var imgs = document.querySelectorAll(".swiper .list img")
+
+        var dots = document.querySelectorAll(".swiper ul.dots li")
+
+        var prevBtn = document.getElementsByClassName("control")[0].getElementsByTagName("button")[0]
+        var nextBtn = document.getElementsByClassName("control")[0].getElementsByTagName("button")[1]
+
+        var current = 0
+// debugger
+        function showImg(index) {
+        list.style.marginLeft = -index * 300 + "px";
+        current = index;
+      }
+
+        Array.prototype.slice.call(dots)
+
+        Array.prototype.slice.call(dots).forEach(function (dot, i) {
+            dot.onclick = function () {
+                showImg(i)
+            }
+        })
+
+        nextBtn.onclick = function () {
+            var index = current >= imgs.length - 1 ? 0 : ++current;
+            showImg(index);
+        };
+
+        prevBtn.onclick = function () {
+            var index = current <= 0 ? imgs.length - 1 : --current;
+            showImg(index);
+        };
+    </script>
+</body>
+
+</html>

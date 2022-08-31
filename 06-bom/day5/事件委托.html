@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>1111</li>
+        <li>2222</li>
+        <li>3333</li>
+        <li>4444</li>
+        <li>5555</li>
+        <li>6666</li>
+    </ul>
+    <script>
+        // 事件委托的原理：给父元素注册事件，利用事件冒泡，当子元素的事件触发，会冒泡到父元素，然后去控制相应的子元素
+        //作用：减少DOM的操作，提高程序性能
+        //动态创建的子元素也会拥有事件
+
+        var ul = document.querySelector("ul")
+
+        ul.addEventListener('click', function (e,i) {
+                e.target.style.backgroundColor = "black"
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // document.cookie = "xx=yy"
+
+        // document.cookie = "name=nick"
+        // document.cookie = "name=nichoclas"
+
+        //键值对（需要保存的东西） 
+        // 域名 不同的域名也是隔离的 不能跨域名访问  
+        // 路径路径不同cookie隔离  
+        // 过期时间 session当前会话
+
+        // document.cookie = "name=66666; expires=Thu, 18 Dec 2043 12:00:00 GMT; path=/"
+        // document.cookie="username=John Doe; expires=Thu, 18 Dec 2043 12:00:00 GMT; path=/";
+
+        // var x = document.cookie
+        // console.log(x);
+
+        // document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 GMT;"
+
+        // function setCookie(key, value, path, expires) {
+        //     document.cookie = key + "=" + value + "; path=" + path
+        // }
+        // setCookie("xxx", "124")
+        // setCookie("xxx", "124","/")
+
+        // function setCookie(key, value, expires, path) {
+        //     var d = new Date()
+        //     d.setDate(d.getDate() + 3)
+
+        //     document.cookie = key + "=" + value + "; expires=" + d.toLocaleString() + "; path=" + path
+        // }
+        // console.log("xxx", "123", 3, "/");
+
+        function getCookie(key) {
+            var arr = document.cookie.split(";").map(function (e) {
+                return e.trim()
+            }).map(function (e) {
+                return e.split("=")
+            })
+        }
+    </script>
+</body>
+
+</html>

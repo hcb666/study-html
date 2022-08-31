@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <style>
+        /* rem设置10px 或者 62.5% 无意义 */
+        html {
+            /* font-size: 10px;
+            font-size: 62.5%; */
+        }
+        body {
+            margin: 0;
+        }
+        .big {
+            display: flex;
+        }
+        .left {
+            width: 10rem;
+            height: 10rem;
+            /* background-color: lightblue; */
+        }
+        .right {
+            width: 32rem;
+            background-color: lightblue;
+        }
+        .right p{}
+    </style> -->
+    <style>
+body {
+    margin: 0;
+}
+.big {
+    display: flex;
+
+}
+.left {
+    width: 33.33rem;
+    height: 33.33rem;
+    background-color: lightblue;
+}
+.right {
+    width: 66.66rem;
+    height: 33.33rem;
+    background-color: lightcoral;
+}
+.right h3 {
+    margin: 0;
+    height: 13.33rem;
+    font-size: 8rem;
+    background-color: aquamarine;
+}
+.right p {
+    margin: 0;
+    height: 10rem;
+    background-color: lightgreen;
+    font-size: 6rem;
+}
+.right p:nth-child(3) {
+    background-color: lightyellow;
+}
+    </style>
+</head>
+<body>
+    <div class="big">
+        <div class="left">
+
+        </div>
+        <div class="right">
+            <h3>标题</h3>
+            <p>简介</p>
+            <p>作者</p>
+        </div>
+    </div>
+    <script>
+        function setRem() {
+            document.documentElement.style.fontSize = window.innerWidth / 100 + "px"
+        }
+        setRem()
+        window.onresize = setRem
+
+        // rem设置为宽度的1/100 => 与vw一样
+    </script>
+</body>
+</html>

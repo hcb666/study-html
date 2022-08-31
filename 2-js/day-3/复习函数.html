@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //声明函数
+        function firstFunc() { //  无名函数为匿名函数
+            console.log("firstFunc");
+        }
+        //调用函数
+        firstFunc();
+        // 无具体的参数叫形参，为数值的参数叫实参
+
+        //  1~n之和
+        function sum(n) {
+            var p = 0;
+            for (var i = 0; i <= n; i++) {
+                p += i;
+            }
+            console.log(p);
+        }
+        sum(100);
+
+
+        function calcC(a,b) {
+            return Math.sqrt(a*a+b*b);
+        }
+    </script>
+</body>
+
+</html>

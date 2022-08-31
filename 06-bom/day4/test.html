@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- <body>
+    <div style="width: 2000px; height: 2000px;">
+    <iframe src="http://www.baidu.com" frameborder="1"></iframe></div>
+    <iframe src="http://www.360.com" frameborder="1"></iframe></div> -->
+<script>
+    console.log(window.frames); //返回窗口中所有命名的框架
+    console.log(window.length); //设置或返回窗口中的框架数量
+    console.log(window.name); //设置或返回窗口的名称
+
+    console.log(window.innerWidth); //返回窗口的文档显示区的宽度
+    console.log(window.innerHeight); //返回窗口的文档显示区的高度
+
+    console.log(window.outerWidth); //返回窗口的外部宽度，包含工具条与滚动条
+    console.log(window.outerHeight); //返回窗口的外部高度，包括工具条与滚动条
+
+    console.log(window.pageXOffset); //设置或返回当前页面相对于窗口显示区左上角的X位置
+    console.log(window.pageYOffset); //设置或返回当前页面相对于窗口显示区左上角的Y位置
+
+    console.log(window.screenLeft); //返回相对于屏幕窗口的x坐标
+    console.log(window.screenTop); //返回相对于屏幕窗口的y坐标
+
+    console.log(window.screenX); //返回相对于屏幕窗口的x坐标
+    console.log(window.screenY); //返回相对于屏幕窗口的y坐标
+</script>
+
+<p style="color: lightblue;">
+    手中有粮心中不慌，今年以来，我国以超常超强的力度促进粮食生产稳定发展。夏粮生产再获丰收，增产28.7亿斤手中有粮心中不慌，今年以来，我国以超常超强的力度促进粮食生产稳定发展。夏粮生产再获丰收，增产28.7亿斤
+</p>
+<button onclick="clickHandler()">点击</button>
+<style>
+    p {
+        color: lightcoral !important;
+    }
+</style>
+<script>
+    function clickHandler() {
+        console.log(window.getSelection(), window.getSelection().toString());
+    }
+    console.log(document.querySelector("p").style.color);
+    // console.log(window.getComputedStyle(document.querySelector("p").style.color));
+
+
+    //   window.open("http://www.baidu.com", "_self");   //打开一个新浏览器窗口或找一个已命名的窗口
+    //   window.open("http://www.baidu.com", "_parent");
+    //   window.open("http://www.baidu.com", "", "width=200, height=200px, left=100, top=100, location=0", true);
+
+    // window.open("http://www.baidu.com", "", "width=200, height=200px,");
+
+    //   var w = window.open("", "", "width=200, height=200px");
+    //   console.log(w);
+    //   w.document.write("hahaha");
+    //   w.alert("xxx");
+
+    //   w.moveTo(200, 100);   //把窗口的左上角移到一个指定的位置
+    //   w.moveBy(50, 50);     //可相对窗口的当前坐标把它移动指定的像素
+    //   w.resizeTo(100, 500); //把窗口的大小调整到指定的宽度和高度
+    //   w.resizeBy(50, 50);   //按照指定的像素调整窗口的大小
+</script>
+
+<input type="email" placeholder="请输入邮箱" oninput="emailInput()">
+
+<script>
+    function emailInput() {
+        //需要正则验证用户输入的邮箱是否合规
+        var reg = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/
+        // var reg = /.{6,}/
+        if (reg.test(event.target.value)) {
+            event.target.style.backgroundColor = "green"
+        } else {
+            event.target.style.backgroundColor = "red"
+        }
+    }
+</script>
+</body>
+
+</html>

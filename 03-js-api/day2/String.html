@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var str = "hello world";
+        // var str = new String(102);
+        // var str = new String(02);
+        // var str = new String (0xff)
+        // String(xxx) 可以是一个进制数
+        // var str = new String("hello");
+
+        console.log(str.constructor);
+        console.log(str.length);
+
+        console.log(str + "555"); // hello world555 拼接字符串 并返回新的字符串
+        console.log(str.concat("555")); //hello world555 连接两个或更多字符串，并返回新的字符串
+
+        console.log(str.indexOf("o"));//4 返回某个字符串值在字符串中首次出现的位置
+        console.log(str.lastIndexOf("o"));//7 从后向前搜索字符串，并从起始位置开始计算返回字符串最后出现的位置
+        console.log(str.indexOf("p")); //-1 返回指定某个字符串值在字符串中首次出现的位置，如该字符串值不存在，将返回-1
+        console.log(str.includes("p"));//false 查找字符串中是否包含指定的字符串，不包含讲返回false
+        console.log(str.repeat(3));//hello worldhello worldhello world
+        //复制字符串指定次数，并将它们连接在一起返回
+
+        // string.slice(start,end) 可以是负？？
+        // slice()提取字符串的片段，并在新的字符串中返回被提取的部分
+        console.log(str.slice(3));//lo world 从第三个开始提取后面字符串值
+        console.log(str.slice(3, 7));//lo w 从第三个开始提取到第七个结束
+        console.log(str.slice(-3)); //rld 是负数时从后面提取相应字符串值并返回
+        console.log(str.slice(-5, -1)); //worl 从-5开始提取到-1结束
+
+        //string.substr(start,length) 个数
+        // substr() 从起始索引号提取字符串中指定数目的字符
+        console.log(str.substr(2,2)); //ll 从2开始提取两个字符
+
+        //string.substring(from, to) 非负
+        console.log(str.substring(3, 7));//lo w 提取字符串中两个指定索引号之间的字符
+        console.log(str.split("")); //把字符串分割为字符串数组
+        console.log(str.split(" ")); //以空格分据分割字符串数组
+
+        console.log([1,2,3].join("|"));//1|2|3 以|分隔数组
+        console.log("1|2|3".split("|"));//(3) ['1', '2', '3']
+
+        //与正则表达式相？？
+        //match()
+        //replace()
+        // search()
+
+        console.log(str.replace("world", "nick"));//hello nick 在字符串中查找匹配的字符串，并替换与正则表达式匹配的子串
+        console.log(str.indexOf("old")); //-1 返回某个字符串值在字符串中首次出现的位置
+        console.log(str.search("orld"));//查找与正则表达式相匹配的值
+
+        console.log(str.charAt(2)); //l 返回在指定位置的字符
+        console.log(str[2]);//l
+
+        console.log(str.charCodeAt(0)); // 104  Unicode 编码  返回在指定位置的字符的Unicode编码
+        console.log(str.charCodeAt(1)); // 101  Unicode 编码  
+
+        console.log(String.fromCharCode(71, 72)); //GH 将Unicode编码转为字符
+    </script>
+</body>
+</html>

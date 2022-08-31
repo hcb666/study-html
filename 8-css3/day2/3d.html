@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            perspective: 500px;
+        }
+
+        .box {
+            width: 200px;
+            height: 200px;
+            position: relative;
+            transform-style: preserve-3d;
+            transform: rotateY(45deg);
+            animation: xz 5s infinite linear;
+           
+        }
+
+        .box>div {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .front {
+            border: 1px solid black;
+            transform: translateZ(100px);
+            transition: all .5s;
+        }
+
+        .back {
+            border: 1px solid black;
+            transform: rotateY(180deg) translateZ(100px);
+            transition: all .5s;
+        }
+
+        .left {
+            border: 1px solid black;
+            transform: rotateY(-90deg) translateZ(100px);
+            transition: all .5s;
+        }
+
+        .right {
+            border: 1px solid black;
+            transform: rotateY(90deg) translateZ(100px);
+            transition: all .5s;
+        }
+        .top {
+            border: 1px solid black;
+            /* background-color: aquamarine; */
+            transform: rotateX(90deg) translateZ(100px);
+            transition: all .5s;
+        }
+        .bottom {
+            border: 1px solid black;
+            /* background-color: aquamarine; */
+            transform: rotateX(-90deg) translateZ(100px);
+            transition: all .5s;
+        }
+        @keyframes xz {
+            from {
+                transform: rotate(0) rotateX(45deg) rotateZ(45deg);
+            }
+
+            to {
+                transform: rotateY(360deg) rotateX(45deg) rotateZ(45deg);
+                /* transform: translateZ(250px); */
+            }
+        }
+        .box:hover .front {
+            transform: translateZ(250px);
+        }
+        .box:hover .back {
+            transform: rotateY(180deg) translateZ(250px);
+        }
+        .box:hover .left {
+            transform: rotateY(-90deg) translateZ(250px);
+        }
+        .box:hover .right {
+            transform: rotateY(90deg) translateZ(250px);
+        }
+        .box:hover .top {
+            transform: rotateX(90deg) translateZ(250px);
+        }
+        .box:hover .bottom {
+            transform: rotateX(-90deg) translateZ(250px);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="front"></div>
+        <div class="back"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="top"></div>
+        <div class="bottom"></div>
+    </div>
+</body>
+
+</html>

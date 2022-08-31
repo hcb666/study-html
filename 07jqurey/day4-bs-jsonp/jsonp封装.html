@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <script>
+        function xxx(params) {
+            console.log(params);
+        }
+    </script> -->
+    <input type="text" />
+    <ul></ul>
+
+    <script>
+        //     function jsonp(url, callback) {
+        //         var fn = "xxx" +Date.now()
+
+        //         var s = document.createElement("script")
+        //         s.src = url + "&cb" + fn
+
+        //         window[fn] = callback
+        //         document.body.appendChild(s)
+
+        //         s.onload = function () {
+        //             document.body.removeChild(s)
+        //         }
+        //     }
+        //     jsonp("https://www.baidu.com/sugrec?ie=utf-8&json=1&prod=pc&from=pc_web&wd=123", function (res) {
+        //     console.log(res);
+        //   });
+
+        //   document.querySelector("input2").oninput = function () {
+        //     jsonp("https://www.baidu.com/sugrec?ie=utf-8&json=1&prod=pc&from=pc_web&wd=" + this.value, function (res) {
+        //         var html = ""
+        //         res.g.forEach(function (o) {
+        //             html += "<li>" +o.q+  "</li>\n"
+        //         })
+        //         document.querySelector("ul").innerHTML = html
+        //     })
+        //   }
+    </script>
+    <script src="../jquery.js"></script>
+    <script>
+        $("input").on("input", function () {
+            // $.get("https://www.baidu.com/sugrec?ie=utf-8&json=1&prod=pc&from=pc_web&wd=" + $(this).val(),
+            //     function (res) {
+            //         console.log(res);
+            //     }, "jsonp")
+            
+            $.ajax({
+                type: "GET",
+                url: "https://www.baidu.com/sugrec?ie=utf-8&json=1&prod=pc&from=pc_web&wd=" + $(this)
+                    .val(),
+                dataType: "jsonp",
+                jsonp: "cb",
+                success: function (res) {
+                    console.log(res);
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>

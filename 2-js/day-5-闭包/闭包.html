@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <script>
+        function xxx() {
+            var a = 10;
+            function yyy() {
+            console.log(a);
+            }
+            yyy();
+        }
+        // console.log(a);
+    </script> -->
+
+
+    <script>
+        // function xxx() {
+        //     var a = 10;
+        //     function yyy() {
+        //     return ++a;
+        //     }
+        //     return yyy;
+        //     // yyy();
+        //     // console.log(a);//11
+        // }
+        // // console.log(a);
+        // var f = xxx();
+        // //     
+       
+        var ff =  function x() {
+            var a = 10;
+            return function y() {
+                return ++a
+            }
+            
+        }();
+        //私有变量。保护里面的私有变量不受干扰。形成一个不销毁的栈环境
+
+        // 变量提升 函数作用域 闭包  （面试题）
+    </script>
+
+    <!-- 闭包就是内层函数可以访问外层函数的局部变量 -->
+    <!-- 外层函数返回内层函数 -->
+    <!-- 运行外层函数结果就是内层函数 
+    主要作用就是保护内层函数不被篡改
+没有其他方法修改a，只有运行f-->
+</body>
+
+</html>

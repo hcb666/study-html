@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: lightblue;
+            transition: all 5s;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+        // var boxEL = document.getElementById("box");
+        // boxEL.onclick = function () {
+        //     boxEL.style.color = "yellow";
+        // };
+        // var boxEL = document.getElementById("box");
+        // boxEL.onclick = function () {
+        //     boxEL.style.color = "green"
+        // }
+        var boxEL = document.getElementById("box");
+        boxEL.onclick = function () {
+            boxEL.style.backgroundColor = "yellow";
+            boxEL.style.width = "100%";
+            boxEL.style.height = "600px";
+            boxEL.style.color = "red";
+            // boxEL.style.textAlign = "center";
+            alert('注意！你正在改变这个盒子');
+        };
+
+
+            var x = 10;
+            var PI = 3.141592653589793;
+            var msg = "hello world";
+            var inmarried = false;
+
+            var a;
+            var b = null;
+
+
+            var friends = ["小何", "小雨", "小廷", "傻", "逼"];
+            console.log(friends.length);
+            console.log(friends [3]);
+            console.log(friends [4]);
+
+            var person = {
+                name: "何雨廷",
+                gender: "男",
+                age: "20",
+                score: "100",
+                isMarried: false,
+            }
+            console.log(person);
+            console.log(person.age);
+
+            
+
+            // document.write("<h3>Hi,javascript</h3>");//在文档内写入该内容
+            // alert("hi");弹出对话框
+    </script>
+</body>
+</html>

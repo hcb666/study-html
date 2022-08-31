@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        section {
+            display: flex;
+        }
+
+        section div {
+            width: 50px;
+            height: 100px;
+            background-color: pink;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        section div span {
+            width: 100%;
+            height: 100px;
+            background-color: lightblue;
+            box-sizing: border-box;
+            border: 1px solid black;
+            display: flex;
+            flex-shrink: 0;
+            transition: all .3s;
+            justify-content: center;
+            align-items: center;
+            font-size: 60px;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="ss">
+        <div class="si">
+            <span>0</span>
+        </div>
+        <div class="s2">
+            <span>0</span>
+        </div>
+    </section>
+    <script>
+        // debugger
+        function showNewNum(element, n) {
+            var firstSpanDom = element.getElementsByTagName("span")[0]
+            if (firstSpanDom.innerText !== n) {
+                var newSpanDom = document.createElement("span")
+                newSpanDom.innerText = n
+                element.appendChild(newSpanDom)
+                firstSpanDom.style.marginTop = "-100px"
+                setInterval(function () {
+                    element.removeChild(firstSpanDom)
+                }, 300)
+            }
+        }
+
+        setInterval(function () {
+            var now = new Date()
+            // var hh = String(now.getHours()).padStart(2, "0")
+            var ss = String(now.getSeconds()).padStart(2, "0")
+
+            var ssDom = document.querySelector(".ss")
+
+            ssDom.querySelectorAll("div").forEach(function (e, i) {
+                showNewNum(e, ss[i])
+            })
+        }, 1000)
+    </script>
+</body>
+
+</html>

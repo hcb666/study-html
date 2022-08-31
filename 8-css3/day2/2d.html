@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: lightblue;
+            position: relative;
+            margin: 100px;
+        }
+
+        .small {
+            position: absolute;
+            top: -20px;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: lightcoral;
+            transition: all .5s;
+        }
+
+        .box:hover .small {
+            transform: scale(2);
+        }
+
+        .sin {
+            display: inline-block;
+            border-top: 100px solid black;
+            border-bottom: 100px solid transparent;
+            border-left: 100px solid transparent;
+            border-right: 100px solid transparent;
+        }
+        .big {
+            width: 200px;
+            height: 150px;
+            /* border: 1px solid black; */
+            overflow: hidden;
+        }
+        .sanj {
+            width: 250px;
+            height: 200px;
+            border: 1px solid black;
+            transform: rotate(45deg);
+            margin-top: 150px;
+        }
+        .log{
+            width: 0px;
+            height: 0px;
+            border-width: 82px 82px 0 82px;
+            border-style: solid;
+            border-color: plum transparent transparent transparent;
+            position: relative;
+            top: 20px;
+        }
+        .xiao{
+            width: 0px;
+            height: 0px;
+            border-width: 76px 76px 0 76px;
+            border-style: solid;
+            border-color:white transparent transparent transparent;
+            position: absolute;
+            bottom: 4px;
+            left: -76px;
+        } 
+        .test {
+            width: 100px;
+            height: 100px;
+            background-color: lightblue;
+            transform: rotate(90deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="small">11</div>
+    </div>
+    <div class="sin"></div>
+    <div class="big"><div class="sanj"></div></div>
+    <div class="log">
+        <div class="xiao">
+
+        </div>
+    </div>
+    <div class="test"></div>
+</body>
+
+</html>

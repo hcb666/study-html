@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="box">
+        <h3>君问归期未有期</h3>
+        <p>
+            啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊
+            啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊
+            啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊
+        </p>
+        <style>
+            .box {
+                width: 300px;
+                background-color: lightblue;
+            }
+
+            .box.dark {
+                background-color: rgba(0, 0, 0, 0.767);
+            }
+
+            .box.dark h3,
+            .box.dark p {
+                color: white;
+            }
+
+            .huyan {
+                background-color: rgb(115, 173, 115);
+            }
+
+            .color {
+                background-color: blueviolet;
+            }
+            button{
+                background-color: white;
+            }
+        </style>
+    </div>
+    <button onclick="changeMode('mode','box','color',0)">默认</button>
+    <button onclick="changeMode('mode','huyan','color',1)">护眼</button>
+    <button onclick="changeMode('mode','dark','color',2)">黑夜</button>
+    <script>
+        var btn = document.querySelectorAll("button")
+        var boxEl = document.querySelector(".box")
+
+        boxEl.classList.add(getCookie("mode"));
+        btn[getCookie('id')].classList.add(getCookie('btnl'))
+
+        function setCookie(key, value, day, path) {
+            var d = new Date();
+            d.setDate(d.getDate() + day);
+            // console.log(d);
+            document.cookie = key + "=" + value + "; expires=" + d + "; path=" + path;
+        }
+
+        function getCookie(key) {
+            var arr = document.cookie.split(";").map(function (e) {
+                return e.trim();
+            }).map(function (e) {
+                return e.split("=");
+            });
+            var tmp = arr.find(function (e) {
+                return e[0] === key;
+            });
+            return tmp[1];
+        }
+
+        function changeMode(mode, bg, btnl, id) {
+            boxEl.className = "box";
+
+            if (mode) {
+                boxEl.classList.add(bg);
+                for (let i = 0; i < btn.length; i++) {
+                    btn[i].style.backgroundColor = "white"
+                }
+                event.target.style.backgroundColor = "blueviolet"
+            }
+            setCookie(mode, bg, 3, '/')
+            setCookie('btnl', btnl, 3, '/')
+            setCookie('id', id, 3, '/')
+        }
+    </script>
+
+    <hr>
+    <input type="email" placeholder="请输入邮箱" oninput="emailInput()">
+
+    <script>
+        function emailInput() {
+            //需要正则验证用户输入的邮箱是否合规
+            var reg = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/
+            // var reg = /.{6,}/
+            if (reg.test(event.target.value)) {
+                event.target.style.backgroundColor = "green"
+            } else {
+                event.target.style.backgroundColor = "red"
+            }
+        }
+    </script>
+</body>
+
+</html>

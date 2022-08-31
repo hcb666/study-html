@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>js围绕屏幕转圈的方块2</title>
+  <style>
+    body{
+      margin: 0;
+      padding: 0;
+    }
+    input{
+      display: block;
+      height:20px;
+    }
+    div{
+      width: 100px;
+      height:100px;
+      background:#000;
+    }
+  </style>
+</head>
+<body>
+<input type="button" value="运动">
+<div></div>
+<script>
+  var ipt=document.getElementsByTagName("input")[0];
+  var div=document.getElementsByTagName("div")[0];
+  var scr_w=document.documentElement.clientWidth;
+  var scr_h=document.documentElement.clientHeight;
+  var a=0; // 第1边 marginLeft++
+  var b=0; // 第2边 marginTop++
+  var a2=scr_w-100; // 第3边 marginLeft--
+  var b2=scr_h-100-20; // 第4边 marginTop--
+  var t1;
+  ipt.onclick=function(){
+    clearInterval(t1)
+    fn1();
+  };
+  function fn1(fx,size){
+    t1=setInterval(function(){
+      if(a<scr_w-100){
+        a++;
+        div.style.marginLeft=a+"px";
+      }else if(b<scr_h-100-20){
+        b++;
+        div.style.marginTop=b+"px";
+      }else if(a2>0){
+        a2--;
+        div.style.marginLeft=a2+"px";
+      }else if(b2>0){
+        b2--;
+        div.style.marginTop=b2+"px";
+      }
+    },10)
+  }
+</script>
+</body>
+</html>
