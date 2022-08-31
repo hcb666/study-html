@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .swiper {
+            width: 300px;
+            background-color: red;
+            /* height: 200px; */
+            position: relative;
+        }
+
+        .swiper .list {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .swiper .list img {
+            width: 100%;
+            position: absolute;
+
+            top: 0;
+            left: 0;
+            display: block;
+        }
+
+        .swiper .list img:first-child {
+            position: relative;
+        }
+
+        .swiper ul.dots {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            width: 100%;
+
+        }
+
+        .swiper ul.dots li {
+            width: 20px;
+            height: 20px;
+            background-color: black;
+            margin: 0 10px;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="swiper" class="swiper">
+        <div class="list">
+            <img src="./imgs/1.jpg" alt="">
+            <img src="./imgs/2.jpg" alt="">
+            <img src="./imgs/3.jpg" alt="">
+            <img src="./imgs/4.jpg" alt="">
+        </div>
+        <ul class="dots">
+            <!-- <li title="0"></li>
+            <li title="1"></li>
+            <li title="2"></li>
+            <li title="3"></li> -->
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <script>
+        var current = 0;
+        //根据id获取元素
+        var swiperEl = document.getElementById("swiper");
+        // var swiperListEl = swiperEl.getElementsByClassName("list");
+        //html集合（类数组）（有数组的长度属性下有下标）
+        //访问使用swiperListEl[0]
+        //根据标签获取元素
+        var imgs = swiperEl.getElementsByTagName("img");
+        var dots = swiperEl.getElementsByClassName("dots")[0].getElementsByTagName("li")
+        //变量的声明要卸载使用的前面
+        //初始化
+        for (var i = 0; i < imgs.length; i++) {
+            if (i === current) {
+                imgs[i].style.opacity = 1;
+            } else {
+                imgs[i].style.opacity = 0;
+            }
+        }
+
+        // for (var i = 0; i < dots.length; i++) {
+
+        //     dots[i].onclick = function () {
+        //         console.log("click",i);
+        //         //i都是4,有问题
+        //         //最简单的办法 把var改为let
+        //     };
+
+        // }
+        for (var i = 0; i < dots.length; i++) {
+            dots[i].title = i;
+            //给每一个dots添加标识
+            dots[i].onclick = function () {
+                // console.log("click", i);
+                //i都是4,有问题
+                //1.最简单的办法 把var改为let
+                //这里的i已遍历完成 变成最后一个条件4
+                // 点击没有遍历快(同步与异步*****)
+                console.log(this.title, typeof this.title);
+                //this关键词(*****难度)
+                // 这里的this☞向的是 事件函数绑定的函数
+                //1.时间处理函数内部，this指向事件绑定的元素
+                //2.this 指向函数运行时这个函数所挂载的对象
+
+                //获取到当前点击的小点点的序号 对应的图标的显示 其他隐藏
+                // var current = 1
+                //判断 ，显示对应图片
+                for (var i = 0; i < imgs.length; i++) {
+                    if (i == this.title) {
+                        imgs[i].style.opacity = 1;
+                    } else {
+                        imgs[i].style.opacity = 0;
+                    }
+                }
+
+                //当前小点点高亮
+                for (var i = 0; i < dots.length; i++) {
+                    dots[i].style.background = "black";
+
+                }
+                this.style.background = "white";
+            };
+
+        }
+        console.log(i);
+        //i=4
+    </script>
+</body>
+
+</html>

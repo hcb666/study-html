@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: aquamarine;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box" style="color: red;">box</div>
+    <script>
+        // javascript ECMA基础语法 DOM(document Object model) BOM
+        //safari chrome firefox edge opera 
+        //内核 Trident(ie) Gecko(firefox) webkit safari =>Blink opera chrome edge
+
+
+        // var x =10; //声明变量 把10赋值给变量x
+        //var person = nick;//nick没加引号，没有被定义声明
+    //     变量声明规范
+    //     必须使用英文开头 不能出现空格 不能使用xx-yy 可以使用xx_yy
+    //     最好使用小驼峰写法 如Game_scores => gaemScores 不要用拼音 不要使用中文
+    //    js保留关键词（都是单个单词）
+
+        var x;
+        console.log(x);
+        // undefined声明了但是没赋值
+        x = 100;
+        console.log(x);
+        // console.log(x + 5);//打印 不加引号 就是运算（表达式）
+        // console.log("x + 5");//打印 加引号 代表字符串
+        // console.log("x:", x);
+        //调试代码
+        // document//整个文档
+        var boxEL = document.getElementById("box"); //从文档里面获取id
+        //根据id获取元素
+        // 元素.onclick 元素点击的时候干什么
+        // function 函数（需要做的事 一行或者多行)
+        boxEL.onclick = function () {
+            //需要执行的代码块
+            // console.log("点击了box", boxEL);
+            // console.log(boxEL.style.background);
+            //boxEL.style.color 元素.style.xxx 访问某个元素的行间样式的xxx属性
+            boxEL.style.color =  "green";
+        };
+    </script>
+</body>
+
+</html>

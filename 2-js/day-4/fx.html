@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 作用域 -->
+    <script>
+        var a = 10;
+        // a变量是全局作用域 在任何地方都可以访问
+        // 控制台可以访问的是全局的变量
+        console.log(a);
+
+        function xxx() {
+            var b = 20;
+            // b变量是在函数内部声明的 只能在函数内部使用
+            // b变量作用域是当前函数的局部最重要
+            // ，b变量在函数运行开始时声明 在函数运行结束销毁（变量的生命周期）
+            console.log(a, b);
+        }
+        xxx();
+        // console.log(b); 出错
+
+        function zzz() {
+            var m = 5;
+            var a = 200;
+            function zzzchild() {
+                var n = 15;
+                var m = 56;
+                console.log(a, m, n);
+            }
+            //局部作用内部访问变量 优先访问自己的作用域的变量 如果没有 在访问上一级的
+            zzzchild();
+        }
+        zzz();
+
+        console.log("=====================================================");
+
+        var a1 = 20;
+        function f1() {
+            var a1 = 39;
+
+            // function fc() {
+            //     console.log(a1);
+            //     var a1 = 30;
+            // }
+
+            function fc(a1) {
+                console.log(a1);
+                var a1 = 44;
+                console.log(a1);
+            }
+            fc(33);
+        }
+        f1();
+
+
+        var a = 3;
+        function c() {
+            console.log(a);
+        }
+        function ffc() {
+            var a = 4;
+            c();
+        }
+        ffc();
+
+
+        // js中变量的作用域链与定义时的环境有关， 与执行无关。执行环境只会改变this、传递的参数、全局变量等
+    var ff1 = function () {
+        console.log("ff1");
+    };
+    ff1();
+    (function () {
+        console.log("ff1");
+    })();
+    //自调用函数
+
+
+    var x = 3;
+    function c(a) {
+        console.log(a);
+    }
+    function ffcc() {
+        var a = 4;
+        c(a);
+    }
+    ffcc();
+    </script>
+</body>
+</html>

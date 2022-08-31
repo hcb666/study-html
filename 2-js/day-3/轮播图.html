@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .swiper {
+            width: 300px;
+            /* height: 200px; */
+            position: relative;
+            background-color: lightblue;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+        }
+
+        .swiper .list {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .swiper .list img {
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: block;
+        }
+
+        .swiper .list img:first-child {
+            position: relative;
+        }
+
+        .swiper ul.dots {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+            position: absolute;
+            left: 0;
+            bottom: 10px;
+            width: 100%;
+            justify-content: center;
+
+
+        }
+
+        .swiper ul.dots li {
+            width: 15px;
+            height: 15px;
+            margin: 0 10px;
+            border-radius: 50%;
+            background-color: black;
+        }
+        .swiper ul.dots li:nth-child(1) {
+            background-color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="swiper" class="swiper">
+        <div class="list">
+            <img src="./imgs/1.jpg" alt="">
+            <img src="./imgs/2.jpg" alt="">
+            <img src="./imgs/3.jpg" alt="">
+            <img src="./imgs/4.jpg" alt="">
+        </div>
+        <ul class="dots">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <script>
+        var current = 0;
+        var swiperEl = document.getElementById("swiper");
+        var imgs = document.getElementsByTagName("img");
+        var dots = document.getElementsByClassName("dots")[0].getElementsByTagName("li")
+        for (var i = 0; i < imgs.length; i++) {
+            if (i === current) {
+                imgs[i].style.opacity = 1;
+            } else {
+                imgs[i].style.opacity = 0;
+            }
+        }
+
+        for (var i = 0; i < dots.length; i++) {
+            dots[i].title = i;
+            dots[i].onclick = function () {
+                // console.log("click",i);
+                console.log(this.title);
+                for (var i = 0; i < imgs.length; i++) {
+                    if (i == this.title) {
+                        imgs[i].style.opacity = 1;
+                    } else {
+                        imgs[i].style.opacity = 0;
+                    }
+                }
+                for (var i = 0; i < dots.length; i++) {
+                    dots[i].style.background = "black";
+                }
+                this.style.background = "white";
+            }
+        }
+    </script>
+</body>
+
+</html>

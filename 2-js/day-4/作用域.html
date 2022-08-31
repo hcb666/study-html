@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var a = 10;
+        //a变量是全局作用域 在任意地方都可以访问
+        //控制台可以访问的只能是全局的变量
+        console.log(a);
+
+        function xxx() {
+            var b = 20;
+            //b变量是在函数内部声明的，只能在函数内部使用
+            //b变量作用域是当前函数的局部作用域
+            //b变量在函数运行开始时声明 在函数运行结束时销毁（变量的声明周期）
+            console.log(a, b);
+        }
+        xxx();
+        console.log(b);
+
+        var yyy = function () {
+            var c = 20;
+            console.log(a, c);
+        }
+    </script>
+    <script>
+        xxx();
+
+        //函数的提升 不会变为undefined
+        function xxx() {
+            console.log(xxx);
+        }
+
+        var yyy = function () {
+            console.log("yyy");
+        }
+        yyy();
+
+
+
+        //局部作用域内部访问变量 优先访问子的作用域的变量 如果没有在访问上一级的
+    </script>
+
+    <script>
+        var g = 10;
+
+        function f() {
+            var g = 39;
+            // function fc() {
+            //     console.log(g);
+            //     var g = 90;
+            // }
+            function fc(g) {
+                console.log(g);
+            }
+            fc(70);
+        }
+        f();
+    </script>
+
+    <button>1</button>
+    <button>2</button>
+    <button>3</button>
+    <script>
+        var btns = document.getElementsByTagName("button")
+        for (var i = 0; i < btns.length; i++) {
+            btns[i].onclick = (function (i) {
+                console.log(i);
+            })(i);
+            
+        }
+    </script>
+</body>
+
+</html>

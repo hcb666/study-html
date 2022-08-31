@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button.first {
+            color: lightgreen;
+        }
+
+        div {
+            display: none;
+        }
+
+        div.first {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="first">1</button>
+    <button>2</button>
+    <button>3</button>
+
+    <div class="first">46215</div>
+    <div>4564</div>
+    <div>465465</div>
+    <script>
+        var btns = document.getElementsByTagName("button")
+        var divs = document.getElementsByTagName("div")
+
+        for (var i = 0; i < btns.length; i++) {
+            (function (index) {
+                console.log(index,i);
+                btns[i].onclick = function () {
+                    console.log(index);
+                    for (var j = 0; j < btns.length; j++) {
+                        if (j === index) {
+                            btns[j].style.color = "lightgreen";
+                            divs[j].style.display = "block"
+
+                        } else {
+                            btns[j].style.color = "black"
+                            divs[j].style.display = "none"
+                        }
+
+                    }
+                }
+            })(i);
+
+        }
+    </script>
+</body>
+
+</html>
