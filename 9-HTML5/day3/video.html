@@ -12,6 +12,7 @@
         * {
             list-style: none;
         }
+
         .box {
             margin: auto;
             background: #eef3f7;
@@ -21,7 +22,7 @@
             border-radius: 15px;
             padding: 30px;
             position: relative;
-            
+
         }
 
 
@@ -77,30 +78,66 @@
             flex-direction: column;
             align-items: center;
         }
-        .box .right .icon .start {
-            width: 90px;
-            height: 90px;
-            border: 8px solid white;
-            color: white;
-            box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.315);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .box .right .icon .start i {
-            border-radius: 2px;
-        }
+
+
         .box .right .icon li {
-            /* width: 50px; */
+            width: 50px;
             height: 50px;
             margin: 10px 20px 0 0;
             color: #acb8cc;
             border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all .45s;
         }
 
+        .box .right .icon li:hover {
+            background-color: white;
+            color: #089;
+            border-radius: 0 0 5px 0 rgba(0, 0, 0, 0.233);
+        }
 
+        label {
+            position: absolute;
+            bottom: 150px;
+        }
 
-        .box .botton {}
+        .icon-play {
+            width: 100px;
+            height: 100px;
+            fill: #089;
+            cursor: pointer;
+            transition: all .8s;
+        }
+
+        .icon-play:hover {
+            fill: rgba(154, 209, 209, 0.432);
+        }
+
+        .icon-play path {
+            d: path('M 12,26 18.5,22 18.5,14 12,10 z M 18.5,22 25,18 25,18 18.5,14 z');
+            transition: d .2s linear .1s
+        }
+
+        .toggle-play {
+            display: none
+        }
+
+        .toggle-play:checked+.icon-play path {
+            d: path('M 12,26 16,26 16,10 12,10 z M 21,26 25,26 25,10 21,10 z')
+        }
+
+        .box .botton {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 100px;
+        }
+
+        .box .botton video {
+            height: 50px;
+        }
     </style>
 </head>
 
@@ -109,15 +146,44 @@
         <div class="left"></div>
         <div class="right">
             <ul class="icon">
-                <li> <i class="fa fa-heart fa-2x"></i></li>
+                <li><i class="fa fa-heart fa-2x"></i></li>
                 <li><i class="fa fa-share-square-o fa-2x"></i> </li>
-                <li> </i><i class="fa fa-step-backward fa-2x"></i></li>
-                <li> <i class="fa fa-step-forward fa-2x"></i></li>
-                <li class="start"> <i class="fa fa-play fa-3x "></i></li>
+                <li></i><i class="fa fa-step-backward fa-2x"></i></li>
+                <li><i class="fa fa-step-forward fa-2x"></i></li>
+                </li>
             </ul>
+            <label>
+                <input type="checkbox" class="toggle-play">
+                <svg class="icon-play" viewBox="0 0 36 36">
+                    <path /></svg>
+            </label>
         </div>
-        <div class="botton"></div>
+        <div class="botton">
+            <p>形容</p>
+            <video src="./形容.mp3"></video>
+            <progress id='progress1' value="0" max="269"></progress>
+        </div>
     </div>
+    <script>
+        var icon = document.querySelector(".icon-play")
+        var video = document.querySelector(".box .botton video")
+
+        icon.onclick = function () {
+            if (video.paused) {
+                video.play()
+            } else {
+                video.pause()
+            }
+        }
+
+        // var progress1 = document.getElementById("progress1")
+        // function start_run(n){
+        //     n = n - 1
+        //     cur_task = 100 - n
+        //     progress1.value = cur_task
+        //     setTimeout("start_run(" + n + ")", 1000)
+        // }
+    </script>
 </body>
 
 </html>
