@@ -113,29 +113,67 @@ header {
         }
 
     }
-    .mask {
-        position: fixed;
-        width: 100%;
+
+
+}
+
+.mask {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0);
+    pointer-events: none;
+
+    .aside {
+        width: 300px;
         height: 100vh;
-        background-color: rgba(0, 0, 0, 0);
-        pointer-events: none;
-        .aside {
-            width: 300px;
-            height: 100vh;
-            background-color: white;
-            position: absolute;
-            top: 0;
-            left: -300px;
-            transition: all .5s;
+        background-color: white;
+        position: absolute;
+        top: 0;
+        left: -300px;
+        transition: all .5s;
+
+        .aside-menu {
+            .aside-list {
+                li {
+                    font-size: 18px;
+                    margin: 3px 0;
+
+                    .dropdown {}
+                }
+            }
+        }
+
+        .aside-top {
+            li {}
+        }
+
+        .aside-top-right {
+            a {}
+        }
+
+        .aside-button {
+            display: inline-block;
+            font-size: 15px;
+            font-weight: 500;
+            padding: 12px 30px 10px;
+            text-transform: uppercase;
+            color: #111111;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: 2px solid #13a2b7;
+            border-radius: 5px;
         }
     }
-    .mask.open {
-        pointer-events: auto;
-        background-color: rgba(0, 0, 0, 0.328);
-    }
-    .mask.open .aside {
-        left: 0;
-    }
+}
+
+.mask.open {
+    pointer-events: auto;
+    background-color: rgba(0, 0, 0, 0.328);
+}
+
+.mask.open .aside {
+    left: 0;
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
@@ -149,6 +187,10 @@ header {
 
     .header__top__left li {
         margin-right: 10px;
+    }
+
+    .mask .aside {
+        left: -300px;
     }
 }
 
@@ -170,7 +212,7 @@ header {
         top: 35px;
     }
 
-    .header-top{
+    .header-top {
         display: none;
     }
 
@@ -188,5 +230,297 @@ header {
 
     .header__btn {
         display: none;
+    }
+}
+
+
+
+.spad {}
+
+.set-bg {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top center;
+}
+
+.hero {
+    padding-top: 145px;
+    padding-bottom: 215px;
+
+}
+
+section {
+
+    .container {
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            margin-right: -15px;
+            margin-left: -15px;
+
+            .col-lg-6 {
+                .hero__text {
+                    span {
+                        font-size: 15px;
+                        font-weight: 500;
+                        color: #13a2b7;
+                        text-transform: uppercase;
+                        display: block;
+                    }
+
+                    h2 {
+                        font-size: 48px;
+                        color: #111111;
+                        font-weight: 700;
+                        line-height: 60px;
+                        margin-top: 10px;
+                        margin-bottom: 35px;
+                    }
+
+                    a {
+                        display: inline-block;
+                        font-size: 15px;
+                        padding: 12px 30px 10px;
+                        text-transform: uppercase;
+                        letter-spacing: 2px;
+                        border: 2px solid #13a2b7;
+                        border-radius: 5px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.option {
+    cursor: pointer;
+    font-weight: 400;
+    line-height: 40px;
+    list-style: none;
+    min-height: 40px;
+    outline: none;
+    padding-left: 18px;
+    padding-right: 29px;
+    text-align: left;
+    -webkit-transition: all 0.2s;
+    transition: all 0.2s;
+}
+
+.selected {
+
+    font-weight: bold;
+}
+
+.focus {
+    background-color: #f6f6f6;
+}
+
+.consultation {
+    .container {
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            margin-right: -15px;
+            margin-left: -15px;
+
+            .col-lg-4 {
+                .consultation__form {
+                    padding: 50px;
+                    box-shadow: 0px 0px 15px rgb(0 0 0 / 10%);
+                    margin-top: -70px;
+                    background: #ffffff;
+
+                    .section-title {
+                        margin-bottom: 35px;
+
+                        span {
+                            font-size: 15px;
+                            color: #888888;
+                            font-weight: 500;
+                            letter-spacing: 2px;
+                            text-transform: uppercase;
+
+                            h2 {
+                                color: #111111;
+                                font-weight: 700;
+                                margin-top: 8px;
+                                font-size: 36px;
+                            }
+                        }
+                    }
+
+                    form {
+                        position: relative;
+
+                        input {
+                            font-size: 15px;
+                            color: #666666;
+                            width: 100%;
+                            height: 50px;
+                            padding-left: 20px;
+                            border: 1px solid #f2f2f2;
+                            border-radius: 5px;
+                            margin-bottom: 20px;
+                        }
+
+                        .datepicker__item {
+                            input {
+                                font-size: 15px;
+                                color: #666666;
+                                width: 100%;
+                                height: 50px;
+                                padding-left: 20px;
+                                border: 1px solid #f2f2f2;
+                                border-radius: 5px;
+                                margin-bottom: 20px;
+                            }
+
+                            i {
+                                position: absolute;
+                                right: 20px;
+                                top: 18px;
+                                font-size: 15px;
+                                color: #666666;
+                            }
+                        }
+
+                        select {
+                            word-wrap: normal;
+                            display: none;
+
+                            option {
+                                font-weight: normal;
+                                display: block;
+                                white-space: nowrap;
+                                min-height: 1.2em;
+                                padding: 0px 2px 1px;
+                            }
+                        }
+
+                        .nice-select {
+                            float: none;
+                            width: 100%;
+                            height: 50px;
+                            line-height: 50px;
+                            padding-left: 20px;
+                            border-radius: 5px;
+                            margin-bottom: 20px;
+                            border: 1px solid #f2f2f2;
+                        }
+
+                        .site-btn {
+                            font-size: 15px;
+                            color: #ffffff;
+                            background: #13a2b7;
+                            font-weight: 600;
+                            border: none;
+                            border-radius: 5px;
+                            display: inline-block;
+                            text-transform: uppercase;
+                            letter-spacing: 2px;
+                            padding: 14px 30px 12px;
+                        }
+                    }
+                }
+            }
+
+            .col-lg-8 {
+                .consultation__text {
+                    padding: 100px 0;
+                    position: relative;
+
+                    .row {
+                        display: flex;
+                        flex-wrap: wrap;
+                        margin-right: -15px;
+                        margin-left: -15px;
+
+                        .consultation__text__item {
+                            .section-title {
+                                margin-bottom: 15px;
+                                font-size: 36px;
+
+                                span {
+                                    font-size: 15px;
+                                    color: #888888;
+                                    font-weight: 500;
+                                    letter-spacing: 2px;
+                                    text-transform: uppercase;
+                                }
+
+                                h2 {
+                                    line-height: 47px;
+
+                                    b {
+                                        font-weight: 700;
+                                        color: #13a2b7;
+                                    }
+                                }
+                            }
+
+                            p {
+                                color: #444444;
+                                margin-bottom: 0;
+                            }
+                        }
+
+                        .consultation__video {
+                            height: 262px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+
+                            a.play-btn {
+                                display: inline-block;
+                                height: 50px;
+                                width: 50px;
+                                background: #13a2b7;
+                                border-radius: 50%;
+                                line-height: 50px;
+                                text-align: center;
+                                font-size: 18px;
+                                color: #ffffff;
+                            }
+
+
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.offer {
+    padding: 100px;
+
+    .container {
+        text-align: center;
+
+        .row {
+            h2 {
+                font-size: 36px;
+                
+                small {
+                    margin: 10px 0;
+                }
+
+                div {
+                    margin: 10px 0 40px 0;
+                }
+            }
+        }
+
+        .bottom-row {
+                img {}
+
+                h5 {
+                    font-size: 24px;
+                    font-weight: 500;
+                    margin: 10px 0;
+                }
+
+                p {}
+        }
     }
 }
