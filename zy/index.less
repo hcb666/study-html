@@ -69,8 +69,8 @@ header {
 
             .kiddy-bottom {
                 background-color: white;
-                padding: 30px;
                 border-radius: 40px;
+                padding: 20px;
 
                 .kiddy-list {
                     float: left;
@@ -79,6 +79,7 @@ header {
                         float: left;
                         margin-left: 30px;
 
+                        // display: none;
                         // padding: 20px;
                         &:nth-child(1) {
                             color: #fd4d6b;
@@ -86,13 +87,19 @@ header {
                     }
                 }
 
+                .canvas__open {
+                    float: left;
+
+                    i {
+                        display: none;
+                    }
+                }
+
                 ul.kiddy-icons {
                     li {
-
                         i {
                             float: right;
                             margin-right: 50px;
-
                         }
 
                         &:nth-child(1) {
@@ -161,9 +168,79 @@ header {
 
     }
 }
-@media only screen and (min-width:992px) {
-    
+
+@media only screen and (max-width:992px) {
+    .kiddy-list {
+        display: none;
+    }
+
+    .street {
+        display: none;
+    }
+
+    .time {
+        display: none;
+    }
+
+    header .kiddy .kiddy-wrap .kiddy-bottom .canvas__open {
+        display: block;
+        font-size: 22px;
+        color: #222;
+        width: 20px;
+        height: 20px;
+        border: 1px solid #323232;
+    }
 }
+@media only screen and(min-width: 992px) {
+    .mask {
+        display: none;
+    }
+}
+.mask {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0);
+    pointer-events: none;
+    z-index: 9;
+
+    .aside {
+        width: 300px;
+        height: 100vh;
+        background-color: white;
+        position: absolute;
+        top: 0;
+        right: -300px;
+        transition: all .5s;
+
+        .aside-button {
+            display: inline-block;
+            font-size: 15px;
+            font-weight: 500;
+            padding: 12px 30px 10px;
+            text-transform: uppercase;
+            color: #111111;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: 2px solid #13a2b7;
+            border-radius: 5px;
+        }
+    }
+}
+
+.mask.open {
+    pointer-events: auto;
+    background-color: rgba(0, 0, 0, 0.328);
+}
+
+.mask.open .aside {
+    right: 0;
+}
+
+
+
+
+
 .card-color-one {
     background-color: #fd4d40;
 }
@@ -396,19 +473,24 @@ header {
 .small-dollar-color-two {
     background-color: #fd4d40;
 }
+
 .coo {
     color: #16c3b0;
 }
+
 .cot {
     color: #fd4d40;
 }
+
 .bco {
     background-color: #16c3b0;
 }
+
 .bct {
     background-color: #fd4d40;
     color: white;
 }
+
 .pricing {
     .pricing-wrap {
         padding: 100px;
@@ -522,6 +604,7 @@ header {
             display: flex;
             justify-content: center;
             align-items: center;
+
             .card-one {
                 width: 730px;
                 height: auto;
@@ -533,6 +616,7 @@ header {
                 bottom: 0;
                 right: 0;
                 margin: auto;
+
                 img {
                     width: 80px;
                     height: 80px;
@@ -574,11 +658,12 @@ header {
         margin: 0 auto;
         text-align: center;
 
-         .ls{
+        .ls {
             font-size: 20px;
             float: left;
             margin-bottom: 100px;
             width: 25%;
+
             span {
                 font-size: 14px;
                 color: black;
@@ -586,18 +671,23 @@ header {
         }
     }
 }
+
 .lsco {
     color: #16c3b0;
 }
+
 .lsct {
     color: #fdb62f;
 }
+
 .lscth {
     color: #71bc42;
 }
+
 .lscof {
     color: #dc3545;
 }
+
 footer {
     .started {
         background-color: #ffc107;
