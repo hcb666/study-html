@@ -1,22 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    
+    <ul>
+        <li>item1</li>
+        <li>item2</li>
+        <li>item3</li>
+        <li>item4</li>
+        <li>item5</li>
+        <li>item6</li>
+    </ul>
     <script>
-        var a =10
-        {
-            var b = 20
-            let c = 30
-            // es5.1 全局 与 函数
-            
-            //let声明的变量只在它所在的代码块有效
+        // var a =10
+        // {
+        //     var b = 20
+        //     let c = 30
+        //     // es5.1 全局 与 函数
+        //     // es6块级作用域
+
+        //     //let声明的变量只在它所在的代码块有效 块级作用域 不能重复声明 无变量提升 会有暂时性死区
+        // }
+
+
+        // for (var i = 0; i < 3; i++) {
+        //     console.log(i);  //0 1 2
+        // }
+        // console.log(i); // 3
+        // 计数器只在for循环内有效，在循环外引用就会报错
+
+        // var lis = document.querySelectorAll("ul li")
+        // for (var i = 0; i < lis.length; i++) {
+        //     lis[i].onclick = function () {
+        //         console.log(i);    6
+        //     }
+        // }
+        //i都为6，点击时已循环完毕
+
+        // 使用自调用函数传参
+        // var lis = document.querySelectorAll("ul li")
+        // for (var i = 0; i < lis.length; i++) {
+        //     (function (index) {
+        //         lis[index].onclick = function () {
+        //             console.log(index);
+        //         }
+        //     })(i)
+        // }
+
+        //调用forEach传参数
+        // var lis = document.querySelectorAll("ul li")
+        // lis.forEach(function (ele, index) {
+        //     ele.onclick = function () {
+        //         console.log(index);
+        //     }
+        // })
+        //使用DOM对象 this 对象上挂属性
+
+        // 使用es6
+        // var lis = document.querySelectorAll("ul li")
+        // for (let i = 0; i < lis.length; i++) {
+        //     lis[i].onclick = function () {
+        //         console.log(i);
+        //     }
+        // }
+
+        /* let没有变量提升*/
+
+        // console.log(a);
+        //     var a = 10
+
+        // console.log(b);
+        // let b = 30
+        // 报错  lwt 没有提升
+
+        // console.log(c);
+        // c = 40
+        // 报错 没有声明就不会提升
+
+        /*暂时性死区*/
+
+        // var tmp = 123
+
+        // if (true) {
+        //     tmp = "abc";   //ReferenceError
+        //     let tmp
+        // }
+        //Cannot access 'tmp' before initialization
+
+        //  typeof x   //ReferenceError
+        //  let x;
+
+        /*不允许重复声明*/
+
+        // let a = 10
+        // let a = 20
+        //Uncaught SyntaxError: Identifier 'a' has already been declared
+
+        // a = 20
+    </script>
+
+    <script>
+        var tmp = new Date()
+
+        function f() {
+            console.log(tmp);
+            if (true) {
+                let tmp = "hello world"
+            }
         }
+        f() //Mon Sep 05 2022 16:17:49 GMT+0800 (中国标准时间)
+
+        // var tmp = new Date()
+
+        // function f() {
+        //     console.log(tmp);
+        //     if (true) {
+        //         var tmp = "hello world"
+        //     }
+        // }
+        // f() //undefined
     </script>
 </body>
+
 </html>
