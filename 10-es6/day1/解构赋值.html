@@ -9,10 +9,72 @@
 </head>
 <body>
     
-
+<!-- 数组的解构 -->
     <script>
+        // let a = 1
+        // let b = 2
+        // let c=3
+        // console.log(a,b,c); //1,2,3
 
+        // let [a,b,c] = [1,2,3]
+        // console.log(a,b,c); //1,2,3
         
-    </script>
+        // let [foo,[[bar],baz]] = [1,[[2],3]]
+        // console.log(foo,bar,baz);  //1,2,3
+            
+        // let [ , ,c] = [1,2,3]
+        // console.log(c); //c
+
+        // let [a, ...tail] = [1,2,3]
+        // console.log(a,tail); //1  [2, 3]
+
+        // let [a, ...tail] = [1]
+        // console.log(a,tail); //1 []
+
+        // let [a,b,c] = [1]
+        // console.log(a,b,c); //1 undefined undefined
+        </script>
+
+<!-- 解构默认值 -->
+        <script>    
+        // let [a = 34,b=2,c=3] = [1]
+        // console.log(a,b,c); //1 2 3
+
+            // let [a= 6,b=2,c=3] = [1,undefined,undefined]
+            // console.log(a,b,c); //1 2 3
+
+            //默认值 只在解构的值为 undefined 的时候 才会取默认值
+
+            // function f() {
+            //     console.log("aaa");
+            // }
+
+            // let [x = f()] = [] //aaa
+            // let x= f()
+            // console.log(x);   //undefined
+            //默认值是惰性求值
+        </script>
+
+        <!-- 如不希望使用原来的属性名作为变量名 -->
+        <script>
+            // let {name: n,age: a} = {name: "nick",age: 17}
+            // let {name: name,age: age} = {name: "nick",age: 17} 
+            // 简写: 
+            // let {name,age} = {name: "nick",age: 17}
+            // console.log(n,a); //nick 17
+
+
+            // let obj = {
+            //     p: ["hello", {y: "world"}]
+            // }
+
+            // let {
+            //     p: [x, {y}],
+            //     p: p,
+            // } = obj
+            // console.log(x,y);  //hello world
+
+            
+        </script>
 </body>
 </html>

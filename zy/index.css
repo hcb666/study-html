@@ -452,19 +452,22 @@ header .kiddy .kiddy-wrap .kiddy-banner button:hover {
   margin-bottom: 30px;
 }
 .rotation .rotation-wrap .rotation-card {
-  width: 100%;
+  width: 730px;
+  height: 330px;
   overflow: hidden;
   margin-bottom: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+  margin: 0 auto;
 }
 .rotation .rotation-wrap .rotation-card .card-one {
   width: 730px;
   height: auto;
   background-color: #fd4d40;
   display: block;
-  position: relative;
+  position: absolute;
   top: 0;
   left: 0;
   bottom: 0;
@@ -475,11 +478,11 @@ header .kiddy .kiddy-wrap .kiddy-banner button:hover {
   width: 80px;
   height: 80px;
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 5%;
+  left: 3%;
 }
 .rotation .rotation-wrap .rotation-card .card-one .card-text {
-  width: 530px;
+  width: 450px;
   padding: 30px;
   margin-left: 160px;
   color: white;
@@ -498,6 +501,7 @@ header .kiddy .kiddy-wrap .kiddy-banner button:hover {
   margin-bottom: 20px;
 }
 .rotation .rotation-list {
+  width: 800px;
   margin: 0 auto;
   text-align: center;
 }
