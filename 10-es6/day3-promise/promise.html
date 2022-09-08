@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <script>
+        // promise 有三种状态： pending 进行中 ，resolved已完成（fulfilled）,rejected(已失败)
+        // 一旦状态改变，就不会在变，如从pending变为resolved或者rejected就不会在变了
+        let p = new Promise(function (resolve, reject) { //需要带一个函数
+            // resolve函数 成功的时候调用的函数
+            // reject函数 失败的时候调用的函数
+
+            setTimeout(() => {
+                var n = Math.random()
+                if (n > 0.5) {
+                    resolve(n)
+                } else {
+                    reject(n)
+                }
+            }, 3000);
+        }).then(function (res) {
+            console.log("成功", res);
+        }, function (res) {
+            console.log("失败", res);
+        })
+
+        // then有两个参数，第一个是成功时会执行的函数 就是resolve
+        // 第二个是失败时会执行的函数，就是reject
+
+        // p.then(function (res) {
+        //     console.log("成功", res);
+        // }, function (res) {
+        //     console.log("失败",res);
+        // }) //之后
+    </script> -->
+
+    <!-- <script>
+        function delay(ms,calback) {
+            setTimeout(calback,ms,Math.random());
+        }
+
+        delay(1000, function (res) {
+            console.log(res);
+        })
+    </script> -->
+
+    <script>
+        function delay(ms) {
+            return new Promise((resolve, reject) => {
+                console.log("promise 初始化");
+                setTimeout(resolve, ms, Math.random());
+            })
+        }
+//ms参数：指定的参数
+        var p = delay(1000)
+        var tp = p.then((res) => {
+            console.log(res);
+        })
+    </script>
+
+    <script>
+        let promise = new Promise(function (resolve, reject) {
+            console.log("Promise");
+            resolve();
+        })
+
+        //then方法指定的回调函数，将在当前脚本所有同步任务执行完才会执行
+        promise.then(function () {
+            console.log("resolve");
+        })
+
+        console.log("hi!");
+        //输出顺序
+        // Promise
+        // hi!
+        // resolve
+    </script>
+</body>
+
+</html>

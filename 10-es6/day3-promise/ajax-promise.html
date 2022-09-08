@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <!-- <script>
+        function getJson(url, calback) {
+            return new Promise(function (resolve, reject) {
+                let xhr = new XMLHttpRequest
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4) {
+                        if (xhr.status === 200) {
+                            resolve(JSON.parse(xhr.response))
+                        } else {
+                            reject(xhr)
+                        }
+                    }
+                }
+                xhr.open("GET", url, true)
+                xhr.send()
+            })
+        }
+        var p1 = getJson("http://www.httpbin.org/get")
+
+        p1.then((res)=>{
+            console.log(res);
+        })
+    </script> -->
+
+
+<!-- <script>
+    function getJson(url, calback) {
+        return new Promise(function (resolve, reject) {
+            let xhr = new XMLHttpRequest
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState===4) {
+                    if (xhr.status===200) {
+                        resolve(JSON.parse(xhr.response))
+                    } else {
+                        reject(xhr)
+                    }
+                }
+            }
+            xhr.open("GET",url,true)
+            xhr.send()
+        })
+    }
+    var p1 = getJson("http://www.httpbin.org/get")
+    p1.then((res)=>{
+        console.log(res);
+    })
+</script> -->
+
+
+<script>
+    function getJson(url, calback) {
+        return new Promise(function (resolve,reject) {
+            let xhr = new XMLHttpRequest
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState===4) {
+                    if (xhr.status===200) {
+                        resolve(JSON.parse(xhr.response))
+                    } else {
+                        reject(xhr)
+                    }
+                }
+            }
+            xhr.open("GET",url,true)
+            xhr.send()
+        })
+    }
+    var p1 = getJson("http://www.httpbin.org/get")
+    p1.then((res)=>{
+        console.log(res);
+    })
+</script>
+</body>
+
+</html>

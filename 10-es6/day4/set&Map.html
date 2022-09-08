@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+
+        const s = new Set()
+        s.add(12)
+        s.add(13)
+        s.add(15)
+        s.add(12)
+
+        console.log(s.size); //3
+        //Set数据结构类似数组 不重复
+
+        var s1 = new Set([1,2,3,1,2,1,2,1,212,1,2,1,2,1,78,78])
+        console.log(s1);
+        console.log([...s1]);
+
+        var arr  = [1,2,3,3,4,5,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6]
+        console.log([...new Set(arr)]);
+
+
+        //add
+        //delete
+        //has
+        //clear
+    </script>
+
+
+<script>
+
+    var obj = {
+        "a b":13,
+        age: 78
+    }
+
+    const m = new Map()
+    m.set("a b",13)
+    m.get("a b")
+
+    m.set("age",18)
+    m.get("age")
+
+
+    var arr1 = [11,22,33]
+    var arr2 = [44,55,66]
+
+    m.set(arr1, 1111)
+    m.set(arr2 , 4455)
+    m.get(arr1)
+</script>
+</body>
+</html>

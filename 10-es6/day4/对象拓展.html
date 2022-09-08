@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        // let age = 17
+        // let obj = {
+        //     name: "nick",
+        //     age,
+        //     speak() {
+        //         console.log(this.name);
+        //     },
+        //     [Math.random().toString()]: 123,
+        // }
+
+        // var a = "abc"
+        // var b = "xyj"
+        // obj[a+b] = 123
+    </script>
+
+    <script>
+        // var person = {
+        //     name: "nick",
+        //     age: 17,
+        // }
+        // // Object.getOwnPropertyDescriptor(person, "age")
+
+        // Object.defineProperty(person, "job", {
+        //     configurable: false,
+        //     enumerable: false,
+        //     value: "自由职业者",
+        //     writable: false,
+        // })
+
+
+        // //for...in循环:只遍历对象自身的和继承的同枚举属性
+        // // Object.keys():返回对象自身的所有可枚举的属性的键名
+        // // JSON.stringify():只串行化对象自身的可枚举的属性
+        // // Object.assign() : 忽略enmerable为false的属性，只拷贝对象自身的可枚举的属性
+
+        // person.job = "无业游民"
+
+        // Object.prototype.xxx = 123
+
+        // for (key in person) {
+        //     console.log(key);
+        // }
+
+        // //有继承 没有不可枚举
+
+        // console.log(Object.keys(person));
+        // console.log(Object.getOwnPropertyNames(person));
+        // console.log(JSON.stringify(person));
+
+        // // Object.assign()
+        // //拼接对象 类似const
+        // //没有继承 也没有不可枚举
+
+        // var xx = {
+        //     a: 10,
+        //     b: 30,
+        // }
+
+        // Object.assign(person, xx)
+        // //把xxx的属性 拼接到person对象上，会改变person
+
+        // var yyy = Object.assign({}, xx, person)
+        //单层对象 深拷贝
+    </script>
+
+    <script>
+        var obj = {
+            a: 10
+        }
+
+        Object.defineProperty(obj, "c", {
+            enumerable: true,
+            get: function () {
+                console.log("读取了_c的值")
+                return this._c
+            },
+
+            set: function (value) {
+                this._c = value
+                console.log("设置了_c的值");
+            }
+        })
+        Object.defineProperty(obj, "_c", {
+            value: 20,
+            enumerable: false,
+        })
+    </script>
+
+
+    <script>
+        var person = {
+            name: "nick",
+            age: 18,
+            a: 1
+        }
+        var xxx = {
+            a: 45,
+            b: 85,
+        }
+
+        var Dot = function () {}
+        Dot.prototype.x = function name() {
+            
+        }
+        var y = {...person, ...xxx}
+        // var yyy = Object.assign({},xxx,person)
+
+        var yyy = Object.create(xxx)
+        //以某个对象作为新对象的原型
+
+        var yyy = {}
+        // yyy.__proto__ = xxx
+
+        Object.setPrototypeOf(yyy,xxx)
+
+        Object.getPrototypeOf(yyy)
+
+        console.log(Object.keys(xxx));
+        console.log(Object.values(xxx));
+        console.log(Object.entries(xxx));
+    </script>
+</body>
+
+</html>
