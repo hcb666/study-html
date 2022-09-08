@@ -9,7 +9,6 @@
     <style>
         .swiper {
             width: 300px;
-            background-color: red;
             /* height: 200px; */
             position: relative;
         }
@@ -22,7 +21,7 @@
         .swiper .list img {
             width: 100%;
             position: absolute;
-
+transition: all .5s;
             top: 0;
             left: 0;
             display: block;
@@ -192,8 +191,8 @@
         var swiperEl = document.getElementById("swiper");
         var imgs = swiperEl.getElementsByClassName("list")[0].getElementsByTagName("img");
         var dots = swiperEl.getElementsByClassName("dots")[0].getElementsByTagName("li");
-        // var prevBtn = swiperEl.getElementsByClassName("control")[0].getElementsByTagName("button")[0];
-        // var nextBtn = swiperEl.getElementsByClassName("control")[0].getElementsByTagName("button")[1];
+        var prevBtn = swiperEl.getElementsByClassName("control")[0].getElementsByTagName("button")[0];
+        var nextBtn = swiperEl.getElementsByClassName("control")[0].getElementsByTagName("button")[1];
         var c;
 
         function showItem(n) {
@@ -219,23 +218,23 @@
 
         }
 
-        // function showNext() {
-        //     c++;
-        //     if (c >= imgs.length) {
-        //         c = 0;
-        //     }
-        //     showItem(c);
-        // }
+        function showNext() {
+            c++;
+            if (c >= imgs.length) {
+                c = 0;
+            }
+            showItem(c);
+        }
 
-        // nextBtn.onclick = showNext;
+        nextBtn.onclick = showNext;
 
-        // prevBtn.onclick = function () {
-        //     c--;
-        //     if (c < 0) {
-        //         c = imgs.length - 1;
-        //     }
-        //     showItem(c);
-        // };
+        prevBtn.onclick = function () {
+            c--;
+            if (c < 0) {
+                c = imgs.length - 1;
+            }
+            showItem(c);
+        };
     </script>
     <!-- <script>
         setTimeout(function () {
