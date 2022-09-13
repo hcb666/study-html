@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+        <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+        <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h3>{{msg}}</h3>
+        <h3>{{user.name}}</h3>
+        <h3>{{user.age >18?"成年":"未成年"}}</h3>
+
+        <h3 v-bind:title="msg">{{xxx(10)}}</h3>
+        <!-- v-bind:title v-xxx Vue的指令 -->
+
+        <h3 v-if="seen">根据条件是否渲染</h3>
+        <h1 v-else>条件为假</h1>
+
+
+        <p v-for="item in nums">{{item}}</p>
+        <button v-on:click="add">add</button>
+
+        <ul>
+            <li v-for="todo in todos">{{todo.text}}</li>
+        </ul>
+    </div>
+
+    <script>
+        var app = new Vue({
+            //根元素
+            el: "#app",
+            //状态
+            data: {
+                msg: "hello world",
+                user: {
+                    name: "nick",
+                    age: 17,
+                },
+                seen:true,
+
+                nums: [11,22,33,44,55,66],
+                todos: [{text:"学习 JavaScript"}, {text: "学习 Vue"}, {text: "整个项目"}],
+            },
+            // 方法
+            methods: {
+                xxx: function (n) {
+                    return n * 3
+                }
+            },
+        })
+        
+        </script>
+</body>
+</html>

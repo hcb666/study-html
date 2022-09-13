@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        function Dot(x=0,y=0) {
+            this.x=x
+            this.y = y
+        }
+        Dot.prototype.xxx = function () {
+            console.log("xxx");
+        }
+        Dot.prototype.xxx = "666"
+    </script>
+
+    <script>
+        // function Dot(x=0,y=0) {
+        //     this.x = x
+        //     this.y = y
+        // }
+
+
+
+        // class Dot {
+        //     constructor(x = 0, y = 0) {
+        //         this.x = x
+        //         this.y = y
+        //     }
+
+        //     //constructor 定义自己的属性或方法，塑造this
+        //     //constructor  可以省略不写 没有自己的属性或方法
+        //     //javascript 引擎会自动为它添加一个空的constructor()方法
+
+        //     xxx() {
+        //         console.log("xxx");
+        //     }
+        // }
+
+        // Dot.prototype.yyy = "uhafh"
+        // //  继承的属性或方法
+
+        // var d1 = new Dot(10, 10)
+        // var d2 = new Dot(20, 20)
+    </script>
+</body>
+
+</html>
