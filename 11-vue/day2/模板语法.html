@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <mark>{{Math.random()}}</mark>
+        <!-- 文本插值 -->
+        <p>Message: {{msg}}</p>
+        <!-- v-once: 一次性插值 不会更新 -->
+        <p v-once>once: {{msg}}</p>
+
+        <p>{{rawHtml}}</p>
+        <p v-html="rawHtml"></p>
+        <p v-text="rawHtml">hello world</p>
+        <!-- 原始html内容 容易导致xss攻击 -->
+
+        <p v-bind:title="msg">dddd</p>
+        <!-- 绑定属性 -->
+        <button :disabled="xxx">btn</button>
+        <!-- 简写v-bind  因为xxx为null，不会被包含在渲染出来的 <button> 元素中。 -->
+
+            <p>{{count * 2}}</p>
+            <p>{{msg.split("").reverse().join("")}}</p>
+            <div :id="'list-' + msg">6666</div>
+            <!-- 任意表达式 -->
+
+            <div>{{Math.random()}}</div>
+
+
+            <p v-if="seen">看到我了</p>
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                msg: "hello world",
+                rawHtml: '<span style="color: red" onclick="console.log(123)">This should be red.</span>',
+                xxx: null,
+                count: 10,
+                seen: true,
+            },
+        })
+    </script>
+</body>
+
+</html>

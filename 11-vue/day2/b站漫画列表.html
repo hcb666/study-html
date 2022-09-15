@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="never">
+    <title>Document</title>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <style>
+        ul li {
+            list-style: none;
+            float: left;
+            margin-left: 15px;
+        }
+
+        ul li img {
+            width: 200px;
+            height: 260px;
+        }
+
+        .list li {
+            width: 200px;
+            height: 320px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app">
+        <ul>
+            <li>全部</li>
+            <li v-for="style in filters?.styles" @click="options  = {...options, style_id: style.id}">{{style.name}}
+            </li><br>
+        </ul>
+        <ul>
+            <li>全部</li>
+            <li v-for="area in filters?.areas" @click="options  = {...options, area_id: area.id}">{{area.name}}</li><br>
+
+        </ul>
+        <ul>
+            <li>全部</li>
+            <li v-for="statu in filters?.status" @click="options  = {...options, is_free: statu.id}">{{statu.name}}</li>
+            <br>
+        </ul>
+        <ul>
+            <li>全部</li>
+            <li v-for="price in filters?.prices" @click="options  = {...options, is_finish: price.id}">{{price.name}}
+            </li><br>
+        </ul>
+        <ul>
+            <li>全部</li>
+            <li v-for="order in filters?.orders" @click="options  = {...options, order: order.id}">{{order.name}}</li>
+            <br>
+        </ul>
+        <hr>
+        <ul class="list">
+            <li v-for="comic in comics"><img :src="comic.square_cover" alt="">{{comic.title}}</li>
+        </ul>
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                filters: null,
+                options: {
+                    is_free: -1,
+                    order: 0,
+                    is_finish: -1,
+                    area_id: -1,
+                    style_id: -1,
+                },
+                comics: [],
+            },
+            created() {
+                axios.get("https://apis.netstart.cn/mbcomic/AllLabel").then((res) => {
+                    console.log(res.data.data);
+                    this.filters = res.data.data
+                })
+            },
+            watch: {
+                options: function (newOptions) {
+                    console.log(JSON.stringify(newOptions));
+                    axios.get("https://apis.netstart.cn/mbcomic/ClassPage", {
+                        params: newOptions,
+                    }).then((res) => {
+                        console.log(res.data.data);
+                        this.comics = res.data.data
+                    })
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

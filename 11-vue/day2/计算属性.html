@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        <p>原始的{{msg}}</p>
+        <p>表达式内部处理msg :{{msg.split("").reverse().join("")}}</p>
+        <p>方法返回处理过后的msg: {{rMsg}}</p>
+
+        <p>计算属性： {{rMsg}}</p>
+
+        <p>{{modd()}}</p>
+        <p>{{codd}}</p>
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                msg: "hello",
+                nums: [11, 22, 33, 44],
+                wodd: [],
+            },
+            computed: {
+                rMsg: function () {
+                    return this.msg.split("").reverse().join("")
+                    // rMsg的值始终取决于msg的值
+                    // rMsg依赖 msg msg变化=> rMsg变化 => 使用rMsg的元素更新
+                },
+
+                //凡是跨域通过一个或者多个状态 计算派生出来的 状态都应该携程计算属性
+                //比如[11，22，33，44，55]数组的所有偶数 所有奇数 以为原始数组可能会发生变化
+                codd: function () {
+                    return [...this.nums.filter((n) => n % 2 === 0), Date.now()]
+                }
+            },
+            methods: {
+                reverseMsg: function () {
+                    return this.msg.split("").reverse().join("")
+                },
+                modd: function () {
+                    return [...this.nums.filter((n) => n % 2 === 0), Date.now()]
+                }
+            },
+            created: function () {
+                this.wodd = this.nums.filter((n) => n % 2 === 0)
+            },
+
+            watch: {
+                nums: function (n) {
+                    this.wodd = n.filter((n) => n % 2 === 0)
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
