@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        <h1 v-if="awesome">Vue is !</h1>
+        <h1 v-else>oh ye</h1>
+        <h1 v-else>oh ye!!!!!!!</h1>
+        <!-- 类似v-else, v-else-if 必须紧跟在v-if或者v-else-if 的元素之后 -->
+
+        <!-- 不可见的空的包裹元素 -->
+        <template v-if="awesome">
+            <h1>title</h1>
+            <p>1222</p>
+            <p>1222333</p>
+        </template>
+
+
+        <template v-if="loginType === 'username'">
+            <label>Username</label>
+            <input :key="11" placeholder="your name">
+        </template>
+        <template v-else>
+            <label>email</label>
+            <input :key="22" placeholder="your email address">
+        </template>
+        <button @click="loginType = loginType === 'username' ? 'email' : 'username'">toggle</button>
+        <!-- 当切换元素的时候 原来的输入还在就说明vue并没有删除原来的input 二十简单修改的 input元素的placeholder属性 -->
+        <!-- vue 会尽可能高效的渲染元素，通常会复用已有元素而不是从头开始渲染 -->
+
+        <!--  只需添加一个具有唯一值的key attribute即可来表达这两个元素是完全独立的-->
+
+        <!-- 不知道要不要写key时 无脑写上去 但不要使用对象数组作为key 的值 -->
+        <!-- key一定要是唯一值 ，迫不得已时可以用下标 -->
+    </div>
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                awesome: true,
+                loginType: "username",
+
+                nums: [11, 22, 33],
+                person: {
+                    name: "nick",
+                    age: 17,
+                    job: null
+                },
+            },
+            metods: {
+
+            }
+        })
+    </script>
+</body>
+
+</html>

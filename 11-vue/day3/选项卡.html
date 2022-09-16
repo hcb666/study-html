@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <style>
+        .active {
+            color: lightblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <button v-for="(tab,index) in tabs" @click="tabIndex = index"
+            :class="{active: tabIndex === index}">{{tab.text}}</button>
+        <p v-for="(tab,index) in tabs" v-if="index === tabIndex">{{tab.content}}</p>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                tabIndex: 0,
+                tabs: [{
+                        text: "btn1",
+                        content: "content1",
+                    },
+                    {
+                        text: "btn2",
+                        content: "content2",
+                    },
+                    {
+                        text: "btn3",
+                        content: "content3",
+                    }
+                ]
+            }
+        })
+    </script>
+</body>
+
+</html>

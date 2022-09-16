@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <style>
+        li {
+            list-style: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <header>
+            <input type="checkbox" name="" id="">
+            <input type="text" v-model="newTodo" @keyup.enter="addTodo">
+        </header>
+
+        <ul>
+            <li v-for="todo in todos" :key="todo.id">
+                <input type="checkbox" v-model="todo.finish">
+                <span>{{todo.text}}</span>
+                <i @click="deleteTodo(todo.id)">x</i>
+            </li>
+        </ul>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                newTodo: "",
+                todos: JSON.parse(localStorage.getItem("todos")) || []
+            },
+            computed: {
+
+            },
+            methods: {
+                addTodo: function () {
+                    // console.log(777);
+                    // todos.push()
+                    this.todos = [...this.todos, {
+                        id: this.todos.length ? Math.max(...this.todos.map((o) => o.id)) + 1 : 1,
+                        text: this.newTodo,
+                        finish: false,
+                    }]
+                    this.newTodo = ""
+                },
+                deleteTodo: function (id) {
+                    // this.todos.splice()
+                    this.todos = this.todos.filter((o) => o.id !== id)
+                }
+            },
+            watch: {
+                todos: function (newTodos) {
+                    console.log("todo");
+                    localStorage.setItem("todos", JSON.stringify(newTodos))
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
