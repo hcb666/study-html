@@ -7,37 +7,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-    <style>
-        li {
-            list-style: none;
-        }
-    </style>
 </head>
 
 <body>
     <div id="app">
         <header>
-            <!-- <input type="checkbox" v-model="allCheck">
-                不能使用 ，因为计算属性不能修改
-            -->
             <input type="checkbox" :checked="allCheck" @change="toggleAllTodos" />
-            <input type="text" v-model="newTodo" @keyup.enter="addTodo">
+            <input type="text" v-model="newTodo" @@keyup.enter="addTodo" />
         </header>
-
         <ul>
             <li v-for="todo in todos" :key="todo.id">
-                <!-- <input type="checkbox" v-model="todo.finish"> -->
-                <input type="checkbox" :checked="todo.finish" @change="toggleTodo(todo)">
+                <input type="checkbox" :checked="todo.finish" @change="toggleTodo(todo)" />
                 <span>{{todo.text}}</span>
                 <i @click="deleteTodo(todo.id)">x</i>
             </li>
         </ul>
+        <button>All</button>
+        <button>Active</button>
+        <button>Completed</button>
     </div>
+
     <script>
         var vm = new Vue({
             el: "#app",
             data: {
-                newTodo: "",
+                newTodo: "'",
                 todos: JSON.parse(localStorage.getItem("todos")) || []
             },
             computed: {
@@ -47,21 +41,17 @@
             },
             methods: {
                 addTodo: function () {
-                    // console.log(777);
-                    // todos.push()
                     this.todos = [...this.todos, {
                         id: this.todos.length ? Math.max(...this.todos.map((o) => o.id)) + 1 : 1,
                         text: this.newTodo,
-                        finish: false,
-                    }]
+                        finish: false
+                    }, ]
                     this.newTodo = ""
                 },
                 deleteTodo: function (id) {
-                    // this.todos.splice()
                     this.todos = this.todos.filter((o) => o.id !== id)
                 },
                 toggleTodo: function (todo) {
-                    // todo.finish = !todo.finish
                     this.todos = this.todos.map((o) => {
                         if (o.id === todo.id) {
                             return {
@@ -82,7 +72,6 @@
             },
             watch: {
                 todos: function (newTodos) {
-                    console.log("todo");
                     localStorage.setItem("todos", JSON.stringify(newTodos))
                 }
             }

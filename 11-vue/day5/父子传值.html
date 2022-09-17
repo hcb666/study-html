@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+    <!-- 子向父 通知事件传值 -->
+    <!-- <div id="app">
+<h3>parent {{n}}</h3>
+<xxx-yyy :pn="n" @custom-event="decrement"></xxx-yyy>
+    </div>
+    <script>
+        Vue.component("xxx-yyy",{
+            props: ["pn"],
+            template: "<button @click='clickHandler'>btn {{pn}}</button>",
+            methods: {
+                clickHandler: function () {
+                    this.$emit("custom-event", 3)
+                }
+            }
+        })
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                n:10,
+            },
+            methods: {
+                decrement: function (params) {
+                    this.n -= params
+                }
+            }
+        })
+    </script> -->
+    <!-- 简写 -->
+    <div id="app">
+        <h3>parent {{n}}</h3>
+        <xxx-yyy :pn="n" @custom-event="n-=$event.b"></xxx-yyy>
+            </div>
+            <script>
+                Vue.component("xxx-yyy",{
+                    props: ["pn"],
+                    template: `<button @click='$emit("custom-event",{a: "买鞋子", b:5})'>btn {{pn}}</button>`,
+                })
+                var vm = new Vue({
+                    el: "#app",
+                    data: {
+                        n:10,
+                    },
+                })
+            </script>
+</body>
+</html>

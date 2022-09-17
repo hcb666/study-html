@@ -1,4 +1,4 @@
-# my-world
+# my-todos
 
 ## Project setup
 ```
