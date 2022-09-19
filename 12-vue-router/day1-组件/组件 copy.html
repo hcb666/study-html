@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <button-counter :n='n'></button-counter>
+        <button-counter :n='n'></button-counter>
+        <button-counter :n='n'></button-counter>
+
+        <xxx-yyy>hello world6</xxx-yyy>
+        <xxx-yyy><h3>6666</h3></xxx-yyy>
+
+        <xxx-yyy><h3>msbkbskhbs</h3></xxx-yyy>
+
+
+        <button @click="currentTabComponent = 'home-page'">Home</button>
+        <button @click="currentTabComponent = 'about-page'">about</button>
+        <!-- 组件会在·currentTabComponent·改变时改变 -->
+        <component v-bind:is="currentTabComponent"></component>
+
+        <table>
+            <tr is="yyy-zzz"></tr>
+        </table>
+    </div>
+    <script>
+        Vue.component("home-page", {
+            template: "<div>home page 页面</div>"
+        })
+        Vue.component("about-page", {
+            template: "<div>about page 页面</div>"
+        })
+        Vue.component("button-counter", {
+            props: ["n"],
+            data: function () {
+                return {
+                    count: 20
+                }
+            },
+            template: "<button>You clicked me {{count}} times. props {{n}}</button>"
+        })
+        Vue.component("xxx-yyy", {
+            template: "<div>xxx-yyy <slot></slot></div>"
+        })
+        Vue.component("yyy-zzz", {
+            template: "<tr><td>11</td><td>22</td></tr>"
+        })
+        var app = new Vue({
+            el: "#app",
+            data: {
+                n: 10,
+                currentTabComponent: "home-page"
+            }
+        })
+    </script>
+</body>
+
+</html>

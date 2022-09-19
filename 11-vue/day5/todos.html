@@ -22,9 +22,11 @@
                 <i @click="deleteTodo(todo.id)">x</i>
             </li>
         </ul>
-        <button>All</button>
-        <button>Active</button>
-        <button>Completed</button>
+        <footer>
+            <button @click="$emit('ActiveTodo', 1)">All</button>
+            <button>Active</button>
+            <button>Completed</button>
+        </footer>
     </div>
 
     <script>
