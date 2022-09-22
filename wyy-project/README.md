@@ -1,4 +1,4 @@
-# hello-world
+# wyy-project
 
 ## Project setup
 ```

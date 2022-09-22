@@ -39,14 +39,14 @@
         <!-- 有时需要在内联语句处理器中访问原始的Dom事件 。可以用特殊变量 $event 把它传入方法 -->
 
         <!-- 事件修饰符
-.stop: 阻止事件冒泡
-.capture:改为事件捕获
-.prevent: 阻止默认事件
-.once: 事件只执行一次
-.self: 只有点击自己时才会被执行
-.passive:passive主要用在移动端的scroll事件，
-来提高浏览器响应速度，提升用户体验。因为passive=true等于提前告诉了浏览器，touchstart和touchmove不会阻止默认事件
--->
+        .stop: 阻止事件冒泡
+        .capture:改为事件捕获
+        .prevent: 阻止默认事件
+        .once: 事件只执行一次
+        .self: 只有点击自己时才会被执行
+        .passive:passive主要用在移动端的scroll事件，
+        来提高浏览器响应速度，提升用户体验。因为passive=true等于提前告诉了浏览器，touchstart和touchmove不会阻止默认事件
+        -->
 
         <a href="http://www.baidu.com" @click.prevent="add">百度链接</a>
 
