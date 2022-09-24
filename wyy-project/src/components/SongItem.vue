@@ -1,5 +1,5 @@
    <template>
-  <li class="song-item">
+  <li class="song-item" @click="clickHandler">
     <div class="song-text">
       <h5>{{ song.name }}</h5>
       <p>
@@ -16,13 +16,18 @@ export default {
   props: {
     song: Object,
   },
+  methods: {
+    clickHandler: function () {
+      this.$emit("updata-song", this.song)
+    }
+  }
 };
 </script>
 
  <style lang="less" scoped>
 .song-item {
   // margin: 0 auto;
-  border-bottom: 1rem solid rgb(177, 177, 177);
+  border-bottom: 1rem solid rgba(0, 0, 0,0.1);
   padding: 8rem 0;
   margin-left: 10rem;
   display: flex;
@@ -39,7 +44,12 @@ export default {
       word-break: normal;
     }
     p {
+      width: 320rem;
       color: #888;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      word-break: normal;
       i {
         // width: 20rem;
         // margin: 4rem 0;

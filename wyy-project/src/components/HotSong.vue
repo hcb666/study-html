@@ -46,13 +46,19 @@ export default {
     margin-left: -10px;
     border: none;
   }
-      &:nth-child(1) h6{    color: #df3436 ;}
-      &:nth-child(2) h6{    color: #df3436 ;}
-      &:nth-child(3) h6{    color: #df3436 ;}
+  &:nth-child(1) h6 {
+    color: #df3436;
+  }
+  &:nth-child(2) h6 {
+    color: #df3436;
+  }
+  &:nth-child(3) h6 {
+    color: #df3436;
+  }
   .right-card {
     display: flex;
     align-items: center;
-    border-bottom: 1rem solid rgb(177, 177, 177);
+    border-bottom: 1rem solid rgba(0, 0,0,0.1);
     .hotsong-card-text {
       //   margin-left: 10rem;
       width: 280rem;

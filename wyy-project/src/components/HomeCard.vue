@@ -1,5 +1,8 @@
    <template>
-  <li class="home-card">
+  <li
+    class="home-card"
+    @click="$router.push({ path: '/playlist', query: { id: item.id } })"
+  >
     <span> {{ item.playCount | moneyFormat }}</span>
     <img :src="`${item.picUrl}?imageView=1&type=webp&thumbnail=370x0`" alt="" />
     <h5>{{ item.name }}</h5>
