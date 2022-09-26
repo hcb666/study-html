@@ -18,9 +18,10 @@ export default {
   },
   methods: {
     clickHandler: function () {
-      this.$emit("updata-song", this.song)
+      this.$emit("update-song", this.song)
     }
-  }
+  },
+  
 };
 </script>
 

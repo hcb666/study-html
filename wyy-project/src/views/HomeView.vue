@@ -13,7 +13,7 @@
         v-for="song in newsongs"
         :key="song.id"
         :song="song"
-        @updata-song="$emit('updata-song', $event)"
+        @update-song="$emit('update-song', $event)"
       />
     </ul>
 

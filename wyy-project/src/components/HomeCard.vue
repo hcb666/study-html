@@ -55,5 +55,13 @@ li.home-card {
     background-repeat: no-repeat;
     background-size: 11rem 10rem;
   }
+  h5 {
+    height: 32rem;
+    overflow: hidden;
+      text-overflow: ellipsis;
+      // white-space: nowrap;
+      word-break: normal;
+      margin-bottom: 10rem;
+  }
 }
 </style>

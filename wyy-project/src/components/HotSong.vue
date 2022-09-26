@@ -21,13 +21,13 @@ export default {
     hotsong: Object,
     index: Number,
   },
-  computed: {
-    numberIndex() {
-      return String(this.index).length == 1
-        ? "0" + String(this.index + 1)
-        : String(this.index + 1);
-    },
-  },
+  // computed: {
+  //   numberIndex() {
+  //     return String(this.index).length == 1
+  //       ? "0" + String(this.index + 1)
+  //       : String(this.index + 1);
+  //   },
+  // },
 };
 </script>
  
