@@ -3,11 +3,8 @@
     <div class="search-big">
       <div class="search-input">
         <div class="input-icon">
+          <i class="fa fa-search search-icon" @click="getSearchResult(value)"></i>
           <i
-            class="fa fa-search search-icon"
-            @click="getSearchResult(value)"
-          ></i
-          ><i
             class="fa fa-times-circle search-icon-two"
             v-show="value"
             @click="
@@ -25,7 +22,7 @@
         />
       </div>
     </div>
-    <div v-show="!suggests.length">
+    <div v-show="!suggests?.length">
       <section class="hots-style">
         <h3>热门搜索</h3>
         <ul class="hots">
@@ -36,9 +33,7 @@
               value = o.first;
               getSearchResult(o.first);
             "
-          >
-            {{ o.first }}
-          </li>
+          >{{ o.first }}</li>
         </ul>
       </section>
       <section class="history-style">
@@ -64,7 +59,7 @@
       </section>
     </div>
 
-    <ul class="suggests" v-if="suggests.length && !searchRes">
+    <ul class="suggests" v-if="suggests?.length && !searchRes">
       <h3 class="suggests-title">搜索：“{{ value }}"</h3>
       <li
         v-for="(o, i) in suggests"
@@ -80,15 +75,18 @@
     </ul>
 
     <ul class="search-search" v-if="searchRes">
-      <li v-for="(o, i) in searchRes && searchRes.songs" :key="i">
+      <li v-for="(o, i) in searchRes && searchRes.songs" :key="i" @click="$emit('update-searchsong',o)">
         <div class="search-text">
           <h5>{{ o.name }}</h5>
-          <div class="search-to">
-            <i v-show="o.copyrightId !== 0"></i>
-            {{ o.artists[0].name }} - {{ o.album.name }}
-          </div>
+          <i v-show="o.copyrightId !== 0"></i>
+          <div
+            class="search-to"
+            v-for="songers in o.artists"
+            :key="songers.id"
+          >{{ songers.name }} &nbsp;</div>
+          <span>- {{ o.album.name }}</span>
         </div>
-        <span></span>
+        <span class="play-icon"></span>
       </li>
     </ul>
     <svg
@@ -113,7 +111,7 @@
               keyTimes="0;1"
               dur="1s"
               repeatCount="indefinite"
-            ></animateTransform>
+            />
             <animate
               attributeName="fill-opacity"
               keyTimes="0;1"
@@ -121,7 +119,7 @@
               repeatCount="indefinite"
               values="1;0"
               begin="-0.875s"
-            ></animate>
+            />
           </circle>
         </g>
       </g>
@@ -136,7 +134,7 @@
               keyTimes="0;1"
               dur="1s"
               repeatCount="indefinite"
-            ></animateTransform>
+            />
             <animate
               attributeName="fill-opacity"
               keyTimes="0;1"
@@ -144,7 +142,7 @@
               repeatCount="indefinite"
               values="1;0"
               begin="-0.75s"
-            ></animate>
+            />
           </circle>
         </g>
       </g>
@@ -159,7 +157,7 @@
               keyTimes="0;1"
               dur="1s"
               repeatCount="indefinite"
-            ></animateTransform>
+            />
             <animate
               attributeName="fill-opacity"
               keyTimes="0;1"
@@ -167,7 +165,7 @@
               repeatCount="indefinite"
               values="1;0"
               begin="-0.625s"
-            ></animate>
+            />
           </circle>
         </g>
       </g>
@@ -182,7 +180,7 @@
               keyTimes="0;1"
               dur="1s"
               repeatCount="indefinite"
-            ></animateTransform>
+            />
             <animate
               attributeName="fill-opacity"
               keyTimes="0;1"
@@ -190,7 +188,7 @@
               repeatCount="indefinite"
               values="1;0"
               begin="-0.5s"
-            ></animate>
+            />
           </circle>
         </g>
       </g>
@@ -205,7 +203,7 @@
               keyTimes="0;1"
               dur="1s"
               repeatCount="indefinite"
-            ></animateTransform>
+            />
             <animate
               attributeName="fill-opacity"
               keyTimes="0;1"
@@ -213,7 +211,7 @@
               repeatCount="indefinite"
               values="1;0"
               begin="-0.375s"
-            ></animate>
+            />
           </circle>
         </g>
       </g>
@@ -228,7 +226,7 @@
               keyTimes="0;1"
               dur="1s"
               repeatCount="indefinite"
-            ></animateTransform>
+            />
             <animate
               attributeName="fill-opacity"
               keyTimes="0;1"
@@ -236,7 +234,7 @@
               repeatCount="indefinite"
               values="1;0"
               begin="-0.25s"
-            ></animate>
+            />
           </circle>
         </g>
       </g>
@@ -251,7 +249,7 @@
               keyTimes="0;1"
               dur="1s"
               repeatCount="indefinite"
-            ></animateTransform>
+            />
             <animate
               attributeName="fill-opacity"
               keyTimes="0;1"
@@ -259,7 +257,7 @@
               repeatCount="indefinite"
               values="1;0"
               begin="-0.125s"
-            ></animate>
+            />
           </circle>
         </g>
       </g>
@@ -274,7 +272,7 @@
               keyTimes="0;1"
               dur="1s"
               repeatCount="indefinite"
-            ></animateTransform>
+            />
             <animate
               attributeName="fill-opacity"
               keyTimes="0;1"
@@ -282,7 +280,7 @@
               repeatCount="indefinite"
               values="1;0"
               begin="0s"
-            ></animate>
+            />
           </circle>
         </g>
       </g>
@@ -294,7 +292,7 @@
 import { getSearchHots } from "@/apis";
 var _ = require("lodash");
 export default {
-  data: function () {
+  data: function() {
     return {
       value: "",
       hots: [],
@@ -302,26 +300,26 @@ export default {
       searchRes: null,
       loading: false,
       // history:JSON,parse(window.localStorage.getItem("history")) || [],
-      history: JSON.parse(window.localStorage.getItem("history")) || [],
+      history: JSON.parse(window.localStorage.getItem("history")) || []
     };
   },
   created() {
     this.loading = true;
 
-    getSearchHots().then((res) => {
+    getSearchHots().then(res => {
       this.loading = false;
       this.hots = res.data.result.hots;
     });
     this.debouncedGetSearchSuggests = _.debounce(this.getSearchSuggests, 800);
   },
   methods: {
-    getSearchSuggests: function (keywords) {
+    getSearchSuggests: function(keywords) {
       this.loading = true;
       this.axios
         .get("https://apis.netstart.cn/music/search/suggest", {
-          params: { keywords, type: "mobile" },
+          params: { keywords, type: "mobile" }
         })
-        .then((res) => {
+        .then(res => {
           this.loading = false;
 
           //如果修改的过程很快 从有值 快速删除到空
@@ -332,23 +330,22 @@ export default {
             : (this.suggests = []);
         });
     },
-    getSearchResult: function (keywords) {
+    getSearchResult: function(keywords) {
       this.loading = true;
-
       this.axios
         .get("https://apis.netstart.cn/music/search", {
-          params: { keywords, limit: 10, offset: 0 },
+          params: { keywords, limit: 10, offset: 0 }
         })
-        .then((res) => {
+        .then(res => {
           this.loading = false;
           this.searchRes = res.data.result;
           // console.log(this.searchRes, res.data.result);
         });
       this.history = [...new Set([keywords, ...this.history])];
-    },
+    }
   },
   watch: {
-    value: function (n) {
+    value: function(n) {
       if (n) {
         //如果存在就发送ajax
         // getSearchSuggests(n).then((res) => {});
@@ -357,10 +354,10 @@ export default {
         this.suggests = [];
       }
     },
-    history: function (newHistory) {
+    history: function(newHistory) {
       localStorage.setItem("history", JSON.stringify(newHistory));
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -523,33 +520,29 @@ export default {
       display: flex;
       justify-content: space-between;
       .search-text {
+        color: #888;
+        width: 320rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        word-break: normal;
         h5 {
-          width: 320rem;
           font-size: 17rem;
           line-height: 24rem;
           color: #333;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-          word-break: normal;
+        }
+        i {
+          padding-left: 15rem;
+          background-image: url("https://s3.music.126.net/mobile-new/img/index_icon_2x.png?5207a28c3767992ca4bb6d4887c74880=");
+          background-repeat: no-repeat;
+          background-position: 0rem 3rem;
+          background-size: 160rem 90rem;
         }
         .search-to {
-          width: 320rem;
-          color: #888;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-          word-break: normal;
-          i {
-            padding-left: 15rem;
-            background-image: url("https://s3.music.126.net/mobile-new/img/index_icon_2x.png?5207a28c3767992ca4bb6d4887c74880=");
-            background-repeat: no-repeat;
-            background-position: 0rem 3rem;
-            background-size: 160rem 90rem;
-          }
+          display: inline-block;
         }
       }
-      span {
+      .play-icon {
         width: 22rem;
         height: 22rem;
         display: inline-block;

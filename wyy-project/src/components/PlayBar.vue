@@ -1,19 +1,21 @@
 <template>
-  <div class="playbar"  >
+  <div class="playbar">
     <img
       :class="{ playing: playing }"
-      :src="song ? `${song.picUrl}?imageView=1&type=webp&thumbnail=50x0` : ''"
-      alt=""
+      :src="song ? `${showIm}?imageView=1&type=webp&thumbnail=50x0` : ''"
+      alt
     />
     <div class="geming">
- <h3>{{ song?.name }}</h3>
-    <p>{{ (currentTime/60).toFixed(2) }} / {{(duration/60).toFixed(2) }}</p>
+      <h3>{{ song?.name }}</h3>
+      <p>{{ currentTime| formatSeconds }} / {{duration| formatSeconds }}</p>
     </div>
-   
-   <div class="playbutton">
-<i class="fa fa-play"  v-if="!playing" @click.stop="$emit('song-play')"></i>
-<i class="fa fa-pause"  v-else @click.stop="$emit('song-pause')"></i>
-   </div>
+
+    <div class="playbutton">
+      <i class="fa fa-play" v-if="!playing" @click.stop="$emit('song-play')"></i>
+      <i class="fa fa-pause" v-else @click.stop="$emit('song-pause')"></i>
+      <canvas class="canvas" ref="canvas"></canvas>
+    </div>
+    <i class="fa fa-list list-icon" @click.stop="$emit('toggle-showPlayList')"></i>
     <!-- <button v-if="!playing" @click.stop="$emit('song-play')"></button> -->
     <!-- <button v-else @click.stop="$emit('song-pause')"></button> -->
   </div>
@@ -25,8 +27,53 @@ export default {
     song: Object,
     playing: Boolean,
     duration: Number,
-    currentTime: Number,
+    currentTime: Number
   },
+
+  computed: {
+    persontage: function() {
+      return this.currentTime / this.duration;
+    },
+    showIm() {
+      return this.song.al ? this.song.al.picUrl : this.song.picUrl;
+    },
+    songersname() {
+      return this.song ? this.song.song.artists.name : this.song.ar.name;
+    }
+  },
+  watch: {
+    persontage: function(n) {
+      var canvas = this.$refs.canvas;
+      var context = canvas.getContext("2d");
+
+      context.clearRect(0, 0, 50, 50);
+
+      context.beginPath();
+      context.arc(25, 25, 24, -0.5 * Math.PI, Math.PI * (2 * n - 0.5));
+      context.stroke();
+    }
+  },
+  //vue过滤器filters,跟钩子函数平级
+  filters: {
+    //创建函数名formatSeconds
+    formatSeconds(value) {
+      let result = parseInt(value);
+      let m =
+        Math.floor((result / 60) % 60) < 10
+          ? "0" + Math.floor((result / 60) % 60)
+          : Math.floor((result / 60) % 60);
+      let s =
+        Math.floor(result % 60) < 10
+          ? "0" + Math.floor(result % 60)
+          : Math.floor(result % 60);
+      let res = "";
+      if (m !== "00") res += `${m}.`;
+
+      res += `${s}`;
+
+      return res;
+    }
+  }
 };
 </script>
 
@@ -40,63 +87,76 @@ export default {
   }
 }
 
-@keyframes gmgundong{
-  to{
+@keyframes gmgundong {
+  to {
     transform: translateX(360deg);
   }
 }
 .playbar {
   width: 100%;
   height: 60rem;
-background: rgba(29,29,31,0.72);
-backdrop-filter: saturate(180%) blur(20px);
+  // background: rgba(29, 29, 31, 0.72);
+  background-color: #fff;
+  backdrop-filter: saturate(180%) blur(20px);
   position: fixed;
   bottom: 0;
   left: 0;
-
+  border-top: 1rem solid rgba(0, 0, 0, 0.05);
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 10rem;
-
   img {
     border-radius: 50%;
     animation: rotate 8s linear infinite;
     animation-play-state: paused;
+    margin-top: -30rem;
     &.playing {
       animation-play-state: running;
     }
   }
-  .geming{
+  .geming {
     margin-left: -30rem;
-    // width: 160rem;
-    // background-color: #fff;
-    // height: 1;
-    color: aliceblue;
+    width: 160rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-break: normal;
+    color: gray;
     text-align: center;
-    h3{
+    h3 {
       font-size: 16rem;
-      font-weight:500;
+      font-weight: 500;
+      color: black;
       animation: gmgundong 5s infinite linear;
-
     }
   }
 
-  .playbutton{
-    background-color: rgba(238, 233, 233, 0);
-    border-radius: 40rem;
-    width: 40rem;
-    height: 40rem;
-    border: 1rem solid rgb(196, 194, 194);
-      text-align: center;
-      
-      line-height: 40rem;
-
-    i{
-      font-size: 20rem;
-      // margin-left: 15rem;
-      color: rgb(199, 203, 206);
+  .playbutton {
+    width: 50rem;
+    height: 50rem;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .canvas {
+      width: 50rem;
+      height: 50rem;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
     }
+    i {
+      font-size: 24rem;
+
+      // // position: absolute;
+      // top: calc(50% - 11rem);
+      // left: calc(50% - 9rem);
+    }
+  }
+  .list-icon {
+    font-size: 24rem;
   }
 }
 </style>

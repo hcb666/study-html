@@ -4,7 +4,7 @@
     <div class="imgs">
       <img
         :src="
-          song ? `${song?.picUrl}?imageView=1&type=webp&thumbnail=200x0` : ''
+          song ? `${showIm}?imageView=1&type=webp&thumbnail=200x0` : ''
         "
         alt=""
       />
@@ -17,6 +17,11 @@ export default {
   props: {
     song: Object,
   },
+    computed: {
+    showIm() {
+      return this.song.al ? this.song.al.picUrl : this.song.picUrl;
+    }
+  },
 };
 </script>
 
@@ -27,7 +32,7 @@ export default {
   }
 }
 .playdisc {
-  border: 10rem solid rgba(246, 243, 243, 0.587);
+  border: 5rem solid rgba(246, 243, 243, 0.3);
   width: 250rem;
   height: 250rem;
   margin: 30rem auto;

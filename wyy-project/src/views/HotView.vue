@@ -5,7 +5,17 @@
       <p>更新日期：{{ value }}</p>
     </div>
     <ul>
-      <HotSong v-for="(hotsong,index) in hotsongs" :key="hotsong.id" :hotsong="hotsong" :index="index" />
+      <HotSong
+        v-for="(hotsong,index) in hotsongs"
+        :key="hotsong.id"
+        :hotsong="hotsong"
+        :hotsongs="hotsongs"
+        :songId="songId"
+        :playing="playing"
+        :index="index"
+        @update-hotsong="$emit('update-hotsong',$event)"
+        @update-hotsong-list="$emit('update-hotsong-list',$event)"
+      />
     </ul>
     <div class="hot-botton">
       <span>查看完整榜单&nbsp;&nbsp;&gt;</span>
@@ -18,36 +28,37 @@ import HotSong from "@/components/HotSong.vue";
 
 export default {
   components: {
-    HotSong,
+    HotSong
   },
+  props: { songId: [String, Number],playing:Boolean },
   data() {
     return {
       value: this.getDate(),
-      hotsongs: [],
+      hotsongs: []
     };
   },
   created() {
-      this.axios.get(
-        "https://apis.netstart.cn/music/playlist/detail?id=3778678",
-      ).then((res) => {
-      // this.newsongs = n.data.result;
-      this.hotsongs = res.data.playlist.tracks.slice(0,20)
+    this.axios
+      .get("https://apis.netstart.cn/music/playlist/detail?id=3778678")
+      .then(res => {
+        // this.newsongs = n.data.result;
+        this.hotsongs = res.data.playlist.tracks.slice(0, 20);
 
-      console.log(this.hotsongs);
-    });
+        console.log(this.hotsongs);
+      });
   },
   methods: {
     getDate() {
       const nowDate = new Date();
       const date = {
         month: nowDate.getMonth() + 1,
-        date: nowDate.getDate(),
+        date: nowDate.getDate()
       };
       const newmonth = date.month >= 10 ? date.month : "0" + date.month;
       const day = date.date >= 10 ? date.date : "0" + date.date;
       return newmonth + "月" + day + "日";
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -72,8 +83,8 @@ export default {
       margin: 5rem 0;
     }
   }
-  .hot-botton{
-    padding: 15rem 0; 
+  .hot-botton {
+    padding: 15rem 0;
     display: flex;
     justify-content: center;
     align-items: center;

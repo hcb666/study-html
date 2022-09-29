@@ -1,7 +1,11 @@
    <template>
   <li
     class="home-card"
-    @click="$router.push({ path: '/playlist', query: { id: item.id } })"
+    @click="$router.push({ path: '/playlist', query: { id: item.id } });"
+    @update-playlistsong="$emit('update-playlistsong',$event)"
+    @update-playlistsong-list="$emit('update-playlistsong-list',$event)"
+    :playing="playing"
+    :songId="songId"
   >
     <span> {{ item.playCount | moneyFormat }}</span>
     <img :src="`${item.picUrl}?imageView=1&type=webp&thumbnail=370x0`" alt="" />
@@ -13,6 +17,8 @@
 export default {
   props: {
     item: Object,
+     playing: Boolean,
+       songId: [String, Number],
   },
   filters: {
     //取截单元,单位

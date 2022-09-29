@@ -1,19 +1,26 @@
 <template>
   <div class="playlist">
-
     <div class="playlist-header">
-
-      <div class="header-img" :style="{backgroundImage:'url(' + playlist?.coverImgUrl + ')'}">
-      </div>
+      <div
+        class="header-img"
+        :style=" playlist&&{backgroundImage:'url(' + playlist?.coverImgUrl + ')'}"
+      ></div>
       <div class="playlist-left">
         <p>歌单</p>
-        <img :src="`${playlist?.coverImgUrl}?imageView=1&type=webp&thumbnail=126x0`" alt="" />
-        <span>{{ playlist?.playCount}}</span>
+        <img
+          :src="playlist ? `${playlist?.coverImgUrl}?imageView=1&type=webp&thumbnail=126x0` : ''"
+          alt
+        />
+        <span>{{ playlist?.playCount | moneyFormat}}</span>
       </div>
       <!-- 收听次数playCount -->
       <div class="header-landlord">
         <p>{{ playlist?.name }}</p>
-        <div class="people"> <img :src="`${playlist?.creator?.avatarUrl}?imageView=1&type=webp&thumbnail=30x0`" alt="" />
+        <div class="people">
+          <img
+            :src="playlist ? `${playlist?.creator?.avatarUrl}?imageView=1&type=webp&thumbnail=30x0` : ''"
+            alt
+          />
           <h3>{{ playlist?.creator?.nickname }}</h3>
         </div>
       </div>
@@ -24,18 +31,31 @@
     </div>
     <div class="allsongs">
       <ul>
-        <AllPlayListSongs v-for="(allsongs, index) in playlist?.tracks.slice(0,10)" :key="allsongs.id"
-          :allsongs="allsongs" :index="index" />
+        <AllPlayListSongs
+          v-for="(allsongs, index) in playlisallsongs"
+          :key="allsongs.id"
+          :allsongs="allsongs"
+          :playing="playing"
+          :playlisallsongs="playlisallsongs"
+          :index="index"
+          :songId="songId"
+          @update-playlistsong="$emit('update-playlistsong',$event)"
+          @update-playlistsong-list="$emit('update-playlistsong-list',$event)"
+        />
       </ul>
       <div class="allsongs-botton">
-        <h3>查看更多歌曲 > </h3>
+        <h3>查看更多歌曲 ></h3>
       </div>
     </div>
     <div class="hotcomment-title">
       <h3>精彩评论</h3>
     </div>
     <ul>
-      <HotComments v-for="hotcomment in playlistcomments" :key="hotcomment.commentId" :hotcomment="hotcomment" />
+      <HotComments
+        v-for="hotcomment in playlistcomments"
+        :key="hotcomment.commentId"
+        :hotcomment="hotcomment"
+      />
     </ul>
   </div>
 </template>
@@ -47,37 +67,43 @@ import HotComments from "@/components/HotComments.vue";
 export default {
   components: {
     AllPlayListSongs,
-    HotComments,
+    HotComments
   },
-  data: function () {
+  props: {
+     playing: Boolean,
+       songId: [String, Number],
+  },
+  data: function() {
     return {
       playlistcomments: [],
-      playlist: null
+      playlist: null,
+      playlisallsongs: null
     };
   },
   methods: {
-    getPlayList: function (id) {
+    getPlayList: function(id) {
       this.axios
         .get("https://apis.netstart.cn/music/playlist/detail", {
-          params: { id },
+          params: { id }
         })
-        .then((res) => {
+        .then(res => {
           this.playlist = res.data.playlist;
+          this.playlisallsongs = this.playlist.tracks.slice(0,10)
         });
     },
-    PlayListComment: function (id) {
+    PlayListComment: function(id) {
       this.axios
         .get("https://apis.netstart.cn/music/comment/playlist", {
-          params: { id },
+          params: { id }
         })
-        .then((res) => {
+        .then(res => {
           this.playlistcomments = res.data.hotComments;
           console.log(this.playlistcomments);
         });
-    },
+    }
   },
 
-  created: function () {
+  created: function() {
     // console.log(this.$route);
     this.getPlayList(this.$route.query.id);
     this.PlayListComment(this.$route.query.id);
@@ -94,23 +120,23 @@ export default {
   },
   filters: {
     //取截单元,单位
-    moneyFormat: function (arg) {
-      if (arg.toString().length >= 13) {
+    moneyFormat: function(arg) {
+      if (arg?.toString().length >= 13) {
         // return arg/1000000000000+"万亿"
         const moneys = arg / 1000000000000;
         const realVal = parseFloat(moneys).toFixed(2);
         return realVal + "万亿";
-      } else if (arg.toString().length >= 9) {
+      } else if (arg?.toString().length >= 9) {
         const moneys = arg / 100000000;
         const realVal = parseFloat(moneys).toFixed(2);
         return realVal + "亿";
-      } else if (arg.toString().length >= 4) {
+      } else if (arg?.toString().length >= 4) {
         const moneys = arg / 10000;
         const realVal = parseFloat(moneys).toFixed(1);
         return realVal + "万";
       }
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -162,7 +188,7 @@ export default {
         font-size: 9rem;
         text-align: center;
         line-height: 17rem;
-        background-color: rgba(217, 48, 48, .8);
+        background-color: rgba(217, 48, 48, 0.8);
         border-top-right-radius: 17rem;
         border-bottom-right-radius: 17rem;
       }
@@ -202,28 +228,27 @@ export default {
         h3 {
           margin-left: 3rem;
           color: rgb(226, 226, 226);
-
         }
       }
 
       p {
         padding-top: 1rem;
         color: #fefefe;
-        height: 45rem;
+        height: 42rem;
         overflow: hidden;
         text-overflow: ellipsis;
         font-size: 14rem;
         // white-space: nowrap;
         word-break: normal;
         margin-bottom: 10rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        word-break: normal;
       }
-
-
     }
   }
 
   .allsongs-title {
-
     h3 {
       height: 23rem;
       line-height: 23rem;

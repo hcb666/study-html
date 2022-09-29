@@ -2,7 +2,7 @@
   <div class="home">
     <h3>编辑推荐</h3>
     <ul class="card-list">
-      <HomeCard v-for="item in personalizeds" :key="item.id" :item="item" />
+      <HomeCard v-for="item in personalizeds" :key="item.id" :item="item" :playing="playing" />
     </ul>
 
     <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
@@ -10,10 +10,13 @@
     <h3>最新音乐</h3>
     <ul>
       <SongItem
-        v-for="song in newsongs"
-        :key="song.id"
-        :song="song"
+        :songId="songId"
+        :playing="playing"
+        :newsongs="newsongs"
         @update-song="$emit('update-song', $event)"
+        @update-song-list="$emit('update-song-list', $event)"
+        @update-playlistsong="$emit('update-playlistsong',$event)"
+        @update-playlistsong-list="$emit('update-playlistsong-list',$event)"
       />
     </ul>
 
@@ -176,6 +179,11 @@ export default {
     HomeCard,
     SongItem,
   },
+  props:{
+    songId: [Number,String],
+    playing: Boolean,
+    
+  },
   data: function () {
     return {
       personalizeds: [],
@@ -192,7 +200,7 @@ export default {
     ]).then(([p, n]) => {
       this.personalizeds = p.data.result;
       this.newsongs = n.data.result;
-      console.log(this.newsongs);
+      // console.log(this.newsongs);
     });
   },
 };
@@ -200,6 +208,7 @@ export default {
 
 
 <style lang="less" scoped>
+
 .home {
   margin-top: 50rem;
   h3 {
